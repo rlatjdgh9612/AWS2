@@ -896,6 +896,7 @@ GameObject:
   - component: {fileID: 2312202066369068235}
   - component: {fileID: 2312202066369068229}
   - component: {fileID: 2312202066369068234}
+  - component: {fileID: 8859197668710635778}
   m_Layer: 5
   m_Name: Img Count
   m_TagString: Untagged
@@ -961,6 +962,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8859197668710635778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312202066369068232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdf60161e3b48148942cb2325692117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metronome_BeatsImg: {fileID: 0}
+  recorder_BeatsImg: {fileID: 0}
+  metronomeText: {fileID: 0}
+  count: 0
+  tempo: 0
+  maxCount: 0
+  sourcePool: []
 --- !u!1 &2312202066405760137
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,12 @@ public class Instrument : MonoBehaviour
 {
     public GameObject instrument;
     public Record record;
-    private InstrumentPad[] padList;
+    public InstrumentPad[] padList;
 
     private void Start()
     {
         padList = gameObject.GetComponentsInChildren<InstrumentPad>();
-        padList = padList.OrderBy(p => Vector3.Distance(instrument.transform.position, p.transform.position)).ToArray();
+        padList = padList.OrderBy(p => p.name).ToArray();
         record.padCount = padList.Length;
 
         for (int i = 0; i < padList.Length; i++)

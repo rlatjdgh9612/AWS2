@@ -92,7 +92,8 @@ public class Record : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnClickRecord();
+        if (other.gameObject.tag == "Controller")
+            OnClickRecord();
     }
 
     public void OnClickRecord()
