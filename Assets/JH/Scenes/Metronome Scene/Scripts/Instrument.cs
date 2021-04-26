@@ -1,0 +1,32 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+using System;
+
+public class Instrument : MonoBehaviour
+{
+    public GameObject instrument;
+    public Record record;
+    private InstrumentPad[] padList;
+
+    private void Start()
+    {
+        padList = gameObject.GetComponentsInChildren<InstrumentPad>();
+        padList = padList.OrderBy(p => Vector3.Distance(instrument.transform.position, p.transform.position)).ToArray();
+        record.padCount = padList.Length;
+
+        for (int i = 0; i < padList.Length; i++)
+        {
+            padList[i].padIndex = i;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Recorder")
+        {
+            record.padCount = padList.Length;
+        }
+    }
+}
