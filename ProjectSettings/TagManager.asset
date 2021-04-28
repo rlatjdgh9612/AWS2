@@ -4,15 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Back
-  - Red
-  - Green
-  - Blue
   - Pad
   - Instrument
   - Recorder
   - Loop
   - Once
+  - Controller
+  - Metronome
   layers:
   - Default
   - TransparentFX
