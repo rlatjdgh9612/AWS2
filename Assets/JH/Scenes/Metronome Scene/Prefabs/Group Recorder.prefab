@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2348054665294121096}
   - component: {fileID: 2348054665294121098}
   - component: {fileID: 2348054665294121097}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Img stop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 2348054665361387638}
   - component: {fileID: 2348054665361387632}
   - component: {fileID: 2348054665361387639}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 2348054665507408670}
   - component: {fileID: 2348054665507408664}
   - component: {fileID: 2348054665507408671}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 2348054665773487825}
   - component: {fileID: 2348054665773487824}
   - component: {fileID: 2348054665773487831}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Loop Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 2348054665795400896}
   - component: {fileID: 2348054665795400898}
   - component: {fileID: 2348054665795400897}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: record_BeatsCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 2348054666161315573}
   - component: {fileID: 2348054666161315572}
   - component: {fileID: 2348054666161315563}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Group Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 2348054666308783546}
   - component: {fileID: 2348054666308783428}
   - component: {fileID: 2348054666308783547}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Img Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 2348054666423174684}
   - component: {fileID: 2348054666423174675}
   - component: {fileID: 2348054666423174674}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,8 @@ GameObject:
   - component: {fileID: 2348054666590234905}
   - component: {fileID: 2348054666590234904}
   - component: {fileID: 2348054666590234916}
-  m_Layer: 0
+  - component: {fileID: 523908803}
+  m_Layer: 9
   m_Name: Group Recorder
   m_TagString: Recorder
   m_Icon: {fileID: 0}
@@ -665,7 +666,7 @@ Transform:
   m_GameObject: {fileID: 2348054666590234911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 0.1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.01}
   m_Children:
   - {fileID: 2348054665773487830}
   m_Father: {fileID: 0}
@@ -754,6 +755,22 @@ MonoBehaviour:
   nodeUIprefab: {fileID: 2348054666423174673}
   loopGroup: {fileID: 2312202064953432187, guid: ba05f609801a8184aac7d4e73027e5ad,
     type: 3}
+--- !u!54 &523908803
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348054666590234911}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2348054667076678838
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +782,7 @@ GameObject:
   - component: {fileID: 2348054667076678839}
   - component: {fileID: 2348054667076678833}
   - component: {fileID: 2348054667076678832}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Img Track Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +809,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0.000000059604645, y: 0}
-  m_SizeDelta: {x: 4, y: 1.2}
+  m_SizeDelta: {x: 2.5, y: 1.2}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2348054667076678833
 CanvasRenderer:
@@ -839,7 +856,7 @@ GameObject:
   - component: {fileID: 2348054667084262501}
   - component: {fileID: 2348054667084262503}
   - component: {fileID: 2348054667084262502}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Img Bg Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -914,7 +931,7 @@ GameObject:
   - component: {fileID: 2348054667137646492}
   - component: {fileID: 2348054667137646494}
   - component: {fileID: 2348054667137646493}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Img play
   m_TagString: Untagged
   m_Icon: {fileID: 0}

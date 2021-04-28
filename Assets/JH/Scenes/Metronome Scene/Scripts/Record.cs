@@ -114,14 +114,15 @@ public class Record : MonoBehaviour
             // 레코드 종료되면 Loop 그룹 생성
             GameObject loop = Instantiate(loopGroup);
             loop.transform.position = transform.position;
+            loop.transform.rotation = transform.rotation;
             loop.GetComponent<RecordPlayer>().recordLoop = recordLoop;
-            transform.position = new Vector3(transform.position.x, transform.position.y - 1.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
 
             // Track을 Loop그룹으로 전달
-            Image cloneTrack = Instantiate(trackGroup.gameObject).GetComponent<Image>();
+            Image cloneTrack = Instantiate(trackGroup.gameObject, trackGroup.transform.parent).GetComponent<Image>();
             cloneTrack.transform.parent = loop.transform.GetChild(2).transform;
             cloneTrack.rectTransform.localPosition = Vector2.zero;
-
+            cloneTrack.rectTransform.localRotation = Quaternion.identity;
             trackGroup.rectTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
 
             // 레코드 Track node 초기화 부분

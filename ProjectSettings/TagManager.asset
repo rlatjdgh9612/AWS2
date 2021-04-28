@@ -9,6 +9,10 @@ TagManager:
   - Green
   - Blue
   - Pad
+  - Instrument
+  - Recorder
+  - Loop
+  - Once
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - 
   - 
   - Button
-  - 
+  - Glow
   - 
   - 
   - 

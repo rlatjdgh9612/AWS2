@@ -19,9 +19,9 @@ public class SoundSystem : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] private PlayerRay player;
-    public PlayerRay Player => player;
-    
+    [SerializeField] private Controller playerR;
+    public Controller PlayerR => playerR;
+
     [SerializeField] private Sound sound;
     public Sound Sound => sound;
 

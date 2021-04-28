@@ -58,12 +58,12 @@ public class RecordPlayer : Metronome
         note.isPlaying = true;
         AudioSource playableSource = sourcePool.First(source => !source.isPlaying);
         playableSource.clip = note.sound;
-        playableSource.loop = true;
+        //playableSource.loop = true;
         playableSource.Play();
 
         yield return new WaitForSeconds(note.length);
 
-        playableSource.Stop();
+        //playableSource.Stop();
         note.isPlaying = false;
     }
 }

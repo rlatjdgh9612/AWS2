@@ -29,26 +29,26 @@ public class Sound : MonoBehaviour
 
     public void InputSound(GameObject go)
     {
-        SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip = go.GetComponent<AudioSource>().clip;
+        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = go.GetComponent<AudioSource>().clip;
     }
 
     public void OutputSound(GameObject go)
     {
-        if (SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip == null)
+        if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip == null)
         {
             Debug.Log("inputSound is null");
             return;
         }
         else
         {
-            go.GetComponent<AudioSource>().clip = SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip;
-            SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip = null;
+            go.GetComponent<AudioSource>().clip = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
+            SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
         }
     }
 
     public void InputRemove()
     {
-        SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip = null;
+        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,9 +73,9 @@ public class Sound : MonoBehaviour
             if (Input.GetMouseButton(1))
             {
                 InputSound(this.gameObject);
-                if (SoundSystem.Instance.Player.Ball.GetComponent<AudioSource>().clip != null)
+                if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
                 {
-                    SoundSystem.Instance.Player.Ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 80, 255));
+                    SoundSystem.Instance.PlayerR.Ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 80, 255));
                 }
             }
         }

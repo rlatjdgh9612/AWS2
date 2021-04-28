@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Valve.VR;
 
 public class Pointer : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Pointer : MonoBehaviour
     private LineRenderer lineRenderer = null;
     private VRInputModule inputModule = null;
 
+    public SteamVR_Behaviour_Pose pose;
+    public SteamVR_Action_Boolean grabPinch = SteamVR_Input.GetBooleanAction("GrabPinch");
+
+    GameObject hitPullable;
+    RaycastHit hit;
     private void Awake()
     {
         Camera = GetComponent<Camera>();
@@ -23,20 +29,38 @@ public class Pointer : MonoBehaviour
 
     private void Start()
     {
-        // current.currentInputModule does not work
         inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
     }
 
     private void Update()
     {
-        UpdateLine();
+        bool triggerStay = grabPinch.GetState(SteamVR_Input_Sources.Any);
+        bool triggerUp = grabPinch.GetStateUp(SteamVR_Input_Sources.Any);
+
+        if (triggerStay)
+        {
+            UpdateLine();
+        }
+        if (triggerUp && hitPullable != null)
+        {
+            hitPullable.transform.position = transform.position;
+        }
+
+
     }
 
-    private void UpdateLine()
+    public void UpdateLine()
     {
         // Use default or distance
         PointerEventData data = inputModule.Data;
-        RaycastHit hit = CreateRaycast();
+
+        RaycastHit hit;
+
+        if (!CreateRaycast(out hit))
+        {
+            hitPullable = null;
+            return;
+        }
 
         // If nothing is hit, set do default length
         float colliderDistance = hit.distance == 0 ? defaultLength : hit.distance;
@@ -54,14 +78,13 @@ public class Pointer : MonoBehaviour
         // Set linerenderer
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, endPosition);
+
+        hitPullable = hit.collider.gameObject;
     }
 
-    private RaycastHit CreateRaycast()
+    private bool CreateRaycast(out RaycastHit hit)
     {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
-        Physics.Raycast(ray, out hit, defaultLength);
-
-        return hit;
+        // 맞았으면 true, 안 맞았으면 false
+        return Physics.Raycast(new Ray(transform.position, transform.forward), out hit, defaultLength, LayerMask.GetMask("Pullable"));
     }
 }

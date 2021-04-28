@@ -9,6 +9,7 @@ public class LoopGroupButton : MonoBehaviour
     public bool isLoop;
     private void OnTriggerEnter(Collider other)
     {
-        rp.OnClickPlay(isLoop);
+        if (other.gameObject.tag == "Controller")
+            rp.OnClickPlay(isLoop);
     }
 }

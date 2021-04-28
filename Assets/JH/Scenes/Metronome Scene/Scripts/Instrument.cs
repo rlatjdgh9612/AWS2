@@ -14,7 +14,8 @@ public class Instrument : MonoBehaviour
     {
         padList = gameObject.GetComponentsInChildren<InstrumentPad>();
         padList = padList.OrderBy(p => p.name).ToArray();
-        record.padCount = padList.Length;
+        if (record != null)
+            record.padCount = padList.Length;
 
         for (int i = 0; i < padList.Length; i++)
         {
@@ -26,7 +27,14 @@ public class Instrument : MonoBehaviour
     {
         if (other.gameObject.tag == "Recorder")
         {
-            record.padCount = padList.Length;
+            if (record != null)
+                record.padCount = padList.Length;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Recorder")
+            record = null;
     }
 }
