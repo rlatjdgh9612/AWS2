@@ -52,7 +52,13 @@ public class Record : MonoBehaviour
     [Tooltip("녹음버튼 누른시간")]
     public float recordStartTime;
     public bool isRecording;
+    public bool isCounting;
 
+    // Recorder count setting
+    public bool sdfsdf = true;
+    private int recordCount = 4;
+    public Image recorderPlayImg;
+    public Text recorderCountText;
 
     [Tooltip("녹음 진행시간")]
     public float recordingTime;
@@ -92,12 +98,20 @@ public class Record : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Controller")
-            OnClickRecord();
+            StartCountDown();
     }
 
-    public void OnClickRecord()
+    [ContextMenu("StartCountDown")]
+    public void StartCountDown()
     {
+        isCounting = true;
+    }
+
+    public void Recording()
+    {
+        isCounting = false;
         if (!isRecording)
         {
             recordBgTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
@@ -158,4 +172,18 @@ public class Record : MonoBehaviour
         print($"length : {recordLoop.recordLength}");
         recordLoop.record.ForEach(note => print($"note info: [{note.sound.name}] : [{note.length}]"));
     }
+
+    //IEnumerator IeRecorderCount()
+    //{
+    //    recorderPlayImg.enabled = false;
+    //    while (recordCount > 0)
+    //    {
+    //        recorderCountText.text = recordCount.ToString();
+    //        recordCount--;
+    //        yield return new WaitForSeconds(60f / metronome.tempo);
+    //    }
+    //    recorderCountText.text = null;
+    //    sdfsdf = false;
+    //    recorderPlayImg.enabled = true;
+    //}
 }

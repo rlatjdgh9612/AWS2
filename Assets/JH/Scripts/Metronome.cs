@@ -10,6 +10,7 @@ public class Metronome : MonoBehaviour
     public Image metronome_BeatsImg;
     public Image recorder_BeatsImg;
     public Text metronomeText;
+    public Text recorderText;
 
     public int count;
     public int tempo;
@@ -49,10 +50,14 @@ public class Metronome : MonoBehaviour
         while (count <= maxCount)
         {
             if (metronomeText) metronomeText.text = (count + 1).ToString();
-            if (recorder_BeatsImg) recorder_BeatsImg.fillAmount = ((float)count) / (maxCount);
+            if (recorder_BeatsImg && Record.Instance.isRecording || Record.Instance.isCounting) recorder_BeatsImg.fillAmount = ((float)count) / (maxCount);
+            if (recorderText) recorderText.text = (maxCount - count).ToString();
+           
             metronome_BeatsImg.fillAmount = ((float)count) / (maxCount);
             count = (count + 1) % maxCount;
-
+            
+            if (Record.Instance.isCounting && count == 1) Record.Instance.Recording();
+            if (recorderText) recorderText.enabled = Record.Instance.isCounting;
             //audioSource.Play();
             yield return new WaitForSeconds(60f / tempo);
         }

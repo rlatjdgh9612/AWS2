@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: f771f6f668ceca74a933da43159bc32a, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 2312202065362993038}
   - component: {fileID: 2312202065362993039}
   m_Layer: 5
-  m_Name: Img Bg
+  m_Name: Once_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: bc8835a9974509a4cb254d3c70abcfda, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: f771f6f668ceca74a933da43159bc32a, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: f771f6f668ceca74a933da43159bc32a, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: f771f6f668ceca74a933da43159bc32a, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 2312202066199011568}
   - component: {fileID: 2312202066199011569}
   m_Layer: 5
-  m_Name: Img Count
+  m_Name: Once_countImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 2312202066369068234}
   - component: {fileID: 8859197668710635778}
   m_Layer: 5
-  m_Name: Img Count
+  m_Name: Loop_countImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 2312202066560702456}
   - component: {fileID: 2312202066560702457}
   m_Layer: 5
-  m_Name: Img Bg Count
+  m_Name: Once_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 48018b9a2c7ecda4b897e3d69cc3d4d1, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 0.9373842, g: 0.990566, b: 0.88309896, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 2312202066734731017}
   - component: {fileID: 2312202066734731022}
   m_Layer: 5
-  m_Name: Img Bg
+  m_Name: Loop_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 2312202066816138589}
   - component: {fileID: 2312202066816138562}
   m_Layer: 5
-  m_Name: Img Bg Count
+  m_Name: Loop_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 48018b9a2c7ecda4b897e3d69cc3d4d1, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 0.9373842, g: 0.990566, b: 0.88309896, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
