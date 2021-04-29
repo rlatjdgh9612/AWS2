@@ -56,7 +56,6 @@ public class Record : MonoBehaviour
 
     // Recorder count setting
     public bool sdfsdf = true;
-    private int recordCount = 4;
     public Image recorderPlayImg;
     public Text recorderCountText;
 
@@ -100,12 +99,16 @@ public class Record : MonoBehaviour
     {
 
         if (other.gameObject.tag == "Controller")
-            StartCountDown();
+        {
+            if (isRecording) Recording();
+            else StartCountDown();
+        }
     }
 
     [ContextMenu("StartCountDown")]
     public void StartCountDown()
     {
+        recorderPlayImg.enabled = false;
         isCounting = true;
     }
 
@@ -114,6 +117,7 @@ public class Record : MonoBehaviour
         isCounting = false;
         if (!isRecording)
         {
+            recorderPlayImg.enabled = true;
             recordBgTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
             recordingTime = 0;
             record = new List<TriggerEnterEvent>();
@@ -124,6 +128,7 @@ public class Record : MonoBehaviour
         {
             isRecording = false;
             recordLoop = new Loop(record, Time.time - recordStartTime);
+            metronome.recorder_BeatsImg.fillAmount = 1;
 
             // 레코드 종료되면 Loop 그룹 생성
             GameObject loop = Instantiate(loopGroup);
