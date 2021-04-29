@@ -53,7 +53,7 @@ public class Sound : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Controller"))
         {
             if (!isPlay)
             {
@@ -68,7 +68,7 @@ public class Sound : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Controller"))
         {
             if (Input.GetMouseButton(1))
             {

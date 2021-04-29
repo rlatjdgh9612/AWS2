@@ -11,21 +11,19 @@ public class InstrumentPad : MonoBehaviour
 
     public enum HitState
     {
-        None,
         Ready,
-        Hit
+        Hit,
+        Reset
     }
 
-    public HitState hitState = HitState.None;
+    public HitState hitState = HitState.Ready;
     
     private Material mat;
 
-    private float speed = 1.0f;
-    [Range(20.0f, 122.5f)]
-    public float maxGlow = 80.0f;
-    [Range(20.0f, 122.5f)]
-    public float glow = 20.0f;
-    public float defaultGlow = 20.0f;
+    private float speed;
+    [Range(0f, 255.0f)]
+    public float glow;
+    public float defaultGlow = 40.0f;
     private float targetGlow;
 
     #endregion
@@ -61,14 +59,18 @@ public class InstrumentPad : MonoBehaviour
 
         switch(hitState)
         {
-            case HitState.None:
-                break;
             case HitState.Ready:
+                UpdateReady();
                 break;
             case HitState.Hit:
                 UpdateHit();
                 break;
+            case HitState.Reset:
+                UpdateReset();
+                break;
         }
+        
+        mat.SetColor("_Color", new Color32(255,255,255,(byte)glow));
 
         #endregion
         //
@@ -99,16 +101,30 @@ public class InstrumentPad : MonoBehaviour
 
     private void UpdateHit()
     {
-        float dist = Mathf.Abs(targetGlow - glow);
-
-        if (dist == 0 || glow > maxGlow)
+        if (glow >= targetGlow - 1.0f)
         {
             targetGlow = defaultGlow;
+            hitState = HitState.Reset;
+            return;
+        }
+
+        glow = Mathf.Lerp(glow, targetGlow, Time.deltaTime * speed);
+    }
+
+    private void UpdateReset()
+    {
+        if (glow <= targetGlow + 1.0f)
+        {
+            hitState = HitState.Ready;
+            return;
         }
         
         glow = Mathf.Lerp(glow, targetGlow, Time.deltaTime * speed);
+    }
+
+    private void UpdateReady()
+    {
         
-        mat.SetColor("_Color", new Color32(255,255,255,(byte)glow));
     }
 
     public void Hit(float targetGlowPower, float speedPower)

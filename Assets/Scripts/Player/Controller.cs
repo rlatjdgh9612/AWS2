@@ -40,7 +40,7 @@ public class Controller : MonoBehaviour
         if (other.gameObject.CompareTag("Pad"))
         {
             isInstrument = true;
-            other.GetComponent<InstrumentPad>().Hit(80, 2);
+            other.GetComponent<InstrumentPad>().Hit(180, 5);
         }
     }
 
