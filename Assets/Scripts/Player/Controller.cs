@@ -8,18 +8,15 @@ public class Controller : MonoBehaviour
 {
     private bool isInstrument = false;
     private bool isMainMenu = false;
-    private bool isAppMenu = false;
     
     [SerializeField] private GameObject ball;
     public GameObject Ball => ball;
 
     private GameObject mainMenu;
-    private GameObject appMenu;
     
     private void Start()
     {
         mainMenu = GameObject.Find("1st_Menu_Group").transform.Find("MainMenu").gameObject;
-        appMenu = GameObject.Find("1st_Menu_Group").transform.Find("ApplicationMenu").gameObject;
     }
 
     private void Update()
@@ -28,8 +25,6 @@ public class Controller : MonoBehaviour
         {
             isMainMenu = !isMainMenu;
             mainMenu.SetActive(isMainMenu);
-            isAppMenu = !isMainMenu;
-            appMenu.SetActive(isAppMenu);
         }
 
         if (Input.GetMouseButtonUp(1) && !isInstrument)
@@ -38,7 +33,6 @@ public class Controller : MonoBehaviour
             SoundSystem.Instance.Sound.isInput = false;
             ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 255, 255));
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +40,7 @@ public class Controller : MonoBehaviour
         if (other.gameObject.CompareTag("Pad"))
         {
             isInstrument = true;
+            other.GetComponent<InstrumentPad>().Hit(80, 2);
         }
     }
 

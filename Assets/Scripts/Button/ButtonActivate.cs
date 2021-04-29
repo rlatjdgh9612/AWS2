@@ -28,7 +28,7 @@ public class ButtonActivate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Controller"))
         {
             if (!isButton)
             {
@@ -44,7 +44,7 @@ public class ButtonActivate : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Controller"))
         {
             anim.SetBool(AnimOn, false);
             isButton = false;
