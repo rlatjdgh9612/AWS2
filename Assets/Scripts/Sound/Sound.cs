@@ -61,7 +61,7 @@ public class Sound : MonoBehaviour
             if (!isPlay)
             {
                 isPlay = true;
-                GetComponentInChildren<Transform>().Find("Marker").GetComponent<Image>().color = new Color32(255,255,255,255);
+                GetComponentInChildren<Transform>().Find("Marker").GetComponent<Image>().color = new Color(1,1,1,1);
                 Play(this.gameObject);
             }
 
@@ -78,7 +78,7 @@ public class Sound : MonoBehaviour
                 InputSound(this.gameObject);
                 if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
                 {
-                    SoundSystem.Instance.PlayerR.Ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 80, 255));
+                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(1, 1, 80.0f / 255.0f, 1);
                 }
             }
         }
@@ -86,7 +86,7 @@ public class Sound : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInChildren<Transform>().Find("Marker").GetComponent<Image>().color = new Color32(255,255,255,25);
+        GetComponentInChildren<Transform>().Find("Marker").GetComponent<Image>().color = new Color(1,1,1,25.0f / 255.0f);
     }
 
     IEnumerator PlayDelay()

@@ -23,8 +23,8 @@ public class InstrumentPad : MonoBehaviour
     private Deformable deform;
 
     private float speed;
-    [Range(0f, 255.0f)]
-    public float glow;
+    [Range(40.0f, 255.0f)]
+    public float glow = 40.0f;
     public float defaultGlow = 40.0f;
     private float targetGlow;
 
@@ -52,7 +52,9 @@ public class InstrumentPad : MonoBehaviour
 
         mat = GetComponent<MeshRenderer>().material;
         deform = GetComponent<Deformable>();
-        
+
+        glow = defaultGlow;
+
         #endregion
         //
         
@@ -78,9 +80,9 @@ public class InstrumentPad : MonoBehaviour
                 UpdateReset();
                 break;
         }
-        //mat.SetColor("_Color", new Color(1,1,1, glow / 255f));
+        mat.SetColor("_Color", new Color(1,1,1, glow / 255.0f));
 
-        deform.DeformerElements[0].Component.GetComponent<RippleDeformer>().Offset = offset;
+        //deform.DeformerElements[0].Component.GetComponent<RippleDeformer>().Offset = offset;
         
         #endregion
 

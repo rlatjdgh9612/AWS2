@@ -14,20 +14,25 @@ public class Controller : MonoBehaviour
     public SteamVR_Action_Boolean menuButton;
     public SteamVR_Action_Boolean trigger;
     
-    private bool isInstrument = false;
+    private bool isTouchInstrument = false;
     private bool isMainMenu = false;
     
     [SerializeField] private GameObject ball;
     public GameObject Ball => ball;
 
-    private GameObject mainMenu;
+    [SerializeField] private Transform instrumentParent;
+    [SerializeField] private Transform playerCam;
+
+    private GameObject instrumentMarker;
+    private bool isInstrumentDisplay = false;
+    private string _resourcePath = String.Empty;
 
     #endregion
     //
     
     private void Start()
     {
-        //mainMenu = GameObject.Find("1st_Menu_Group").transform.Find("MainMenu").gameObject;
+        
     }
 
     private void Update()
@@ -44,11 +49,22 @@ public class Controller : MonoBehaviour
             ButtonManager.Instance.OnButtonFind("MainMenu");
         }
 
-        if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand) && !isInstrument)
+        if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand) && !isTouchInstrument)
         {
-            SoundSystem.Instance.Sound.InputRemove();
-            SoundSystem.Instance.Sound.isInput = false;
-            ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 255, 255));
+            SoundInputFail(false, 1, 1, 1, 1);
+            
+            if (_resourcePath == String.Empty)
+            {
+                return;
+            }
+
+            InstrumentGenerate(InstrumentLoad(_resourcePath), instrumentParent);
+            _resourcePath = String.Empty;
+        }
+
+        if (instrumentMarker != null)
+        {
+            instrumentMarker.SetActive(isInstrumentDisplay);
         }
     }
 
@@ -56,7 +72,7 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            isInstrument = true;
+            isTouchInstrument = true;
             other.GetComponent<InstrumentPad>().Hit(180, 5);
             other.GetComponent<InstrumentPad>().HitDeform(5, 5);
             ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
@@ -69,10 +85,7 @@ public class Controller : MonoBehaviour
         {
             if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand))
             {
-                SoundSystem.Instance.Sound.OutputSound(other.gameObject);
-                SoundSystem.Instance.Sound.isInput = false;
-                ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 255, 255));
-                isInstrument = false;
+                SoundOutput(other.gameObject, false, 1, 1, 1, 1);
             }
         }
     }
@@ -81,7 +94,64 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            isInstrument = false;
+            isTouchInstrument = false;
         }
     }
+
+    // 민찬 함수
+    #region 민찬 함수
+    
+    void SoundInputFail(bool isInput, float r, float g, float b, float a)
+    {
+        SoundSystem.Instance.Sound.InputRemove();
+        SoundSystem.Instance.Sound.isInput = isInput;
+        ball.GetComponent<PlayerBall>().ColorChange(r,g,b,a);
+    }
+
+    void SoundOutput(GameObject sound, bool isInput, float r, float g, float b, float a)
+    {
+        SoundSystem.Instance.Sound.OutputSound(sound);
+        SoundSystem.Instance.Sound.isInput = isInput;
+        ball.GetComponent<PlayerBall>().ColorChange(r,g,b,a);
+        isTouchInstrument = false;
+    }
+    
+    public void InstrumentInput(GameObject go, string resourcePath, bool isInstrumentDisplay)
+    {
+        this.isInstrumentDisplay = isInstrumentDisplay;
+        _resourcePath = resourcePath;
+        instrumentMarker = go;
+    }
+    
+    private GameObject InstrumentLoad(string resourcePath)
+    {
+        GameObject go = null;
+        
+        go = Resources.Load<GameObject>(resourcePath);
+
+        if (!go)
+        {
+            Debug.LogError("Resources Load Error Path = " + resourcePath);
+            return null;
+        }
+
+        GameObject instancedGo = go;
+        return instancedGo;
+    }
+
+    private bool InstrumentGenerate(GameObject instancedGo, Transform parent)
+    {
+        GameObject instrument = Instantiate<GameObject>(instancedGo, parent, true);
+        string replace = instrument.name.Replace("(Clone)", "");
+        instrument.name = replace;
+        instrument.transform.position = ball.transform.position + (playerCam.forward * 0.5f);
+        instrument.transform.rotation = playerCam.rotation;
+        isInstrumentDisplay = false;
+
+        return true;
+    }
+    
+    #endregion
+    
+    
 }
