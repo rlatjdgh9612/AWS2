@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
     
     private void Start()
     {
-        mainMenu = GameObject.Find("1st_Menu_Group").transform.Find("MainMenu").gameObject;
+        //mainMenu = GameObject.Find("1st_Menu_Group").transform.Find("MainMenu").gameObject;
     }
 
     private void Update()

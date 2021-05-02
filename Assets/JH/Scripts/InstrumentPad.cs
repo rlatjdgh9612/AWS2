@@ -69,8 +69,7 @@ public class InstrumentPad : MonoBehaviour
                 UpdateReset();
                 break;
         }
-        
-        mat.SetColor("_Color", new Color32(255,255,255,(byte)glow));
+        //mat.SetColor("_Color", new Color(1,1,1, glow / 255f));
 
         #endregion
         //
@@ -118,7 +117,6 @@ public class InstrumentPad : MonoBehaviour
             hitState = HitState.Ready;
             return;
         }
-        
         glow = Mathf.Lerp(glow, targetGlow, Time.deltaTime * speed);
     }
 

@@ -93,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 07823576463319a44a362e900e6276c7, type: 3}
   padIndex: 0
 --- !u!64 &7696019307840954957
@@ -202,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 300ec207859ff6448bfd132dda5fc6d7, type: 3}
   padIndex: 0
 --- !u!64 &8106396263690906570
@@ -311,6 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 569067f61b8ae664d89c603b92e77978, type: 3}
   padIndex: 0
 --- !u!64 &8448733302771977402
@@ -420,6 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 12f38b8ebebcc944e9796568618c0ce5, type: 3}
   padIndex: 0
 --- !u!64 &8953424915724982619
@@ -529,6 +541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 1ba429702ea2e3e44933e2feebb10e4f, type: 3}
   padIndex: 0
 --- !u!64 &6525885864757647126
@@ -638,6 +653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 52e0987214e9a32469b827d94d455ad0, type: 3}
   padIndex: 0
 --- !u!64 &5063582231109699289
@@ -747,6 +765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 5bea09c7ff0c6da4cb03cfe90cb6b5d3, type: 3}
   padIndex: 0
 --- !u!64 &798773962426731260
@@ -856,6 +877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 746bee22c0e07fd4eb1a495efc0fdd0f, type: 3}
   padIndex: 0
 --- !u!64 &6207188195045194793
@@ -965,6 +989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 34356f810efc8b54d96a672eb7bc247a, type: 3}
   padIndex: 0
 --- !u!64 &6225177915763540634
@@ -1074,6 +1101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: c47c9a4af34be76469807a53e0e31343, type: 3}
   padIndex: 0
 --- !u!64 &5334954066004207987
@@ -1183,6 +1213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: f4a68e788fae81e45a3fa0917f57a0f4, type: 3}
   padIndex: 0
 --- !u!64 &2882814838212984324
@@ -1292,6 +1325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 386fbb9afa39b234db05fcfea27ed296, type: 3}
   padIndex: 0
 --- !u!64 &4785190717535698216
@@ -1401,6 +1437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: c990357b6d00c87439f1c21af37027b6, type: 3}
   padIndex: 0
 --- !u!64 &2007064992483246183
@@ -1510,6 +1549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: ad54471fbb81f204292bdeb4bc49b745, type: 3}
   padIndex: 0
 --- !u!64 &2867990033487717897
@@ -1619,6 +1661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 8d1980b1ab3775744a5a0d5e81922103, type: 3}
   padIndex: 0
 --- !u!64 &6065125991552586598
@@ -1728,6 +1773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 8e869133adf21e741ac65dafb826132b, type: 3}
   padIndex: 0
 --- !u!64 &7771282846750771506
@@ -1837,6 +1885,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 4d6fb69670f99b541895338177d72582, type: 3}
   padIndex: 0
 --- !u!64 &3654592684913028540
@@ -1866,6 +1917,7 @@ GameObject:
   - component: {fileID: 1199571895987343177}
   - component: {fileID: 7059775914622268172}
   - component: {fileID: 6940127473491080696}
+  - component: {fileID: 6045284117038382071}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -1894,7 +1946,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6721979212330125579}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1199571895987343177
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1946,6 +1998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 36401e85d5f8d1c4b80a42712129c957, type: 3}
   padIndex: 0
 --- !u!64 &6940127473491080696
@@ -1962,6 +2017,36 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6045284117038382071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721979212330125579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85212d1b13358614ca54e74ba56f93ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assignOriginalMeshOnDisable: 1
+  updateMode: 0
+  normalsRecalculation: 0
+  boundsRecalculation: 0
+  colliderRecalculation: 0
+  meshCollider: {fileID: 0}
+  data:
+    OriginalMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    Target:
+      meshFilter: {fileID: 5806215697469865570}
+      skinnedMeshRenderer: {fileID: 0}
+    initialized: 1
+  deformerElements:
+  - component: {fileID: 0}
+    active: 1
+  customBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &6835408741961534217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 2adf792f4f280184e890545f693b4c9d, type: 3}
   padIndex: 0
 --- !u!64 &718459917008558900
@@ -2164,6 +2252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 06d4688a922f09c41b72d4c0ed7edc1d, type: 3}
   padIndex: 0
 --- !u!64 &1293932982454987774
@@ -2273,6 +2364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: eb046892b05002943b7d715942d99c91, type: 3}
   padIndex: 0
 --- !u!64 &1870052993179468907
@@ -2452,6 +2546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 88bc24ed78ad65b4490ed703c1254ad8, type: 3}
   padIndex: 0
 --- !u!64 &4160743414644530728
@@ -2561,6 +2658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: e9b9291994a17214c97ebd27ae83b5f2, type: 3}
   padIndex: 0
 --- !u!64 &2703423994059510819
@@ -2670,6 +2770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitState: 0
+  glow: 0
+  defaultGlow: 40
   sound: {fileID: 8300000, guid: 61de3666a76e0e446b8e385ad6965778, type: 3}
   padIndex: 0
 --- !u!64 &9210704228265099630
