@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Deform;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class Controller : MonoBehaviour
 {
+    // 민찬 변수
+    #region 민찬 변수
+
+    public SteamVR_Action_Boolean menuButton;
+    public SteamVR_Action_Boolean trigger;
+    
     private bool isInstrument = false;
     private bool isMainMenu = false;
     
@@ -13,6 +21,9 @@ public class Controller : MonoBehaviour
     public GameObject Ball => ball;
 
     private GameObject mainMenu;
+
+    #endregion
+    //
     
     private void Start()
     {
@@ -21,17 +32,23 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (menuButton.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             isMainMenu = !isMainMenu;
-            mainMenu.SetActive(isMainMenu);
+            
+            if (!isMainMenu)
+            {
+                return;
+            }
+            
+            ButtonManager.Instance.OnButtonFind("MainMenu");
         }
 
-        if (Input.GetMouseButtonUp(1) && !isInstrument)
+        if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand) && !isInstrument)
         {
             SoundSystem.Instance.Sound.InputRemove();
             SoundSystem.Instance.Sound.isInput = false;
-            ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 255, 255));
+            ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 255, 255));
         }
     }
 
@@ -41,6 +58,8 @@ public class Controller : MonoBehaviour
         {
             isInstrument = true;
             other.GetComponent<InstrumentPad>().Hit(180, 5);
+            other.GetComponent<InstrumentPad>().HitDeform(5, 5);
+            ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
         }
     }
 
@@ -48,11 +67,11 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            if (Input.GetMouseButtonUp(1))
+            if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand))
             {
                 SoundSystem.Instance.Sound.OutputSound(other.gameObject);
                 SoundSystem.Instance.Sound.isInput = false;
-                ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 255, 255));
+                ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 255, 255));
                 isInstrument = false;
             }
         }

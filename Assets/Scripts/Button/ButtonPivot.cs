@@ -29,6 +29,8 @@ public class ButtonPivot : MonoBehaviour
     }
 
     public State currentState = State.None;
+    public Transform menuPos;
+    public Transform playerCam;
 
     private Vector3 targetRotate;
     private float speed;
@@ -72,5 +74,11 @@ public class ButtonPivot : MonoBehaviour
         targetRotate = rotate;
         speed = currentSpeed;
         currentState = State.Backward;
+    }
+
+    public void EnablePosRot()
+    {
+        transform.parent.gameObject.transform.position = menuPos.transform.position;
+        transform.parent.gameObject.transform.rotation = new Quaternion(transform.parent.gameObject.transform.rotation.x, playerCam.rotation.y * -1.0f, transform.parent.gameObject.transform.rotation.z, transform.parent.gameObject.transform.rotation.w);
     }
 }
