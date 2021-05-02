@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Deform;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,12 +20,19 @@ public class InstrumentPad : MonoBehaviour
     public HitState hitState = HitState.Ready;
     
     private Material mat;
+    private Deformable deform;
 
     private float speed;
     [Range(0f, 255.0f)]
     public float glow;
     public float defaultGlow = 40.0f;
     private float targetGlow;
+
+    private float deformTime;
+    private float deformSpeed;
+    private float targetOffset;
+    private float defaultOffset = 0.0f;
+    private float offset = 0.0f;
 
     #endregion
     //
@@ -43,7 +51,8 @@ public class InstrumentPad : MonoBehaviour
         #region 민찬 변수 선언
 
         mat = GetComponent<MeshRenderer>().material;
-
+        deform = GetComponent<Deformable>();
+        
         #endregion
         //
         
@@ -72,7 +81,10 @@ public class InstrumentPad : MonoBehaviour
         
         mat.SetColor("_Color", new Color32(255,255,255,(byte)glow));
 
+        deform.DeformerElements[0].Component.GetComponent<RippleDeformer>().Offset = offset;
+        
         #endregion
+
         //
     }
 
@@ -101,27 +113,30 @@ public class InstrumentPad : MonoBehaviour
 
     private void UpdateHit()
     {
-        if (glow >= targetGlow - 1.0f)
+        if (glow >= targetGlow - 1.0f || offset >= targetOffset - 1.0f)
         {
             targetGlow = defaultGlow;
+            targetOffset = defaultOffset;
             hitState = HitState.Reset;
             return;
         }
 
         glow = Mathf.Lerp(glow, targetGlow, Time.deltaTime * speed);
+        offset = Mathf.MoveTowards(offset, targetOffset, Time.deltaTime * deformSpeed);
     }
 
     private void UpdateReset()
     {
-        if (glow <= targetGlow + 1.0f)
+        if (glow <= targetGlow + 1.0f || offset <= targetOffset + 1.0f)
         {
             hitState = HitState.Ready;
             return;
         }
         
         glow = Mathf.Lerp(glow, targetGlow, Time.deltaTime * speed);
+        offset = Mathf.MoveTowards(offset, targetOffset, Time.deltaTime * deformSpeed);
     }
-
+    
     private void UpdateReady()
     {
         
@@ -131,6 +146,18 @@ public class InstrumentPad : MonoBehaviour
     {
         targetGlow = targetGlowPower;
         speed = speedPower;
+        hitState = HitState.Hit;
+    }
+
+    public void HitDeform(float offsetPower, float speedPower)
+    {
+        if (deform == null)
+        {
+            return;
+        }
+
+        targetOffset = offsetPower;
+        deformSpeed = speedPower;
         hitState = HitState.Hit;
     }
 

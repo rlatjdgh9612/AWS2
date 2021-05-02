@@ -276,6 +276,68 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
                 menuList1st[i].SetActive(true);
+                
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+                
+                for (int w = 0; w < menuList2st.Count; w++)
+                {
+                    BoxCollider[] allCollider = menuList2st[w].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+                
+                for (int e = 0; e < menuList3st.Count; e++)
+                {
+                    BoxCollider[] allCollider = menuList3st[e].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+                
+                for (int r = 0; r < menuList4st.Count; r++)
+                {
+                    BoxCollider[] allCollider = menuList4st[r].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+                
+                ButtonPivot.Instance.EnablePosRot();
             }
         }
         
@@ -309,6 +371,21 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
                 menuList2st[i].SetActive(true);
+                
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = false;
+                    }
+                }
             }
         }
         
@@ -334,6 +411,21 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
                 menuList3st[i].SetActive(true);
+                
+                for (int q = 0; q < menuList2st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = false;
+                    }
+                }
             }
         }
 
@@ -352,6 +444,21 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 270, 0), buttonRotateSpeed);
                 menuList4st[i].SetActive(true);
+                
+                for (int q = 0; q < menuList3st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = false;
+                    }
+                }
             }
         }
     }
@@ -413,6 +520,21 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
                 StartCoroutine(BackDelay(menuList2st, i));
+                
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
             }
         }
         
@@ -430,6 +552,21 @@ public class ButtonManager : MonoBehaviour
                 
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
                 StartCoroutine(BackDelay(menuList3st, i));
+                
+                for (int q = 0; q < menuList2st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
             }
         }
 
@@ -439,6 +576,21 @@ public class ButtonManager : MonoBehaviour
             {
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
                 StartCoroutine(BackDelay(menuList4st, i));
+                
+                for (int q = 0; q < menuList3st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
             }
         }
     }

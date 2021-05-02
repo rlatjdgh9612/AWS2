@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class Sound : MonoBehaviour
 {
+    public SteamVR_Action_Boolean trigger;
+    
     public bool isInput;
 
     private bool isPlay = false;
@@ -70,12 +73,12 @@ public class Sound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (Input.GetMouseButton(1))
+            if (trigger.GetState(SteamVR_Input_Sources.RightHand))
             {
                 InputSound(this.gameObject);
                 if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
                 {
-                    SoundSystem.Instance.PlayerR.Ball.GetComponent<MeshRenderer>().material.SetColor("Color_6CAB6821", new Color32(255, 255, 80, 255));
+                    SoundSystem.Instance.PlayerR.Ball.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color32(255, 255, 80, 255));
                 }
             }
         }
