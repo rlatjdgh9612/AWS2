@@ -51,7 +51,7 @@ public class InstrumentPad : MonoBehaviour
         #region 민찬 변수 선언
 
         mat = GetComponent<MeshRenderer>().material;
-        deform = GetComponent<Deformable>();
+        //deform = GetComponent<Deformable>();
         
         #endregion
         //
@@ -78,10 +78,10 @@ public class InstrumentPad : MonoBehaviour
                 UpdateReset();
                 break;
         }
-        //mat.SetColor("_Color", new Color(1,1,1, glow / 255f));
+        //mat.SetColor("_Color", new Color(1, 1, 1, glow / 255f));
 
-        deform.DeformerElements[0].Component.GetComponent<RippleDeformer>().Offset = offset;
-        
+        //deform.DeformerElements[0].Component.GetComponent<RippleDeformer>().Offset = offset;
+
         #endregion
 
         //
