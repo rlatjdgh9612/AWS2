@@ -53,7 +53,7 @@ public class InstrumentMenu : MonoBehaviour
         {
             if (trigger.GetState(SteamVR_Input_Sources.RightHand))
             {
-                other.GetComponent<Controller>().InstrumentInput(go, resourcePath, true);
+                other.GetComponent<Controller>().InstrumentInput(go, resourcePath, true, true);
             }
         }
     }

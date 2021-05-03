@@ -51,14 +51,14 @@ public class Controller : MonoBehaviour
 
         if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand) && !isTouchInstrument)
         {
-            SoundInputFail(false, 1, 1, 1, 1);
+            SoundInputFail(false);
             
             if (_resourcePath == String.Empty)
             {
                 return;
             }
 
-            InstrumentGenerate(InstrumentLoad(_resourcePath), instrumentParent);
+            InstrumentGenerate(InstrumentLoad(_resourcePath), instrumentParent, false);
             _resourcePath = String.Empty;
         }
 
@@ -70,7 +70,7 @@ public class Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Instrument"))
+        if (other.gameObject.CompareTag("Pad"))
         {
             isTouchInstrument = true;
             other.GetComponent<VFXColor>().Hit(180, 5);
@@ -80,18 +80,19 @@ public class Controller : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Instrument"))
+        if (other.gameObject.CompareTag("Pad"))
         {
             if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand))
             {
-                SoundOutput(other.gameObject, false, 1, 1, 1, 1);
+                SoundOutput(other.gameObject, false);
+                Debug.Log(other.gameObject);
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Instrument"))
+        if (other.gameObject.CompareTag("Pad"))
         {
             isTouchInstrument = false;
         }
@@ -100,26 +101,25 @@ public class Controller : MonoBehaviour
     // 민찬 함수
     #region 민찬 함수
     
-    void SoundInputFail(bool isInput, float r, float g, float b, float a)
+    void SoundInputFail(bool isSelect)
     {
         SoundSystem.Instance.Sound.InputRemove();
-        SoundSystem.Instance.Sound.isInput = isInput;
-        ball.GetComponent<PlayerBall>().ColorChange(r,g,b,a);
+        ball.GetComponent<PlayerBall>().ColorChange(isSelect);
     }
 
-    void SoundOutput(GameObject sound, bool isInput, float r, float g, float b, float a)
+    void SoundOutput(GameObject sound, bool isSelect)
     {
         SoundSystem.Instance.Sound.OutputSound(sound);
-        SoundSystem.Instance.Sound.isInput = isInput;
-        ball.GetComponent<PlayerBall>().ColorChange(r,g,b,a);
+        ball.GetComponent<PlayerBall>().ColorChange(isSelect);
         isTouchInstrument = false;
     }
     
-    public void InstrumentInput(GameObject go, string resourcePath, bool isInstrumentDisplay)
+    public void InstrumentInput(GameObject go, string resourcePath, bool isInstrumentDisplay, bool isSelect)
     {
         this.isInstrumentDisplay = isInstrumentDisplay;
         _resourcePath = resourcePath;
         instrumentMarker = go;
+        ball.GetComponent<PlayerBall>().ColorChange(isSelect);
     }
     
     private GameObject InstrumentLoad(string resourcePath)
@@ -138,7 +138,7 @@ public class Controller : MonoBehaviour
         return instancedGo;
     }
 
-    private bool InstrumentGenerate(GameObject instancedGo, Transform parent)
+    private bool InstrumentGenerate(GameObject instancedGo, Transform parent, bool isSelect)
     {
         GameObject instrument = Instantiate<GameObject>(instancedGo, parent, true);
         string replace = instrument.name.Replace("(Clone)", "");
@@ -146,6 +146,7 @@ public class Controller : MonoBehaviour
         instrument.transform.position = ball.transform.position + (playerCam.forward * 0.5f);
         instrument.transform.rotation = playerCam.rotation;
         isInstrumentDisplay = false;
+        ball.GetComponent<PlayerBall>().ColorChange(isSelect);
 
         return true;
     }
