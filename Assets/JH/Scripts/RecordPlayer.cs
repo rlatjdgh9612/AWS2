@@ -24,7 +24,7 @@ public class RecordPlayer : Metronome
     private void Start()
     {
         metronome = GameObject.FindGameObjectWithTag("Metronome").GetComponent<Metronome>();
-        maxCount = metronome.maxCount;
+        maxBeats = metronome.maxBeats;
         tempo = metronome.tempo;
 
         sourcePool = new AudioSource[50];

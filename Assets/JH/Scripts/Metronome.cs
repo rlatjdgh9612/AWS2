@@ -12,9 +12,9 @@ public class Metronome : MonoBehaviour
     public Text metronomeText;
     public Text recorderText;
 
-    public int count;
-    public int tempo;
-    public int maxCount;
+    public int beats;
+    public int tempo = 100;
+    public int maxBeats = 4;
 
     Coroutine countCoroutine;
 
@@ -26,6 +26,16 @@ public class Metronome : MonoBehaviour
     private void Update()
     {
 
+    }
+
+    public void OnChangeTempo(int tempo)
+    {
+        this.tempo = tempo;
+    }
+
+    public void OnChangeBeats(int beats)
+    {
+        this.maxBeats = beats;
     }
 
     [ContextMenu("play metronome")]
@@ -47,16 +57,16 @@ public class Metronome : MonoBehaviour
 
     IEnumerator ieCountDown()
     {
-        while (count <= maxCount)
+        while (beats <= maxBeats)
         {
-            if (metronomeText) metronomeText.text = (count + 1).ToString();
-            if (recorder_BeatsImg && Record.Instance.isRecording || Record.Instance.isCounting) recorder_BeatsImg.fillAmount = ((float)count) / (maxCount);
-            if (recorderText) recorderText.text = (maxCount - count).ToString();
-           
-            metronome_BeatsImg.fillAmount = ((float)count) / (maxCount);
-            count = (count + 1) % maxCount;
-            
-            if (Record.Instance.isCounting && count == 1) Record.Instance.Recording();
+            if (metronomeText) metronomeText.text = (beats + 1).ToString();
+            if (recorder_BeatsImg && Record.Instance.isRecording || Record.Instance.isCounting) recorder_BeatsImg.fillAmount = ((float)beats) / (maxBeats);
+            if (recorderText) recorderText.text = (maxBeats - beats).ToString();
+
+            metronome_BeatsImg.fillAmount = ((float)beats) / (maxBeats);
+            beats = (beats + 1) % maxBeats;
+
+            if (Record.Instance.isCounting && beats == 1) Record.Instance.Recording();
             if (recorderText) recorderText.enabled = Record.Instance.isCounting;
             //audioSource.Play();
             yield return new WaitForSeconds(60f / tempo);
