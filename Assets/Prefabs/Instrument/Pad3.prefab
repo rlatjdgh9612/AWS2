@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613123968211664
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124091378778
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124151214644
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124221026700
@@ -402,7 +402,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124361699777
@@ -483,7 +483,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124385684567
@@ -564,7 +564,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124704931865
@@ -645,7 +645,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613124805492310
@@ -660,6 +660,7 @@ GameObject:
   - component: {fileID: 682613124805492266}
   - component: {fileID: 682613124805492265}
   - component: {fileID: 682613124805492264}
+  - component: {fileID: 4435551864230112475}
   m_Layer: 0
   m_Name: Pad2
   m_TagString: Untagged
@@ -712,7 +713,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -746,6 +747,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4435551864230112475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682613124805492310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &682613125002616487
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +772,7 @@ GameObject:
   - component: {fileID: 682613125002616507}
   - component: {fileID: 682613125002616506}
   - component: {fileID: 682613125002616505}
+  - component: {fileID: 4499693189415072742}
   m_Layer: 0
   m_Name: Pad5
   m_TagString: Untagged
@@ -810,7 +825,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -844,6 +859,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4499693189415072742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682613125002616487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &682613125002747602
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +884,7 @@ GameObject:
   - component: {fileID: 682613125002747606}
   - component: {fileID: 682613125002747605}
   - component: {fileID: 682613125002747604}
+  - component: {fileID: 9142694248226194127}
   m_Layer: 0
   m_Name: Pad3
   m_TagString: Untagged
@@ -908,7 +937,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -942,6 +971,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9142694248226194127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682613125002747602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &682613125047873813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1062,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125060422344
@@ -1101,7 +1143,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125071597275
@@ -1182,7 +1224,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125091788412
@@ -1263,7 +1305,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125099298633
@@ -1344,7 +1386,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125137439087
@@ -1425,7 +1467,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125210344786
@@ -1506,7 +1548,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125237434958
@@ -1587,7 +1629,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125252817455
@@ -1668,7 +1710,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125285414641
@@ -1749,7 +1791,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125319837153
@@ -1830,7 +1872,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125395797067
@@ -1911,7 +1953,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125410464118
@@ -1992,7 +2034,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125413476555
@@ -2007,6 +2049,7 @@ GameObject:
   - component: {fileID: 682613125413476559}
   - component: {fileID: 682613125413476558}
   - component: {fileID: 682613125413476557}
+  - component: {fileID: 5166345870166755115}
   m_Layer: 0
   m_Name: Pad4
   m_TagString: Untagged
@@ -2059,7 +2102,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2093,6 +2136,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5166345870166755115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682613125413476555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &682613125442410276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2227,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125538977526
@@ -2252,7 +2308,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613125815601268
@@ -2333,7 +2389,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613126005273130
@@ -2414,7 +2470,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &682613126019920886
@@ -2429,6 +2485,7 @@ GameObject:
   - component: {fileID: 682613126019920842}
   - component: {fileID: 682613126019920841}
   - component: {fileID: 682613126019920840}
+  - component: {fileID: 9088351553791590824}
   m_Layer: 0
   m_Name: Pad1
   m_TagString: Untagged
@@ -2481,7 +2538,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2515,6 +2572,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9088351553791590824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682613126019920886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &691730606338282909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2663,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &903396142372457970
@@ -2608,6 +2678,7 @@ GameObject:
   - component: {fileID: 295538040827675940}
   - component: {fileID: 2752633318965660371}
   - component: {fileID: 3331075575728075856}
+  - component: {fileID: 9012014893155535354}
   m_Layer: 0
   m_Name: Pad10
   m_TagString: Untagged
@@ -2660,7 +2731,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2694,6 +2765,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9012014893155535354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903396142372457970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &1126442388570610013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2856,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1236945610559386733
@@ -2853,7 +2937,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1335739045628971104
@@ -2934,7 +3018,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1812027965676279384
@@ -3015,7 +3099,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1823905684049484937
@@ -3030,6 +3114,7 @@ GameObject:
   - component: {fileID: 8812058131664491130}
   - component: {fileID: 7365248158021894503}
   - component: {fileID: 7123158792298717837}
+  - component: {fileID: 2479343070872930681}
   m_Layer: 0
   m_Name: Pad9
   m_TagString: Untagged
@@ -3082,7 +3167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3116,6 +3201,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2479343070872930681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823905684049484937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &2237482669905585126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,7 +3292,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2790664212509343066
@@ -3275,7 +3373,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2793746939509098705
@@ -3356,7 +3454,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2864111118047102346
@@ -3437,7 +3535,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3081865423780763281
@@ -3518,7 +3616,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3164721670983551536
@@ -3599,7 +3697,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3241778282839307459
@@ -3654,6 +3752,7 @@ GameObject:
   - component: {fileID: 6016980143471174080}
   - component: {fileID: 4610747933471251946}
   - component: {fileID: 4926974188205812230}
+  - component: {fileID: 8817836044243085511}
   m_Layer: 0
   m_Name: Pad7
   m_TagString: Untagged
@@ -3706,7 +3805,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3740,6 +3839,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8817836044243085511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285585274381315673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &5274360022101106312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,7 +3930,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5438566667756344276
@@ -3899,7 +4011,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5486305198406866935
@@ -3980,7 +4092,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6058735743915953756
@@ -4061,7 +4173,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6375010829331018831
@@ -4142,7 +4254,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6514497570138528239
@@ -4223,7 +4335,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6626539723751780508
@@ -4304,7 +4416,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6836273277079351000
@@ -4319,6 +4431,7 @@ GameObject:
   - component: {fileID: 245496060164778566}
   - component: {fileID: 6305280086645587614}
   - component: {fileID: 4547059737951455234}
+  - component: {fileID: 3421245393781764100}
   m_Layer: 0
   m_Name: Pad8
   m_TagString: Untagged
@@ -4371,7 +4484,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4405,6 +4518,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3421245393781764100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836273277079351000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &7181808263549165291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,7 +4609,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7477328170790657187
@@ -4564,7 +4690,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7780410960341189863
@@ -4645,7 +4771,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8076580870399917560
@@ -4726,7 +4852,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8149676467786576004
@@ -4807,7 +4933,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8154403058355032554
@@ -4888,7 +5014,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8689795104361563393
@@ -4969,7 +5095,7 @@ SpriteRenderer:
   m_Size: {x: 5.13, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9074827001769766210
@@ -4984,6 +5110,7 @@ GameObject:
   - component: {fileID: 7478853700342246998}
   - component: {fileID: 7729253576188807895}
   - component: {fileID: 3248349643962207840}
+  - component: {fileID: 6545047346067753036}
   m_Layer: 0
   m_Name: Pad6
   m_TagString: Untagged
@@ -5036,7 +5163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 618e047039a1cf348b41c8019258a543, type: 2}
+  - {fileID: 2100000, guid: 0761e3f06ed2cf546b8b5a93e1935094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5070,3 +5197,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6545047346067753036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074827001769766210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0

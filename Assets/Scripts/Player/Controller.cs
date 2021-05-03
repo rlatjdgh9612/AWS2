@@ -70,18 +70,17 @@ public class Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pad"))
+        if (other.gameObject.CompareTag("Instrument"))
         {
             isTouchInstrument = true;
-            other.GetComponent<InstrumentPad>().Hit(180, 5);
-            other.GetComponent<InstrumentPad>().HitDeform(5, 5);
+            other.GetComponent<VFXColor>().Hit(180, 5);
             ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Pad"))
+        if (other.gameObject.CompareTag("Instrument"))
         {
             if (trigger.GetStateUp(SteamVR_Input_Sources.RightHand))
             {
@@ -92,7 +91,7 @@ public class Controller : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Pad"))
+        if (other.gameObject.CompareTag("Instrument"))
         {
             isTouchInstrument = false;
         }
