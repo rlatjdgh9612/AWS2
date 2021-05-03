@@ -64,6 +64,7 @@ public class Record : MonoBehaviour
     public int padCount;
 
     public static Record Instance;
+    public List<GameObject> foundInstrument;
     public Metronome metronome;
     public Loop recordLoop;
 
@@ -73,7 +74,7 @@ public class Record : MonoBehaviour
 
     public GameObject nodeUIprefab;
     public GameObject loopGroup;
-
+    
     const float TRACKGROUP_HEIGHT = 1.2f;
     const float TRACKGROUP_WIDTH = 4f;
     const float SECONDS = 60f;
@@ -85,6 +86,7 @@ public class Record : MonoBehaviour
 
     private void Update()
     {
+
         if (isRecording)
         {
             recordingTime += Time.deltaTime;
@@ -177,18 +179,4 @@ public class Record : MonoBehaviour
         print($"length : {recordLoop.recordLength}");
         recordLoop.record.ForEach(note => print($"note info: [{note.sound.name}] : [{note.length}]"));
     }
-
-    //IEnumerator IeRecorderCount()
-    //{
-    //    recorderPlayImg.enabled = false;
-    //    while (recordCount > 0)
-    //    {
-    //        recorderCountText.text = recordCount.ToString();
-    //        recordCount--;
-    //        yield return new WaitForSeconds(60f / metronome.tempo);
-    //    }
-    //    recorderCountText.text = null;
-    //    sdfsdf = false;
-    //    recorderPlayImg.enabled = true;
-    //}
 }

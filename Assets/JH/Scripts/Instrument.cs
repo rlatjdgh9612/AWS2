@@ -12,6 +12,7 @@ public class Instrument : MonoBehaviour
 
     private void Start()
     {
+        record.foundInstrument = this.gameObject;
         padList = gameObject.GetComponentsInChildren<InstrumentPad>();
         padList = padList.OrderBy(p => p.name).ToArray();
         if (record != null)
