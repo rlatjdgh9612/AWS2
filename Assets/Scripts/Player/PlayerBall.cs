@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBall : MonoBehaviour
 {
+    [SerializeField] GameObject playerBallSelect;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,8 @@ public class PlayerBall : MonoBehaviour
         
     }
 
-    public void ColorChange(float r, float g, float b, float a)
+    public void ColorChange(bool isSelect)
     {
-        GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(r, g, b, a));
+        playerBallSelect.SetActive(isSelect);
     }
 }

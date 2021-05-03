@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Valve.VR;
@@ -8,10 +9,10 @@ using Valve.VR;
 public class Sound : MonoBehaviour
 {
     public SteamVR_Action_Boolean trigger;
-    
-    public bool isInput;
 
     private bool isPlay = false;
+    
+    public Queue<AudioClip> queue = new Queue<AudioClip>();
     
     // Start is called before the first frame update
     void Start()
@@ -33,24 +34,30 @@ public class Sound : MonoBehaviour
     public void InputSound(GameObject go)
     {
         SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = go.GetComponent<AudioSource>().clip;
+        queue.Enqueue(go.GetComponent<AudioSource>().clip);
+        Debug.Log(queue.First());
     }
 
     public void OutputSound(GameObject go)
     {
-        if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip == null)
+        if (queue.Contains(null))
         {
             Debug.Log("inputSound is null");
             return;
         }
-        else
-        {
-            go.GetComponent<AudioSource>().clip = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
-            SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
-        }
+        
+        //go.GetComponent<AudioSource>().clip = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
+        //go.GetComponent<InstrumentPad>().sound = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
+        Debug.Log(queue);
+        Debug.Log(go);
+        go.GetComponent<InstrumentPad>().sound = queue.Dequeue();
+        go.GetComponent<AudioSource>().clip = go.GetComponent<InstrumentPad>().sound;
+        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
     }
 
     public void InputRemove()
     {
+        queue.Clear();
         SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
     }
 
@@ -78,7 +85,7 @@ public class Sound : MonoBehaviour
                 InputSound(this.gameObject);
                 if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
                 {
-                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(0, 200.0f/255.0f, 1, 1);
+                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(true);
                 }
             }
         }
