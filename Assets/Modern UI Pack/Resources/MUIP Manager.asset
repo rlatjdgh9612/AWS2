@@ -46,7 +46,7 @@ MonoBehaviour:
   hSelectorFontSize: 14
   selectorColor: {r: 1, g: 1, b: 1, a: 1}
   selectorHighlightedColor: {r: 0.1764706, g: 0.25490198, b: 0.33333334, a: 1}
-  hSelectorInvertAnimation: 0
+  hSelectorInvertAnimation: 1
   hSelectorLoopSelection: 1
   inputFieldFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
   inputFieldFontSize: 28

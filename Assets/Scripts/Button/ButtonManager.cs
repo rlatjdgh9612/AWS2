@@ -602,4 +602,22 @@ public class ButtonManager : MonoBehaviour
         menuList[index].GetComponent<Animator>().SetBool(Zero, false);
         menuList[index].SetActive(false);
     }
+
+    public void InstrumentNext()
+    {
+        GameObject item1 = GameObject.Find("Instrument Item Factory").transform.Find("Instrument Item1").gameObject;
+        GameObject item2 = GameObject.Find("Instrument Item Factory").transform.Find("Instrument Item2").gameObject;
+
+        item1.SetActive(false);
+        item2.SetActive(true);
+    }
+    
+    public void InstrumentBack()
+    {
+        GameObject item1 = GameObject.Find("Instrument Item Factory").transform.Find("Instrument Item1").gameObject;
+        GameObject item2 = GameObject.Find("Instrument Item Factory").transform.Find("Instrument Item2").gameObject;
+
+        item1.SetActive(true);
+        item2.SetActive(false);
+    }
 }

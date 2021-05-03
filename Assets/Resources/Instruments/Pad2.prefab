@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 6117279582397846381}
   - component: {fileID: 6117279582397846380}
   - component: {fileID: 6231875668644161576}
+  - component: {fileID: 6760714922055238048}
   m_Layer: 0
   m_Name: 01-4
   m_TagString: Pad
@@ -227,6 +228,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: f7b969b2058b4b84bb0e6597446c1877, type: 3}
   padIndex: 0
+--- !u!114 &6760714922055238048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279582397846386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279582741539985
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +254,7 @@ GameObject:
   - component: {fileID: 6117279582741539980}
   - component: {fileID: 6117279582741539987}
   - component: {fileID: 9006759425596837056}
+  - component: {fileID: 333932021773670482}
   m_Layer: 0
   m_Name: 01-6
   m_TagString: Pad
@@ -335,6 +350,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 30a35309f60d1af4b92dd52e6a916aa4, type: 3}
   padIndex: 0
+--- !u!114 &333932021773670482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279582741539985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279582885885221
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +376,7 @@ GameObject:
   - component: {fileID: 6117279582885885216}
   - component: {fileID: 6117279582885885223}
   - component: {fileID: 4511260057751309960}
+  - component: {fileID: 199525638363605599}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -443,6 +472,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 6c3e5538305381b45bbf583d202576c7, type: 3}
   padIndex: 0
+--- !u!114 &199525638363605599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279582885885221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279582955728403
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +499,7 @@ GameObject:
   - component: {fileID: 6117279582955728397}
   - component: {fileID: 6117279582955728396}
   - component: {fileID: 6254329695195236021}
+  - component: {fileID: 2584822341742848641}
   m_Layer: 0
   m_Name: 01-9
   m_TagString: Pad
@@ -12107,6 +12150,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 45d05800d2544e94481c41529da9877a, type: 3}
   padIndex: 0
+--- !u!114 &2584822341742848641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279582955728403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279583118906355
 GameObject:
   m_ObjectHideFlags: 0
@@ -12120,6 +12176,7 @@ GameObject:
   - component: {fileID: 6117279583118906350}
   - component: {fileID: 6117279583118906349}
   - component: {fileID: 8609233971196577599}
+  - component: {fileID: 6139197832775052045}
   m_Layer: 0
   m_Name: 01-3
   m_TagString: Pad
@@ -12215,6 +12272,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: e840a75bb42508941bbb5e2398cbccbe, type: 3}
   padIndex: 0
+--- !u!114 &6139197832775052045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279583118906355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279583276457768
 GameObject:
   m_ObjectHideFlags: 0
@@ -12228,6 +12298,7 @@ GameObject:
   - component: {fileID: 6117279583276457771}
   - component: {fileID: 6117279583276457770}
   - component: {fileID: 7603152461544455389}
+  - component: {fileID: 3663296509551789183}
   m_Layer: 0
   m_Name: 01-7
   m_TagString: Pad
@@ -12323,6 +12394,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 17a5f6b0389cce243a89ff2f74f5675c, type: 3}
   padIndex: 0
+--- !u!114 &3663296509551789183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279583276457768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279583455318643
 GameObject:
   m_ObjectHideFlags: 0
@@ -12336,6 +12420,7 @@ GameObject:
   - component: {fileID: 6117279583455318638}
   - component: {fileID: 6117279583455318637}
   - component: {fileID: 8249728941765272714}
+  - component: {fileID: 1929062602735751838}
   m_Layer: 0
   m_Name: 01-2
   m_TagString: Pad
@@ -12431,6 +12516,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: f38af358e62818f419243b9f7cf458c8, type: 3}
   padIndex: 0
+--- !u!114 &1929062602735751838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279583455318643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279583602418897
 GameObject:
   m_ObjectHideFlags: 0
@@ -12444,6 +12542,7 @@ GameObject:
   - component: {fileID: 6117279583602418892}
   - component: {fileID: 6117279583602418899}
   - component: {fileID: 4165611634755052230}
+  - component: {fileID: 2349874761144226540}
   m_Layer: 0
   m_Name: 01-8
   m_TagString: Pad
@@ -12539,6 +12638,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 6deb2af53ca3f9849863864abd87000f, type: 3}
   padIndex: 0
+--- !u!114 &2349874761144226540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279583602418897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0
 --- !u!1 &6117279583817107278
 GameObject:
   m_ObjectHideFlags: 0
@@ -12552,6 +12664,7 @@ GameObject:
   - component: {fileID: 6117279583817107273}
   - component: {fileID: 6117279583817107272}
   - component: {fileID: 2181165084272331742}
+  - component: {fileID: 2289983792244934422}
   m_Layer: 0
   m_Name: 01-5
   m_TagString: Pad
@@ -12647,3 +12760,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 0d730b09cdee2e0429e9ce0b44e75185, type: 3}
   padIndex: 0
+--- !u!114 &2289983792244934422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117279583817107278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c338dda24375b24d83a1f908454df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitState: 0

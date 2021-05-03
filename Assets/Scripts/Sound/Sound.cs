@@ -78,7 +78,7 @@ public class Sound : MonoBehaviour
                 InputSound(this.gameObject);
                 if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
                 {
-                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(1, 1, 80.0f / 255.0f, 1);
+                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(0, 200.0f/255.0f, 1, 1);
                 }
             }
         }
