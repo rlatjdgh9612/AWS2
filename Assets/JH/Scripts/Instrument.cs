@@ -10,9 +10,12 @@ public class Instrument : MonoBehaviour
     public Record record;
     public InstrumentPad[] padList;
 
+    private void FixedUpdate()
+    {
+    }
+
     private void Start()
     {
-        record.foundInstrument = this.gameObject;
         padList = gameObject.GetComponentsInChildren<InstrumentPad>();
         padList = padList.OrderBy(p => p.name).ToArray();
         if (record != null)
@@ -26,7 +29,7 @@ public class Instrument : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Recorder")
+        if (other.gameObject.tag == "Controller")
         {
             if (record != null)
                 record.padCount = padList.Length;

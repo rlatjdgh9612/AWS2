@@ -61,10 +61,9 @@ public class Record : MonoBehaviour
 
     [Tooltip("녹음 진행시간")]
     public float recordingTime;
-    public int padCount;
+    public float padCount;
 
     public static Record Instance;
-    public List<GameObject> foundInstrument;
     public Metronome metronome;
     public Loop recordLoop;
 
@@ -74,7 +73,7 @@ public class Record : MonoBehaviour
 
     public GameObject nodeUIprefab;
     public GameObject loopGroup;
-    
+
     const float TRACKGROUP_HEIGHT = 1.2f;
     const float TRACKGROUP_WIDTH = 4f;
     const float SECONDS = 60f;
@@ -86,6 +85,7 @@ public class Record : MonoBehaviour
 
     private void Update()
     {
+
 
         if (isRecording)
         {
@@ -130,7 +130,7 @@ public class Record : MonoBehaviour
         {
             isRecording = false;
             recordLoop = new Loop(record, Time.time - recordStartTime);
-            metronome.recorder_BeatsImg.fillAmount = 1;
+            metronome.recorder_BeatCount.fillAmount = 0;
 
             // 레코드 종료되면 Loop 그룹 생성
             GameObject loop = Instantiate(loopGroup);

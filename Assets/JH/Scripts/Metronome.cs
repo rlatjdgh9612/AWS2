@@ -7,8 +7,8 @@ public class Metronome : MonoBehaviour
 {
     //AudioSource audioSource;
 
-    public Image metronome_BeatsImg;
-    public Image recorder_BeatsImg;
+    public Image metronome_BeatsCount;
+    public Image recorder_BeatCount;
     public Text metronomeText;
     public Text recorderText;
 
@@ -60,10 +60,10 @@ public class Metronome : MonoBehaviour
         while (beats <= maxBeats)
         {
             if (metronomeText) metronomeText.text = (beats + 1).ToString();
-            if (recorder_BeatsImg && Record.Instance.isRecording || Record.Instance.isCounting) recorder_BeatsImg.fillAmount = ((float)beats) / (maxBeats);
+            if (recorder_BeatCount && Record.Instance.isRecording || Record.Instance.isCounting) recorder_BeatCount.fillAmount = ((float)beats) / (maxBeats);
             if (recorderText) recorderText.text = (maxBeats - beats).ToString();
 
-            metronome_BeatsImg.fillAmount = ((float)beats) / (maxBeats);
+            metronome_BeatsCount.fillAmount = ((float)beats) / (maxBeats);
             beats = (beats + 1) % maxBeats;
 
             if (Record.Instance.isCounting && beats == 1) Record.Instance.Recording();
