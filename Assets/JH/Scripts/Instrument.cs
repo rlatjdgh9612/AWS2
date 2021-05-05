@@ -25,7 +25,7 @@ public class Instrument : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Recorder")
+        if (other.gameObject.tag == "Controller")
         {
             if (record != null)
                 record.padCount = padList.Length;
