@@ -11,6 +11,8 @@ TagManager:
   - Once
   - Controller
   - Metronome
+  - projectile
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - 
   - Button
   - Glow
-  - 
+  - Floor
   - 
   - 
   - 

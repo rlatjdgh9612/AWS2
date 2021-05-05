@@ -8,12 +8,10 @@ using Valve.VR;
 
 public class Sound : MonoBehaviour
 {
-    public SteamVR_Action_Boolean trigger;
+    public SteamVR_Action_Boolean select;
 
     private bool isPlay = false;
-    
-    public Queue<AudioClip> queue = new Queue<AudioClip>();
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,39 +24,14 @@ public class Sound : MonoBehaviour
         
     }
 
-    public void Play(GameObject go)
+    public void Play(GameObject sound)
     {
-        go.GetComponent<AudioSource>().Play();
+        sound.GetComponent<AudioSource>().Play();
     }
 
-    public void InputSound(GameObject go)
+    public void InputSound(GameObject sound, GameObject player)
     {
-        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = go.GetComponent<AudioSource>().clip;
-        queue.Enqueue(go.GetComponent<AudioSource>().clip);
-        Debug.Log(queue.First());
-    }
-
-    public void OutputSound(GameObject go)
-    {
-        if (queue.Contains(null))
-        {
-            Debug.Log("inputSound is null");
-            return;
-        }
-        
-        //go.GetComponent<AudioSource>().clip = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
-        //go.GetComponent<InstrumentPad>().sound = SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip;
-        Debug.Log(queue);
-        Debug.Log(go);
-        go.GetComponent<InstrumentPad>().sound = queue.Dequeue();
-        go.GetComponent<AudioSource>().clip = go.GetComponent<InstrumentPad>().sound;
-        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
-    }
-
-    public void InputRemove()
-    {
-        queue.Clear();
-        SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip = null;
+        player.GetComponent<ControllerSound>().RightBall.GetComponent<AudioSource>().clip = sound.GetComponent<AudioSource>().clip;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,13 +53,10 @@ public class Sound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (trigger.GetState(SteamVR_Input_Sources.RightHand))
+            if (select.GetState(SteamVR_Input_Sources.RightHand))
             {
-                InputSound(this.gameObject);
-                if (SoundSystem.Instance.PlayerR.Ball.GetComponent<AudioSource>().clip != null)
-                {
-                    SoundSystem.Instance.PlayerR.Ball.GetComponent<PlayerBall>().ColorChange(true);
-                }
+                InputSound(this.gameObject, other.gameObject);
+                other.gameObject.GetComponent<ControllerSound>().RightBall.GetComponent<PlayerBall>().ColorChange(true);
             }
         }
     }

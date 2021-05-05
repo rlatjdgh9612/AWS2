@@ -46,4 +46,10 @@ public class InstrumentPad : MonoBehaviour
 
         }
     }
+
+    public void SoundOutput(AudioClip clip)
+    {
+        sound = clip;
+        note.clip = clip;
+    }
 }

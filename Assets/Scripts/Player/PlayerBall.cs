@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerBall : MonoBehaviour
 {
     [SerializeField] GameObject playerBallSelect;
+    private AudioSource audio;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,5 +22,10 @@ public class PlayerBall : MonoBehaviour
     public void ColorChange(bool isSelect)
     {
         playerBallSelect.SetActive(isSelect);
+    }
+
+    public void AudioRemove()
+    {
+        audio.clip = null;
     }
 }

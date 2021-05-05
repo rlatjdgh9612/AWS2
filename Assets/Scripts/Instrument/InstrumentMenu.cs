@@ -7,7 +7,7 @@ using Valve.VR;
 
 public class InstrumentMenu : MonoBehaviour
 {
-    public SteamVR_Action_Boolean trigger;
+    public SteamVR_Action_Boolean select;
     
     [SerializeField] private string resourcePath;
     public string ResourcePath
@@ -51,9 +51,9 @@ public class InstrumentMenu : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (trigger.GetState(SteamVR_Input_Sources.RightHand))
+            if (select.GetState(SteamVR_Input_Sources.RightHand))
             {
-                other.GetComponent<Controller>().InstrumentInput(go, resourcePath, true, true);
+                other.GetComponent<ControllerInstrument>().InstrumentInput(go, resourcePath, true, true);
             }
         }
     }
