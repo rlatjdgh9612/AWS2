@@ -7,7 +7,7 @@ using System;
 public class Instrument : MonoBehaviour
 {
     public GameObject instrument;
-    public Record record;
+    private Record record;
     public InstrumentPad[] padList;
 
     private void FixedUpdate()

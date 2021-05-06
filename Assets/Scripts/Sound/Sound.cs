@@ -57,6 +57,7 @@ public class Sound : MonoBehaviour
             {
                 InputSound(this.gameObject, other.gameObject);
                 other.gameObject.GetComponent<ControllerSound>().RightBall.GetComponent<PlayerBall>().ColorChange(true);
+                other.gameObject.GetComponent<ControllerSound>().SoundMarker.transform.Find("SoundMarker").gameObject.SetActive(true);
             }
         }
     }

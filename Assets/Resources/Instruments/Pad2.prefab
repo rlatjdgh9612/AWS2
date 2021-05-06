@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instrument: {fileID: 4154060113991628122}
-  record: {fileID: 0}
   padList: []
 --- !u!114 &4717853812328056
 MonoBehaviour:

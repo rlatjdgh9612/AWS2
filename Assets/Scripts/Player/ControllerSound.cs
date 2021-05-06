@@ -6,15 +6,16 @@ using Valve.VR;
 
 public class ControllerSound : MonoBehaviour
 {
-    public SteamVR_Action_Boolean select;
-    
     [SerializeField] private GameObject rightBall;
     public GameObject RightBall => rightBall;
+
+    [SerializeField] private GameObject soundMarker;
+    public GameObject SoundMarker => soundMarker;
 
     // Update is called once per frame
     void Update()
     {
-        if (select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.isPadTouch)
+        if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
             SoundInputFail(false);
         }
@@ -24,6 +25,7 @@ public class ControllerSound : MonoBehaviour
     {
         rightBall.GetComponent<PlayerBall>().AudioRemove();
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
+        soundMarker.transform.Find("SoundMarker").gameObject.SetActive(false);
     }
     
     void SoundOutput(GameObject sound, bool isSelect)
@@ -37,6 +39,7 @@ public class ControllerSound : MonoBehaviour
         sound.GetComponent<InstrumentPad>().SoundOutput(rightBall.GetComponent<AudioSource>().clip);
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
         rightBall.GetComponent<AudioSource>().clip = null;
+        soundMarker.transform.Find("SoundMarker").gameObject.SetActive(false);
     }
 
     
@@ -45,7 +48,7 @@ public class ControllerSound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            if (select.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.isPadTouch)
+            if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsPadTouch)
             {
                 SoundOutput(other.gameObject, false);
             }
@@ -54,11 +57,17 @@ public class ControllerSound : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Controller.Instance.isPadTouch = true;
+        if (other.gameObject.CompareTag("Pad"))
+        {
+            Controller.Instance.IsPadTouch = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Controller.Instance.isPadTouch = false;
+        if (other.gameObject.CompareTag("Pad"))
+        {
+            Controller.Instance.IsPadTouch = false;
+        }
     }
 }

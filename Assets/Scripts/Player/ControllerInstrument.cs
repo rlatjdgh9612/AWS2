@@ -6,39 +6,46 @@ using Valve.VR;
 
 public class ControllerInstrument : MonoBehaviour
 {
-    public SteamVR_Action_Boolean select;
-    
     [SerializeField] private GameObject rightBall;
     [SerializeField] private Transform instrumentParent;
     [SerializeField] private Transform playerCam;
     
     private GameObject instrumentMarker;
-    private bool isInstrumentDisplay = false;
+    public bool _isInstrumentDisplay = false;
     private string _resourcePath = String.Empty;
     
     // Update is called once per frame
     void Update()
     {
-        if (select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.isPadTouch)
+        if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
-            if (_resourcePath == String.Empty)
-            {
-                return;
-            }
-
             InstrumentGenerate(InstrumentLoad(_resourcePath), instrumentParent, false);
-            _resourcePath = String.Empty;
+            
+            InstrumentGenerateFail(false);
         }
-        
+
         if (instrumentMarker != null)
         {
-            instrumentMarker.SetActive(isInstrumentDisplay);
+            instrumentMarker.SetActive(_isInstrumentDisplay);
         }
+    }
+
+    void InstrumentGenerateFail(bool isSelect)
+    {
+        if (_resourcePath == String.Empty)
+        {
+            return;
+        }
+        
+        _resourcePath = String.Empty;
+        
+        _isInstrumentDisplay = false;
+        rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
     }
     
     public void InstrumentInput(GameObject go, string resourcePath, bool isInstrumentDisplay, bool isSelect)
     {
-        this.isInstrumentDisplay = isInstrumentDisplay;
+        _isInstrumentDisplay = isInstrumentDisplay;
         _resourcePath = resourcePath;
         instrumentMarker = go;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
@@ -65,9 +72,11 @@ public class ControllerInstrument : MonoBehaviour
         GameObject instrument = Instantiate<GameObject>(instancedGo, parent, true);
         string replace = instrument.name.Replace("(Clone)", "");
         instrument.name = replace;
-        instrument.transform.position = rightBall.transform.position + (playerCam.forward * 0.5f);
-        instrument.transform.rotation = playerCam.rotation;
-        isInstrumentDisplay = false;
+        instrument.transform.position = rightBall.transform.position + rightBall.transform.forward * 0.25f;
+        instrument.transform.localScale = new Vector3(0.7f,0.7f,0.7f);
+        instrument.transform.forward = playerCam.forward;
+        instrument.transform.localEulerAngles = new Vector3(0.0f, instrument.transform.localEulerAngles.y, instrument.transform.localEulerAngles.z);
+        _isInstrumentDisplay = false;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
 
         return true;
