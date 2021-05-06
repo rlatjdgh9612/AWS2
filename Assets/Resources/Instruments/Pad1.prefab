@@ -15083,7 +15083,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instrument: {fileID: 8344343599369574652}
-  record: {fileID: 0}
   padList: []
 --- !u!1 &9061959061814484166
 GameObject:

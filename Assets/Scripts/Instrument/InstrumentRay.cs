@@ -6,7 +6,6 @@ public class InstrumentRay : MonoBehaviour
 {
     private int floor;
     private const string instrumentRayMarkerPath = "Prefabs/InstrumentRayMarker";
-    private bool isInstrumentRayMarker = false;
     private GameObject instrumentRayMarker;
 
     // Start is called before the first frame update

@@ -5,14 +5,12 @@ using Valve.VR;
 
 public class ControllerMenu : MonoBehaviour
 {
-    public SteamVR_Action_Boolean menu;
-    
     private bool isMainMenu = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (menu.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if (Controller.Instance.Menu.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             isMainMenu = !isMainMenu;
             

@@ -23,14 +23,14 @@ public class InstrumentMenu : MonoBehaviour
         set => findName = value;
     }
     
-    private GameObject go;
+    private GameObject instrumentMarker;
     
     // Start is called before the first frame update
     void Start()
     {
-        go = GameObject.Find("InstrumentMarker").transform.Find(findName).gameObject;
+        instrumentMarker = GameObject.Find("InstrumentMarker").transform.Find(findName).gameObject;
 
-        if (!go)
+        if (!instrumentMarker)
         {
             Debug.LogError("Instrument Load Error");
         }
@@ -53,7 +53,7 @@ public class InstrumentMenu : MonoBehaviour
         {
             if (select.GetState(SteamVR_Input_Sources.RightHand))
             {
-                other.GetComponent<ControllerInstrument>().InstrumentInput(go, resourcePath, true, true);
+                other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
             }
         }
     }
