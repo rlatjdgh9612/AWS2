@@ -13,7 +13,7 @@ public class SteamInputModule : VRInputModule
         base.Process();
 
         // Press
-        if (m_Click.GetStateDown(m_Source))
+        if (m_Click.GetState(m_Source))
             Press();
 
         // Release

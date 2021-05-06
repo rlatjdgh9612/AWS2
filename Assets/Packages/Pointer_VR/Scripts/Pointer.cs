@@ -6,7 +6,7 @@ using Valve.VR;
 
 public class Pointer : MonoBehaviour
 {
-    [SerializeField] private float defaultLength = 5.0f;
+    [SerializeField] private float defaultLength = 15.0f;
     [SerializeField] private GameObject dot = null;
 
     public Camera Camera { get; private set; } = null;
@@ -14,53 +14,37 @@ public class Pointer : MonoBehaviour
     private LineRenderer lineRenderer = null;
     private VRInputModule inputModule = null;
 
-    public SteamVR_Behaviour_Pose pose;
-    public SteamVR_Action_Boolean grabPinch = SteamVR_Input.GetBooleanAction("GrabPinch");
+    public SteamVR_Action_Boolean triggerButton;
 
-    GameObject hitPullable;
-    RaycastHit hit;
     private void Awake()
     {
         Camera = GetComponent<Camera>();
         Camera.enabled = false;
 
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
     }
 
     private void Start()
     {
+        // current.currentInputModule does not work
         inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
     }
 
     private void Update()
     {
-        bool triggerStay = grabPinch.GetState(SteamVR_Input_Sources.Any);
-        bool triggerUp = grabPinch.GetStateUp(SteamVR_Input_Sources.Any);
-
-        if (triggerStay)
+        if (triggerButton.GetState(SteamVR_Input_Sources.RightHand)) UpdateLine();
+        if (triggerButton.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
-            UpdateLine();
+            lineRenderer.enabled = false;
         }
-        if (triggerUp && hitPullable != null)
-        {
-            hitPullable.transform.position = transform.position;
-        }
-
-
     }
 
-    public void UpdateLine()
+    private void UpdateLine()
     {
         // Use default or distance
         PointerEventData data = inputModule.Data;
-
-        RaycastHit hit;
-
-        if (!CreateRaycast(out hit))
-        {
-            hitPullable = null;
-            return;
-        }
+        RaycastHit hit = CreateRaycast();
 
         // If nothing is hit, set do default length
         float colliderDistance = hit.distance == 0 ? defaultLength : hit.distance;
@@ -76,15 +60,17 @@ public class Pointer : MonoBehaviour
         dot.transform.position = endPosition;
 
         // Set linerenderer
+        lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, endPosition);
-
-        hitPullable = hit.collider.gameObject;
     }
 
-    private bool CreateRaycast(out RaycastHit hit)
+    private RaycastHit CreateRaycast()
     {
-        // 맞았으면 true, 안 맞았으면 false
-        return Physics.Raycast(new Ray(transform.position, transform.forward), out hit, defaultLength, LayerMask.GetMask("Pullable"));
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, transform.forward);
+        Physics.Raycast(ray, out hit, defaultLength);
+
+        return hit;
     }
 }
