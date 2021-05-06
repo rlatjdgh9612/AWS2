@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1256762209301139484}
   - component: {fileID: 7209275087787506609}
   - component: {fileID: 5752244736460407033}
+  - component: {fileID: 1040009656137314761}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -2386,6 +2387,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5675bd50b0debbe4ca59000fe477199b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1040009656137314761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940205684816429474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9ab8d8c1117e347a09d6ce47fcfa9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3713697717923930596

@@ -66,14 +66,13 @@ public class ControllerTransform : MonoBehaviour
                 return;
             }
 
-            Controller.Instance.LeftGrabPad.transform.position = leftBall.position;
             Controller.Instance.LeftGrabPad.transform.parent = gameObject.transform;
         }
 
         if (Controller.Instance.Grab.GetStateUp(SteamVR_Input_Sources.LeftHand) && Controller.Instance.IsLeftPadGrab)
         {
-            Controller.Instance.LeftGrabPad = null;
             Controller.Instance.LeftGrabPad.transform.parent = instrumentParent;
+            Controller.Instance.LeftGrabPad = null;
         }
     }
 
@@ -87,14 +86,13 @@ public class ControllerTransform : MonoBehaviour
                 return;
             }
             
-            Controller.Instance.RightGrabPad.transform.position = rightBall.position;
             Controller.Instance.RightGrabPad.transform.parent = gameObject.transform;
         }
         
         if (Controller.Instance.Grab.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsRightPadGrab)
         {
-            Controller.Instance.RightGrabPad = null;
             Controller.Instance.RightGrabPad.transform.parent = instrumentParent;
+            Controller.Instance.RightGrabPad = null;
         }
     }
 }
