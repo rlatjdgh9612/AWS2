@@ -19,6 +19,7 @@ public class ControllerMenu : MonoBehaviour
                 return;
             }
             
+            ButtonManager.Instance.OnButtonMovePinch();
             ButtonManager.Instance.OnButtonFind("MainMenu");
         }
     }

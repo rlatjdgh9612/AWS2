@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] SoundFactory soundFactory;
 
     [SerializeField] Dictionary<string, Queue<GameObject>> sounds = new Dictionary<string, Queue<GameObject>>();
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             Queue<GameObject> queue = new Queue<GameObject>();
+            List<string> soundPath = new List<string>();
             
             for (int i = 0; i < soundCacheCount; i++)
             {

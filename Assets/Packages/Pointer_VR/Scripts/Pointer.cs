@@ -8,13 +8,14 @@ public class Pointer : MonoBehaviour
 {
     [SerializeField] private float defaultLength = 15.0f;
     [SerializeField] private GameObject dot = null;
+    [SerializeField] private Transform startRayPos;
 
     public Camera Camera { get; private set; } = null;
 
     private LineRenderer lineRenderer = null;
-    private VRInputModule inputModule = null;
+    public VRInputModule inputModule;
 
-    public SteamVR_Action_Boolean triggerButton;
+    private Vector3 endPosition;
 
     private void Awake()
     {
@@ -28,13 +29,13 @@ public class Pointer : MonoBehaviour
     private void Start()
     {
         // current.currentInputModule does not work
-        inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
+        //inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
     }
 
     private void Update()
     {
-        if (triggerButton.GetState(SteamVR_Input_Sources.RightHand)) UpdateLine();
-        if (triggerButton.GetStateUp(SteamVR_Input_Sources.RightHand))
+        if (Controller.Instance.Trigger.GetState(SteamVR_Input_Sources.RightHand)) UpdateLine();
+        if (Controller.Instance.Trigger.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
             lineRenderer.enabled = false;
         }
@@ -54,22 +55,23 @@ public class Pointer : MonoBehaviour
         float targetLength = Mathf.Min(colliderDistance, canvasDistance);
 
         // Default
-        Vector3 endPosition = transform.position + (transform.forward * targetLength);
+        endPosition = transform.position + (transform.forward * targetLength);
 
         // Set position of the dot
         dot.transform.position = endPosition;
 
         // Set linerenderer
         lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(0, startRayPos.position);
         lineRenderer.SetPosition(1, endPosition);
     }
 
     private RaycastHit CreateRaycast()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(startRayPos.position, transform.forward);
         Physics.Raycast(ray, out hit, defaultLength);
+        Debug.DrawRay(startRayPos.position, transform.forward);
 
         return hit;
     }

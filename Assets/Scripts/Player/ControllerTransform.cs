@@ -17,7 +17,9 @@ public class ControllerTransform : MonoBehaviour
     [SerializeField] private Transform leftBall;
     [SerializeField] private Transform rightBall;
     [SerializeField] private Transform instrumentParent;
-    
+    [SerializeField] private Transform menuParent;
+    [SerializeField] private Transform sampleAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,41 +60,57 @@ public class ControllerTransform : MonoBehaviour
 
     void UpdateLeft()
     {
-        if (Controller.Instance.Grab.GetState(SteamVR_Input_Sources.LeftHand) && Controller.Instance.IsLeftPadGrab)
-        {
-            if (Controller.Instance.LeftGrabPad == null)
-            {
-                Debug.LogError("GrabPad is null");
-                return;
-            }
-
-            Controller.Instance.LeftGrabPad.transform.parent = gameObject.transform;
-        }
-
-        if (Controller.Instance.Grab.GetStateUp(SteamVR_Input_Sources.LeftHand) && Controller.Instance.IsLeftPadGrab)
-        {
-            Controller.Instance.LeftGrabPad.transform.parent = instrumentParent;
-            Controller.Instance.LeftGrabPad = null;
-        }
+        // 악기
+        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftPadGrab, Controller.Instance.LeftGrabPad, instrumentParent);
+        
+        // 메트로놈
+        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftMetronomGrab, Controller.Instance.LeftMetronomGrab, null);
+        
+        // 레코더
+        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftRecorderGrab, Controller.Instance.LeftRecorderGrab, null);
+        
+        // 메뉴
+        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftMenuGrab, Controller.Instance.LeftMenuGrab, menuParent);
+        
+        // 샘플오디오
+        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftSampleGrab, Controller.Instance.LeftSampleGrab, sampleAudio);
     }
 
     void UpdateRight()
     {
-        if (Controller.Instance.Grab.GetState(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsRightPadGrab)
+        // 악기
+        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightPadGrab, Controller.Instance.RightGrabPad, instrumentParent);
+        
+        // 메트로놈
+        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightMetronomGrab, Controller.Instance.RightMetronomGrab, null);
+        
+        // 레코더
+        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightRecorderGrab, Controller.Instance.RightRecorderGrab, null);
+        
+        // 메뉴
+        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightMenuGrab, Controller.Instance.RightMenuGrab, menuParent);
+        
+        // 샘플오디오
+        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightSampleGrab, Controller.Instance.RightSampleGrab, sampleAudio);
+    }
+
+    void TransformChange(SteamVR_Input_Sources hand, bool isGrab, GameObject grabObject, Transform originParent)
+    {
+        if (Controller.Instance.Grab.GetState(hand) && isGrab)
         {
-            if (Controller.Instance.RightGrabPad == null)
+            if (grabObject == null)
             {
-                Debug.LogError("GrabPad is null");
+                Debug.LogError("Grab Object is null");
                 return;
             }
-            
-            Controller.Instance.RightGrabPad.transform.parent = gameObject.transform;
+
+            grabObject.transform.parent = gameObject.transform;
         }
-        
-        if (Controller.Instance.Grab.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsRightPadGrab)
+
+        if (Controller.Instance.Grab.GetStateUp(hand) && isGrab)
         {
-            Controller.Instance.RightGrabPad.transform.parent = instrumentParent;
-            Controller.Instance.RightGrabPad = null;
+            grabObject.transform.parent = originParent;
+            grabObject = null;
         }
     }
 }
