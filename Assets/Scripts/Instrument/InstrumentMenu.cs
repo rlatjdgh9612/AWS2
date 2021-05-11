@@ -7,8 +7,6 @@ using Valve.VR;
 
 public class InstrumentMenu : MonoBehaviour
 {
-    public SteamVR_Action_Boolean select;
-    
     [SerializeField] private string resourcePath;
     public string ResourcePath
     {
@@ -42,16 +40,11 @@ public class InstrumentMenu : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (select.GetState(SteamVR_Input_Sources.RightHand))
+            if (Controller.Instance.Select.GetState(SteamVR_Input_Sources.RightHand))
             {
                 other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
             }

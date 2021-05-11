@@ -19,6 +19,11 @@ public class ControllerInstrument : MonoBehaviour
     {
         if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
+            if (_resourcePath == String.Empty)
+            {
+                return;
+            }
+            
             InstrumentGenerate(InstrumentLoad(_resourcePath), instrumentParent, false);
             
             InstrumentGenerateFail(false);
@@ -32,11 +37,6 @@ public class ControllerInstrument : MonoBehaviour
 
     void InstrumentGenerateFail(bool isSelect)
     {
-        if (_resourcePath == String.Empty)
-        {
-            return;
-        }
-        
         _resourcePath = String.Empty;
         
         _isInstrumentDisplay = false;
@@ -59,7 +59,7 @@ public class ControllerInstrument : MonoBehaviour
 
         if (!go)
         {
-            Debug.LogError("Resources Load Error Path = " + resourcePath);
+            Debug.Log("Resources Load Error Path = " + resourcePath);
             return null;
         }
 

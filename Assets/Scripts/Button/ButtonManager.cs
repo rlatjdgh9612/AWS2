@@ -23,6 +23,12 @@ public class ButtonManager : MonoBehaviour
     }
 
     public float buttonRotateSpeed;
+
+    #region MovePinch
+
+    private GameObject movePinch;
+
+    #endregion
     
     #region 0st
 
@@ -118,6 +124,11 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        #region MovePinch
+
+        movePinch = GameObject.Find("Menu").transform.Find("MovePinch").gameObject;
+        
+        #endregion
 
         #region 0st
 
@@ -236,6 +247,11 @@ public class ButtonManager : MonoBehaviour
         
     }
 
+    public void OnButtonMovePinch()
+    {
+        movePinch.SetActive(true);
+    }
+    
     public void OnButtonFind(string path)
     {
         for (int i = 0; i < menuList1st.Count; i++)
@@ -494,6 +510,7 @@ public class ButtonManager : MonoBehaviour
                 }
 
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+                StartCoroutine(BackMovePinchDelay());
                 StartCoroutine(BackDelay(menuList1st, i));
             }
         }
@@ -595,6 +612,14 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    IEnumerator BackMovePinchDelay()
+    {
+        movePinch.GetComponent<Animator>().SetBool(Zero, true);
+        yield return new WaitForSeconds(0.5f);
+        movePinch.GetComponent<Animator>().SetBool(Zero, false);
+        movePinch.SetActive(false);
+    }
+    
     IEnumerator BackDelay(List<GameObject> menuList, int index)
     {
         menuList[index].GetComponent<Animator>().SetBool(Zero, true);

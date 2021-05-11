@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1404754300605141994}
   - component: {fileID: 7439987891716476983}
   - component: {fileID: 5893276833859423383}
+  - component: {fileID: 3762178306007530570}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -1754,7 +1755,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 56f6848766382fe46b1cf139ac2019ca, type: 2}
+  - {fileID: 2100000, guid: 1737814b07540104d86ca9fdff397453, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1879,6 +1880,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5675bd50b0debbe4ca59000fe477199b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3762178306007530570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925763550251368980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9ab8d8c1117e347a09d6ce47fcfa9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4634698339880562319
