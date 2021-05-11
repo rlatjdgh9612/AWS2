@@ -98,9 +98,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2312202064953432187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.05}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.05}
   m_Children:
   - {fileID: 2312202066028818441}
   - {fileID: 2312202066763016841}
@@ -120,13 +120,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdf60161e3b48148942cb2325692117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metronome_BeatsImg: {fileID: 2312202066369068234}
-  recorder_BeatsImg: {fileID: 0}
+  metronome_BeatsCount: {fileID: 0}
+  recorder_BeatCount: {fileID: 0}
   metronomeText: {fileID: 0}
-  count: 0
+  recorderText: {fileID: 0}
+  beats: 0
   tempo: 0
-  maxCount: 0
+  maxBeats: 4
   sourcePool: []
+  loop_BeatCount: {fileID: 2312202066369068234}
 --- !u!1 &2312202064989803074
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -946,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.39607844, g: 0.6509804, b: 0.3764706, a: 0.7058824}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -974,13 +976,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdf60161e3b48148942cb2325692117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metronome_BeatsImg: {fileID: 0}
-  recorder_BeatsImg: {fileID: 0}
+  metronome_BeatsCount: {fileID: 0}
+  recorder_BeatCount: {fileID: 0}
   metronomeText: {fileID: 0}
-  count: 0
+  recorderText: {fileID: 0}
+  beats: 0
   tempo: 0
-  maxCount: 0
+  maxBeats: 4
   sourcePool: []
+  loop_BeatCount: {fileID: 0}
 --- !u!1 &2312202066405760137
 GameObject:
   m_ObjectHideFlags: 0

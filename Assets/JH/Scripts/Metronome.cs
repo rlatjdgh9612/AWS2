@@ -20,7 +20,7 @@ public class Metronome : MonoBehaviour
 
     private void Start()
     {
-
+        StartCoroutine(ieCountDown());
     }
 
     private void Update()
@@ -38,14 +38,14 @@ public class Metronome : MonoBehaviour
         this.maxBeats = beats;
     }
 
-    [ContextMenu("play metronome")]
+    //[ContextMenu("play metronome")]
     public void PlayMetronome()
     {
         StopMetronome();
         countCoroutine = StartCoroutine(ieCountDown());
     }
 
-    [ContextMenu("stop metronome")]
+    //[ContextMenu("stop metronome")]
     public void StopMetronome()
     {
         if (countCoroutine != null)
@@ -72,4 +72,10 @@ public class Metronome : MonoBehaviour
             yield return new WaitForSeconds(60f / tempo);
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Controller")
+    //        PlayMetronome();
+    //}
 }

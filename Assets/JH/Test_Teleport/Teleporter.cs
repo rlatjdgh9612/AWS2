@@ -6,16 +6,21 @@ using Valve.VR;
 public class Teleporter : MonoBehaviour
 {
     public GameObject m_Pointer;
+    public GameObject m_RotatePlayer;
     public SteamVR_Action_Boolean m_TeleportAction;
+    public SteamVR_Action_Boolean m_TurnLeft;
+    public SteamVR_Action_Boolean m_TurnRight;
 
-    private SteamVR_Behaviour_Pose m_Pose = null;
+    //private SteamVR_Behaviour_Pose m_Pose = null;
     private bool m_HasPosition = false;
     private bool m_IsTeleporting = false;
+    private bool m_IsRotate = false;
     private float m_FadeTime = 0.5f;
+    private float m_Angle = 45;
 
     private void Awake()
     {
-        m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
+        //m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
     }
 
     private void Update()
@@ -25,8 +30,13 @@ public class Teleporter : MonoBehaviour
         m_Pointer.SetActive(m_HasPosition);
 
         // Teleport
-        if (m_TeleportAction.GetStateDown(m_Pose.inputSource))
+        if (m_TeleportAction.GetStateDown(SteamVR_Input_Sources.RightHand))
             TryTeleport();
+        if (m_TurnRight.GetStateDown(SteamVR_Input_Sources.LeftHand))
+            StartCoroutine(RotateRig(m_Angle));
+        if (m_TurnLeft.GetStateDown(SteamVR_Input_Sources.LeftHand))
+            StartCoroutine(RotateRig(-m_Angle));
+
     }
 
     private void TryTeleport()
@@ -40,7 +50,7 @@ public class Teleporter : MonoBehaviour
         Vector3 headPosition = SteamVR_Render.Top().head.position;
 
         // Figure out translation
-        Vector3 groundPosition = new Vector3(headPosition.x, cameraRig.position.y, headPosition.z);
+        Vector3 groundPosition = new Vector3(headPosition.x, cameraRig.position.y - 10.0f, headPosition.z);
         Vector3 translateVector = m_Pointer.transform.position - groundPosition;
 
         // Move
@@ -82,6 +92,25 @@ public class Teleporter : MonoBehaviour
 
         // If not a hit
         return false;
+    }
+
+    private IEnumerator RotateRig(float m_Angle)
+    {
+        // Flag
+        m_IsTeleporting = true;
+
+        // Fade to black
+        SteamVR_Fade.Start(Color.black, m_FadeTime, true);
+
+        // Apply translation
+        yield return new WaitForSeconds(m_FadeTime);
+        m_RotatePlayer.transform.localEulerAngles += new Vector3(0, m_Angle, 0);
+
+        // Fade to clear
+        SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
+
+        // De-flag
+        m_IsTeleporting = false;
     }
 
 }

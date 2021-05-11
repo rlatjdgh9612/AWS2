@@ -54,6 +54,14 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/PadEast",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/PadWest",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

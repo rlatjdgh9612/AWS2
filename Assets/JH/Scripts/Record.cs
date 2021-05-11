@@ -102,7 +102,7 @@ public class Record : MonoBehaviour
 
         if (other.gameObject.tag == "Controller")
         {
-            if (isRecording) Recording();
+            if (isRecording && !isCounting) Recording();
             else StartCountDown();
         }
     }
@@ -137,12 +137,12 @@ public class Record : MonoBehaviour
             loop.transform.position = transform.position;
             loop.transform.rotation = transform.rotation;
             loop.GetComponent<RecordPlayer>().recordLoop = recordLoop;
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.165f, transform.position.z);
 
             // Track을 Loop그룹으로 전달
             Image cloneTrack = Instantiate(trackGroup.gameObject, trackGroup.transform.parent).GetComponent<Image>();
-            cloneTrack.transform.parent = loop.transform.GetChild(2).transform;
-            cloneTrack.rectTransform.localPosition = Vector2.zero;
+            cloneTrack.transform.parent = loop.transform.GetChild(0).transform;
+            cloneTrack.rectTransform.localPosition = new Vector2(80, 0);
             cloneTrack.rectTransform.localRotation = Quaternion.identity;
             trackGroup.rectTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
 
