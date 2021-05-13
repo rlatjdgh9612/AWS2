@@ -13,6 +13,7 @@ public class InstrumentPad : MonoBehaviour
     [SerializeField]
     public AudioClip sound;
     private AudioSource note;
+    public RadialMenu radial;
 
     public int padIndex;
 
@@ -25,7 +26,6 @@ public class InstrumentPad : MonoBehaviour
 
     private void Update()
     {
-        
     }
 
     private void OnTriggerEnter(Collider other)

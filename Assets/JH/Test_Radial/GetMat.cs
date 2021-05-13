@@ -4,11 +4,11 @@ using UnityEngine;
 using System.Linq;
 public class GetMat : MonoBehaviour
 {
-    FCP_ExampleScript change;
+    Color_Picker change;
     public int i;
     private void Awake()
     {
-        change = GetComponent<FCP_ExampleScript>();
+        change = GetComponent<Color_Picker>();
     }
 
     private void Update()

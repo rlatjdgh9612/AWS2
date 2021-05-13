@@ -5,14 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RadialMenu : MonoBehaviour
 {
-    public GameObject radialMenu;
-    public Animator radialAnim;
-    private bool isOnFirstGroup = false;
+    public bool isOnFirstGroup = false;
     private bool isOnSecondGroup = false;
     private bool isOnTypeUp = true; // 시작 상태는 Up == true 
+    private bool isOnType = false;
+    private bool isOnColor = false;
+    private bool isOnOctave = false;
 
     public Toggle TypeUp;
     public Toggle TypeDown;
+
+    public Animator radialAnim;
+    public GameObject radialMenu;
 
     private void Awake()
     {
@@ -21,57 +25,60 @@ public class RadialMenu : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) OnEnabledMenu();
-        if (Input.GetKeyDown(KeyCode.B)) OnEnableColor();
-        if (Input.GetKeyDown(KeyCode.E)) OnEnableType();
-        if (Input.GetKeyDown(KeyCode.C)) OnTypeUp();
-        if (Input.GetKeyDown(KeyCode.D)) OnTypeDown();
-        if (Input.GetKeyDown(KeyCode.F)) OnEnableOctave();
+
     }
 
-    private void OnEnableOctave()
+    public void OnEnableOctave()
     {
-        if (isOnFirstGroup && !isOnSecondGroup)
+        if (!isOnOctave)
         {
-            isOnSecondGroup = true;
+            isOnOctave = true;
             radialAnim.Play("Octave_On");
         }
-        else if (isOnFirstGroup && isOnSecondGroup)
+    }
+
+    public void OnDisableOctave()
+    {
+        if (isOnOctave)
         {
-            isOnSecondGroup = false;
+            isOnOctave = false;
             radialAnim.Play("Octave_Off");
         }
     }
 
-    private void OnEnableType()
+    public void OnEnableType()
     {
-        if (isOnFirstGroup && !isOnSecondGroup)
+        if (!isOnType)
         {
-            isOnSecondGroup = true;
-            radialAnim.Play("Radial_Off");
+            isOnType = true;
             if (isOnTypeUp) radialAnim.Play("Type_Enabled_Up");
             if (!isOnTypeUp) radialAnim.Play("Type_Enabled_Down");
         }
-        else if (isOnFirstGroup && isOnSecondGroup)
+    }
+
+    public void OnDisableType()
+    {
+        if (isOnType)
         {
-            isOnSecondGroup = false;
+            isOnType = false;
             radialAnim.Play("Type_Disabled");
         }
     }
 
-    private void OnEnableColor()
+    public void OnEnableColor()
     {
-        if (isOnFirstGroup && !isOnSecondGroup)
+        if (!isOnColor)
         {
-            ////radialAnim.Play("Radial_Off");
-            isOnFirstGroup = false;
-            isOnSecondGroup = true;
+            isOnColor = true;
             radialAnim.Play("Color_On");
         }
-        else if (!isOnFirstGroup && isOnSecondGroup)
+    }
+
+    public void OnDisableColor()
+    {
+        if (isOnColor)
         {
-            isOnFirstGroup = true;
-            isOnSecondGroup = false;
+            isOnColor = false;
             radialAnim.Play("Color_Off");
         }
     }
@@ -83,7 +90,11 @@ public class RadialMenu : MonoBehaviour
             isOnFirstGroup = true;
             radialAnim.Play("Radial_On");
         }
-        else if (isOnFirstGroup && !isOnSecondGroup)
+    }
+
+    public void OnDisableMenu()
+    {
+        if (isOnFirstGroup && !isOnSecondGroup)
         {
             isOnFirstGroup = false;
             radialAnim.Play("Radial_Off");
@@ -97,7 +108,7 @@ public class RadialMenu : MonoBehaviour
 
     public void OnTypeUp()
     {
-        if (isOnFirstGroup && !isOnTypeUp && isOnSecondGroup)
+        if (!isOnTypeUp)
         {
             isOnTypeUp = true;
             radialAnim.Play("Type_Up");
@@ -106,10 +117,17 @@ public class RadialMenu : MonoBehaviour
 
     public void OnTypeDown()
     {
-        if (isOnFirstGroup && isOnTypeUp && isOnSecondGroup)
+        if (isOnTypeUp)
         {
             isOnTypeUp = false;
             radialAnim.Play("Type_Down");
         }
+    }
+
+    public void OnBackButton()
+    {
+        if (isOnType) OnDisableType();
+        if (isOnColor) OnDisableColor();
+        if (isOnOctave) OnDisableOctave();
     }
 }

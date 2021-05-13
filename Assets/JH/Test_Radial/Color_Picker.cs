@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public class FCP_ExampleScript : MonoBehaviour
+public class Color_Picker : MonoBehaviour
 {
     public FlexibleColorPicker fcp;
     public List<Material> materials = new List<Material>();
