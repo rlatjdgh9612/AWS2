@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class Color_Picker : MonoBehaviour
         //extract color from the FCP and apply it to the object material
         for (int i = 0; i < materials.Count; i++)
         {
-            // List¿¡ Áßº¹À¸·Î µé¾î°¡Áö ¾Ê°Ô Áßº¹Á¦°Å
+            // Listï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½
             materials = materials.Distinct().ToList();
             materials[i].SetColor("_EmissionColor", fcp.color * 2f);
         }

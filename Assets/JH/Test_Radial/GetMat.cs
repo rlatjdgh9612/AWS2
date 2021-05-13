@@ -19,13 +19,17 @@ public class GetMat : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Touch Object의 Mat를 List로 추가하고 이미 List에 추가된 상태라면 삭제한다.
-        if (change.materials.Contains(other.gameObject.GetComponent<Renderer>().material))
+        if (other.gameObject.tag == "Pad")
         {
-            i = change.materials.IndexOf(other.gameObject.GetComponent<Renderer>().material);
-            change.materials.RemoveAt(i);
+             if (change.materials.Contains(other.gameObject.GetComponent<Renderer>().material))
+                    {
+                        i = change.materials.IndexOf(other.gameObject.GetComponent<Renderer>().material);
+                        change.materials.RemoveAt(i);
+                    }
+                    else
+                        change.materials.Add(other.gameObject.GetComponent<Renderer>().material);
         }
-        else
-            change.materials.Add(other.gameObject.GetComponent<Renderer>().material);
+       
     }
 
     void RemoveIndex()

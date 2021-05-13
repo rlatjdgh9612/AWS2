@@ -26,6 +26,7 @@ public class InstrumentPad : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +37,7 @@ public class InstrumentPad : MonoBehaviour
             triggerEvent = new TriggerEnterEvent(sound, Record.Instance.recordStartTime, padIndex);
             Debug.Log(other.gameObject.tag);
 
-            SoundBandManager.Instance.GenerateSoundBand();
+            SoundBandManager.Instance.HitColor(GetComponent<MeshRenderer>().material.GetColor("_EmissionColor"));
         }
     }
 

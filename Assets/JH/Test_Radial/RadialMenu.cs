@@ -20,8 +20,11 @@ public class RadialMenu : MonoBehaviour
 
     private void Awake()
     {
-        TypeUp.isOn = isOnTypeUp;
-        TypeUp.isOn = !TypeDown.isOn;
+        if (TypeUp != null)
+        {
+            TypeUp.isOn = isOnTypeUp;
+            TypeUp.isOn = !TypeDown.isOn;
+        }
     }
     private void Update()
     {
