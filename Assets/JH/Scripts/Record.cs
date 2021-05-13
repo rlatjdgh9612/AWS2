@@ -48,6 +48,8 @@ public struct Loop
 public class Record : MonoBehaviour
 {
     private List<TriggerEnterEvent> record;
+    
+    [SerializeField] private GameObject grab;
 
     [Tooltip("녹음버튼 누른시간")]
     public float recordStartTime;
@@ -138,6 +140,7 @@ public class Record : MonoBehaviour
             loop.transform.rotation = transform.rotation;
             loop.GetComponent<RecordPlayer>().recordLoop = recordLoop;
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.165f, transform.position.z);
+            grab.transform.position = new Vector3(grab.transform.position.x, grab.transform.position.y - 0.165f, grab.transform.position.z);
 
             // Track을 Loop그룹으로 전달
             Image cloneTrack = Instantiate(trackGroup.gameObject, trackGroup.transform.parent).GetComponent<Image>();

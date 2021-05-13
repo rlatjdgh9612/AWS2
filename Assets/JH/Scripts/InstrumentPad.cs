@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Deform;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class InstrumentPad : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class InstrumentPad : MonoBehaviour
             note.Play();
             triggerEvent = new TriggerEnterEvent(sound, Record.Instance.recordStartTime, padIndex);
             Debug.Log(other.gameObject.tag);
+
+            SoundBandManager.Instance.GenerateSoundBand();
         }
     }
 

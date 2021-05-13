@@ -45,6 +45,12 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_PadWest;
         
+        private static SteamVR_Action_Boolean p_default_MainMenu2;
+        
+        private static SteamVR_Action_Boolean p_default_GetMetro;
+        
+        private static SteamVR_Action_Boolean p_default_GetRecorder;
+        
         private static SteamVR_Action_Vibration p_default_Haptic;
         
         private static SteamVR_Action_Vector2 p_platformer_Move;
@@ -173,6 +179,30 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean default_MainMenu2
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_MainMenu2.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_GetMetro
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_GetMetro.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_GetRecorder
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_GetRecorder.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
         public static SteamVR_Action_Vibration default_Haptic
         {
             get
@@ -254,6 +284,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_MainMenu,
                     SteamVR_Actions.default_PadEast,
                     SteamVR_Actions.default_PadWest,
+                    SteamVR_Actions.default_MainMenu2,
+                    SteamVR_Actions.default_GetMetro,
+                    SteamVR_Actions.default_GetRecorder,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -277,6 +310,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_MainMenu,
                     SteamVR_Actions.default_PadEast,
                     SteamVR_Actions.default_PadWest,
+                    SteamVR_Actions.default_MainMenu2,
+                    SteamVR_Actions.default_GetMetro,
+                    SteamVR_Actions.default_GetRecorder,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -302,6 +338,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_MainMenu,
                     SteamVR_Actions.default_PadEast,
                     SteamVR_Actions.default_PadWest,
+                    SteamVR_Actions.default_MainMenu2,
+                    SteamVR_Actions.default_GetMetro,
+                    SteamVR_Actions.default_GetRecorder,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -327,6 +366,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_MainMenu,
                     SteamVR_Actions.default_PadEast,
                     SteamVR_Actions.default_PadWest,
+                    SteamVR_Actions.default_MainMenu2,
+                    SteamVR_Actions.default_GetMetro,
+                    SteamVR_Actions.default_GetRecorder,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -351,6 +393,9 @@ namespace Valve.VR
             SteamVR_Actions.p_default_MainMenu = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/MainMenu")));
             SteamVR_Actions.p_default_PadEast = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PadEast")));
             SteamVR_Actions.p_default_PadWest = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PadWest")));
+            SteamVR_Actions.p_default_MainMenu2 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/MainMenu2")));
+            SteamVR_Actions.p_default_GetMetro = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/GetMetro")));
+            SteamVR_Actions.p_default_GetRecorder = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/GetRecorder")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));

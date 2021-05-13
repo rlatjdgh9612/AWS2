@@ -7,12 +7,11 @@ using Valve.VR;
 public class Pointer : MonoBehaviour
 {
     [SerializeField] private float defaultLength = 15.0f;
-    [SerializeField] private GameObject dot = null;
     [SerializeField] private Transform startRayPos;
+    [SerializeField] private LineRenderer lineRenderer;
 
     public Camera Camera { get; private set; } = null;
 
-    private LineRenderer lineRenderer = null;
     public VRInputModule inputModule;
 
     private Vector3 endPosition;
@@ -22,7 +21,6 @@ public class Pointer : MonoBehaviour
         Camera = GetComponent<Camera>();
         Camera.enabled = false;
 
-        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
     }
 
@@ -56,9 +54,6 @@ public class Pointer : MonoBehaviour
 
         // Default
         endPosition = transform.position + (transform.forward * targetLength);
-
-        // Set position of the dot
-        dot.transform.position = endPosition;
 
         // Set linerenderer
         lineRenderer.enabled = true;

@@ -35,11 +35,26 @@ public class Controller : MonoBehaviour
     [SerializeField] private SteamVR_Action_Boolean menu;
     public SteamVR_Action_Boolean Menu => menu;
 
+    [SerializeField] private SteamVR_Action_Boolean menu2;
+    public SteamVR_Action_Boolean Menu2 => menu2;
+
     [SerializeField] private SteamVR_Action_Boolean grab;
     public SteamVR_Action_Boolean Grab => grab;
 
     [SerializeField] private SteamVR_Action_Boolean trigger;
     public SteamVR_Action_Boolean Trigger => trigger;
+    
+    [SerializeField] private SteamVR_Action_Boolean turnRight;
+    public SteamVR_Action_Boolean TurnRight => turnRight;
+    
+    [SerializeField] private SteamVR_Action_Boolean turnLeft;
+    public SteamVR_Action_Boolean TurnLeft => turnLeft;
+
+    [SerializeField] private SteamVR_Action_Boolean getMetro;
+    public SteamVR_Action_Boolean GetMetro => getMetro;
+
+    [SerializeField] private SteamVR_Action_Boolean getRecorder;
+    public SteamVR_Action_Boolean GetRecorder => getRecorder;
     
     #endregion
 

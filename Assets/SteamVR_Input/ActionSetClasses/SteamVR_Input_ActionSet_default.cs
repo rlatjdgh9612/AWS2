@@ -129,6 +129,30 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean MainMenu2
+        {
+            get
+            {
+                return SteamVR_Actions.default_MainMenu2;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean GetMetro
+        {
+            get
+            {
+                return SteamVR_Actions.default_GetMetro;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean GetRecorder
+        {
+            get
+            {
+                return SteamVR_Actions.default_GetRecorder;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

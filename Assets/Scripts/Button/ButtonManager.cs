@@ -29,7 +29,7 @@ public class ButtonManager : MonoBehaviour
     private GameObject movePinch;
 
     #endregion
-    
+
     #region 0st
 
     private GameObject startMenu;
@@ -289,7 +289,7 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
                 menuList1st[i].SetActive(true);
                 
