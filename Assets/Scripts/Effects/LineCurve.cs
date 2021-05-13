@@ -21,7 +21,7 @@ public class LineCurve : MonoBehaviour
     {
         var pointList = new List<Vector3>();
 
-        for(float ratio = 1; ratio <= 1; ratio += vertecCount / 2)
+        for(float ratio = 0; ratio <= 1; ratio += 1/vertecCount)
         {
             var tangent1 = Vector3.Lerp(point1.position, point2.position, ratio);
             var tangent2 = Vector3.Lerp(point2.position, point3.position, ratio);
