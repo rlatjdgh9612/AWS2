@@ -9,12 +9,12 @@ public class RecorderGrab : MonoBehaviour
         if (other.gameObject.name == Controller.WhichIsHand.rightHand)
         {
             Controller.Instance.IsRightRecorderGrab = true;
-            Controller.Instance.RightRecorderGrab = this.gameObject;
+            Controller.Instance.RightRecorderGrab = this.gameObject.transform.parent.gameObject;
         } 
         else if (other.gameObject.name == Controller.WhichIsHand.leftHand)
         {
             Controller.Instance.IsLeftRecorderGrab = true;
-            Controller.Instance.LeftRecorderGrab = this.gameObject;
+            Controller.Instance.LeftRecorderGrab = this.gameObject.transform.parent.gameObject;
         }
     }
 
@@ -23,12 +23,12 @@ public class RecorderGrab : MonoBehaviour
         if (other.gameObject.name == Controller.WhichIsHand.rightHand)
         {
             Controller.Instance.IsRightRecorderGrab = true;
-            Controller.Instance.RightRecorderGrab = this.gameObject;
+            Controller.Instance.RightRecorderGrab = this.gameObject.transform.parent.gameObject;
         } 
         else if (other.gameObject.name == Controller.WhichIsHand.leftHand)
         {
             Controller.Instance.IsLeftRecorderGrab = true;
-            Controller.Instance.LeftRecorderGrab = this.gameObject;
+            Controller.Instance.LeftRecorderGrab = this.gameObject.transform.parent.gameObject;
         }
     }
 

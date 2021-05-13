@@ -67,8 +67,8 @@ namespace Valve.VR
         public bool showGrid = false;
 
         // Time to fade from current scene to the compositor and back.
-        public float fadeOutTime = 0.5f;
-        public float fadeInTime = 0.5f;
+        public float fadeOutTime = 1.5f;
+        public float fadeInTime = 1.5f;
 
         // Additional time to wait after finished loading before we start fading the new scene back in.
         // This is to cover up any initial hitching that takes place right at the start of levels.
