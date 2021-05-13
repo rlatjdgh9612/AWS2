@@ -45,6 +45,7 @@ public class Teleporter : MonoBehaviour
         if (!m_HasPosition || m_IsTeleporting)
             return;
 
+
         // Get camera rig, and head position
         Transform cameraRig = SteamVR_Render.Top().origin;
         Vector3 headPosition = SteamVR_Render.Top().head.position;
