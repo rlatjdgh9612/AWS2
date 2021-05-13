@@ -9,7 +9,7 @@ public class Test_GetCamera : MonoBehaviour
     private void Awake()
     {
         can = GetComponent<Canvas>();
-        cam = GameObject.Find("Pointer").GetComponent<Camera>();
+        cam = GameObject.Find("PlayerRay").GetComponent<Camera>();
         can.worldCamera = cam;
     }
 }

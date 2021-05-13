@@ -82,6 +82,7 @@ public class RecordPlayer : Metronome
             }
             currentPlayTime = 0;
         }
+
     }
 
     private IEnumerator IePlayNote(TriggerEnterEvent note)

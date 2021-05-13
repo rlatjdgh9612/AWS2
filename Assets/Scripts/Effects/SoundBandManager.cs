@@ -22,11 +22,15 @@ public class SoundBandManager : MonoBehaviour
     }
     private const string path = "SoundBands/SoundBand";
     private int rnd;
-    
+    private float rndSpeed;
+    [SerializeField] float rndSpeedMin;
+    [SerializeField] float rndSpeedMax;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.eulerAngles = new Vector3(0, 45.0f, 0);
+        GenerateSoundBand();
+        this.transform.eulerAngles = new Vector3(0, 90.0f, 0);
     }
 
     public GameObject Load(string resourcePath)
@@ -47,26 +51,34 @@ public class SoundBandManager : MonoBehaviour
 
     public bool GenerateSoundBand()
     {
-        GameObject soundBand = Instantiate<GameObject>(Load(path));
-        soundBand.SetActive(true);
-        soundBand.transform.position = this.transform.position;
-        soundBand.transform.parent = this.transform;
-        soundBand.transform.position = Vector3.forward * 8.0f;
-        soundBand.GetComponent<SoundBand>().ScrollData.speed = 1.0f;
-        rnd = Random.Range(0, 90);
-        this.transform.eulerAngles = new Vector3(0, rnd * 2.0f, 0);
-        
-        StartCoroutine(SoundBandReset(soundBand));
+        for(int i = 0; i < 180; i++)
+        {
+            GameObject soundBand = Instantiate<GameObject>(Load(path));
+            soundBand.SetActive(true);
+            soundBand.transform.position = this.transform.position;
+            soundBand.transform.parent = this.transform;
+            soundBand.transform.position = Vector3.forward * 10.0f;
+            //rnd = Random.Range(0, 90);
+            rndSpeed = Random.Range(rndSpeedMin, rndSpeedMax);
+            soundBand.GetComponent<SoundBand>().ScrollData.speed = rndSpeed;
+            soundBand.GetComponent<LineRenderer>().material.SetColor("_TintColor", new Color(Random.value, Random.value, Random.value, 1.0f / 255.0f));
+            this.transform.eulerAngles = new Vector3(0, i * 2.0f, 0);
+            
+        }
 
         return true;
     }
 
-    IEnumerator SoundBandReset(GameObject soundBand)
+    public void HitColor(Color getColor)
     {
-        yield return new WaitForSeconds(3.0f);
-        
-        soundBand.GetComponent<SoundBand>().ScrollData.speed = 0.0f;
-        Destroy(soundBand);
-    }
+        SoundBand[] soundBands = GetComponentsInChildren<SoundBand>();
 
+        foreach(SoundBand soundBand in soundBands)
+        {
+            soundBand.Target_r = getColor.r;
+            soundBand.Target_g = getColor.g;
+            soundBand.Target_b = getColor.b;
+            soundBand.ChangeStart();
+        }
+    }
 }

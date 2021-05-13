@@ -104,6 +104,11 @@ public class ControllerTransform : MonoBehaviour
                 return;
             }
 
+            if (gameObject.transform.childCount > 0)
+            {
+                return;
+            }
+
             grabObject.transform.parent = gameObject.transform;
         }
 
