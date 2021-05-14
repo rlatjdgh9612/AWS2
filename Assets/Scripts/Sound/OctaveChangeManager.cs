@@ -25,6 +25,8 @@ public class OctaveChangeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(GetComponentInParent<Instrument>().padList.Length);
+        
         if (GetComponentInParent<Instrument>().padList == null)
         {
             return;
@@ -87,7 +89,7 @@ public class OctaveChangeManager : MonoBehaviour
     {
         int reIndex = index + changeNum;
         
-        if (reIndex < 0 || reIndex > count)
+        if (reIndex < 0 || reIndex >= count)
         {
             Debug.Log("Octave is too lower or higher");
             return index;
