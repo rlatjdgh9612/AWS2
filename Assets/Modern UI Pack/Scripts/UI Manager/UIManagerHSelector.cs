@@ -17,6 +17,7 @@ namespace Michsky.UI.ModernUIPack
         public List<GameObject> imagesHighlighted = new List<GameObject>();
         public List<GameObject> texts = new List<GameObject>();
         HorizontalSelector hSelector;
+        public OctaveChangeManager octaveChangeManager;
 
         void Awake()
         {
@@ -79,6 +80,16 @@ namespace Michsky.UI.ModernUIPack
                 hSelector.invertAnimation = UIManagerAsset.hSelectorInvertAnimation;
                 hSelector.loopSelection = UIManagerAsset.hSelectorLoopSelection;
             }
+        }
+        
+        public void PreviousEvent()
+        {
+            octaveChangeManager.OnMinusOctave();
+        }
+        
+        public void ForwardEvent()
+        {
+            octaveChangeManager.OnPlusOctave();
         }
     }
 }

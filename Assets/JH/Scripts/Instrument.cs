@@ -14,7 +14,7 @@ public class Instrument : MonoBehaviour
     {
     }
 
-    private void Start()
+    private void Awake()
     {
         padList = gameObject.GetComponentsInChildren<InstrumentPad>();
         padList = padList.OrderBy(p => p.name).ToArray();

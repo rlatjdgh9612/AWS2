@@ -15,6 +15,7 @@ namespace Michsky.UI.ModernUIPack
         public GameObject indicatorObject;
         Animator selectorAnimator;
         string newItemTitle;
+        
 
         // Saving
         public bool saveValue;
@@ -43,6 +44,7 @@ namespace Michsky.UI.ModernUIPack
 
         void Start()
         {
+            
             selectorAnimator = gameObject.GetComponent<Animator>();
 
             try
