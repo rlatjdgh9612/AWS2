@@ -12,17 +12,20 @@ public class TypeChangeManager : MonoBehaviour
     List<string> typeInst = new List<string>(3);
     
     // 타입 바꾸려고 하는 오디오소스
-    [SerializeField] private AudioSource sound;
+    [SerializeField] private GameObject[] sounds;
     //
     
     private string instName;
     private string typeName;
     private string typeFolder;
-    private string resourcePath;
 
     private bool isActivate = false;
     
     private const string path = "Sounds";
+
+    private bool isClassic = false;
+    private bool isElectric = false;
+    private int instCount;
     
     #endregion
 
@@ -35,42 +38,67 @@ public class TypeChangeManager : MonoBehaviour
         typeInst.Add("Piano");
 
         #endregion
+        
+        if (GetComponentInParent<Instrument>().padList == null)
+        {
+            return;
+        }
+
+        instCount = GetComponentInParent<Instrument>().padList.Length;
+        sounds = new GameObject[instCount];
+        
+        for (int i = 0; i < instCount; i++)
+        {
+            sounds[i] = GetComponentInParent<Instrument>().padList[i].gameObject;
+        }
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+    }
+
+    public void OnToClassicTypeChange()
+    {
+        if (isClassic)
         {
-            // 실행 함수
-            // 실행을 한다 (한번만 실행되게 하는게 중요. 업데이트이면 안 됨. 트리거 업이나 온 트리거 엔터만 가능. 아니면 계속 실행되서 안 됨)
-            //★★★★★★★★★★★★★★★★★★★★★★ 어쨌거나 저쨌거나 이 함수를 실행하면 되고
-            // 인자의 sound.clip.name 을 타입 바꾸려고 하는 오디오소스의 클립 이름으로 하면 된다
-            // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-            // 이 함수를 버튼 클릭시 실행되게 하면 된다
-            
-            TypeChange(TypeChangeParsing(sound.clip.name));
-            
-            //
+            return;
         }
-        //
+        
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
+        }
+    }
+
+    public void OnToElectricTypeChange()
+    {
+        if (isElectric)
+        {
+            return;
+        }
+        
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
+        }
     }
 
     #region 함수들
 
-    private bool TypeChange(string resourcePath)
+    private AudioClip TypeChange(string resourcePath)
     {
         AudioClip soundClip = null;
 
         soundClip = Resources.Load<AudioClip>(resourcePath);
 
-        if (!sound)
+        if (!soundClip)
         {
             Debug.LogError("Resources Load Error! FilePath = " + resourcePath);
-            return false;
+            return null;
         }
 
-        sound.clip = soundClip;
-        return true;
+        return soundClip;
     }
 
     private string TypeChangeParsing(string clipName)
@@ -88,6 +116,9 @@ public class TypeChangeManager : MonoBehaviour
                 {
                     typeFolder = instName + "Electric";
                     typeName = "Electric";
+                    
+                    isClassic = true;
+                    isElectric = false;
                 } 
                 else if (splite[1] == "Electric")
                 {
@@ -101,11 +132,14 @@ public class TypeChangeManager : MonoBehaviour
                     {
                         typeName = "Classic";
                     }
+
+                    isClassic = false;
+                    isElectric = true;
                 }
             }
         }
 
-        resourcePath = path + slash + typeFolder + slash + instName + divide + typeName + divide + splite[2] +
+        string resourcePath = path + slash + typeFolder + slash + instName + divide + typeName + divide + splite[2] +
                        divide + splite[3];
 
         Debug.Log(resourcePath);
