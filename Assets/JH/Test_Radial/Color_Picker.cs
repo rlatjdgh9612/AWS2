@@ -5,11 +5,15 @@ using UnityEngine;
 using System.Linq;
 public class Color_Picker : MonoBehaviour
 {
-    public FlexibleColorPicker fcp;
+    private FlexibleColorPicker fcp;
     public List<Material> materials = new List<Material>();
 
     public Color externalColor;
     private Color internalColor;
+
+    // Mat 가져오는 예외처리 변수 선언
+    public bool isGetMat;
+
 
     Renderer rend;
     private void Start()
@@ -19,18 +23,29 @@ public class Color_Picker : MonoBehaviour
 
     private void Update()
     {
-        //apply color of this script to the FCP whenever it is changed by the user
-        if (internalColor != externalColor)
+        print(fcp);
+        if (fcp?.GetComponent<FlexibleColorPicker>().enabled == true)
         {
-            fcp.color = externalColor;
-            internalColor = externalColor;
+            //apply color of this script to the FCP whenever it is changed by the user
+            if (internalColor != externalColor)
+            {
+                fcp.color = externalColor;
+                internalColor = externalColor;
+            }
+            //extract color from the FCP and apply it to the object material
+            for (int i = 0; i < materials.Count; i++)
+            {
+                // List�� �ߺ����� ���� �ʰ� �ߺ�����
+                materials = materials.Distinct().ToList();
+                materials[i].SetColor("_EmissionColor", fcp.color * 2f);
+            }
         }
-        //extract color from the FCP and apply it to the object material
-        for (int i = 0; i < materials.Count; i++)
-        {
-            // List�� �ߺ����� ���� �ʰ� �ߺ�����
-            materials = materials.Distinct().ToList();
-            materials[i].SetColor("_EmissionColor", fcp.color * 2f);
-        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (fcp == null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
+        if (fcp != null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
+
     }
 }

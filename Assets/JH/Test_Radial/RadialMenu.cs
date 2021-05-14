@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RadialMenu : MonoBehaviour
 {
-    public bool isOnFirstGroup = false;
-    private bool isOnSecondGroup = false;
+    public bool isOnFirstGroup;
+    private bool isOnSecondGroup;
+    private bool isOnType;
+    private bool isOnColor;
+    private bool isOnOctave;
     private bool isOnTypeUp = true; // 시작 상태는 Up == true 
-    private bool isOnType = false;
-    private bool isOnColor = false;
-    private bool isOnOctave = false;
 
     public Toggle TypeUp;
     public Toggle TypeDown;
@@ -36,6 +36,7 @@ public class RadialMenu : MonoBehaviour
         if (!isOnOctave)
         {
             isOnOctave = true;
+            isOnSecondGroup = true;
             radialAnim.Play("Octave_On");
         }
     }
@@ -45,6 +46,7 @@ public class RadialMenu : MonoBehaviour
         if (isOnOctave)
         {
             isOnOctave = false;
+            isOnSecondGroup = false;
             radialAnim.Play("Octave_Off");
         }
     }
@@ -54,6 +56,7 @@ public class RadialMenu : MonoBehaviour
         if (!isOnType)
         {
             isOnType = true;
+            isOnSecondGroup = true;
             if (isOnTypeUp) radialAnim.Play("Type_Enabled_Up");
             if (!isOnTypeUp) radialAnim.Play("Type_Enabled_Down");
         }
@@ -64,6 +67,7 @@ public class RadialMenu : MonoBehaviour
         if (isOnType)
         {
             isOnType = false;
+            isOnSecondGroup = false;
             radialAnim.Play("Type_Disabled");
         }
     }
@@ -73,6 +77,7 @@ public class RadialMenu : MonoBehaviour
         if (!isOnColor)
         {
             isOnColor = true;
+            isOnSecondGroup = true;
             radialAnim.Play("Color_On");
         }
     }
@@ -82,6 +87,7 @@ public class RadialMenu : MonoBehaviour
         if (isOnColor)
         {
             isOnColor = false;
+            isOnSecondGroup = false;
             radialAnim.Play("Color_Off");
         }
     }
@@ -99,8 +105,8 @@ public class RadialMenu : MonoBehaviour
     {
         if (isOnFirstGroup && !isOnSecondGroup)
         {
-            isOnFirstGroup = false;
             radialAnim.Play("Radial_Off");
+            isOnFirstGroup = false;
         }
     }
 
@@ -111,7 +117,7 @@ public class RadialMenu : MonoBehaviour
 
     public void OnTypeUp()
     {
-        if (!isOnTypeUp)
+        if (!isOnTypeUp && isOnType)
         {
             isOnTypeUp = true;
             radialAnim.Play("Type_Up");
@@ -120,7 +126,7 @@ public class RadialMenu : MonoBehaviour
 
     public void OnTypeDown()
     {
-        if (isOnTypeUp)
+        if (isOnTypeUp && isOnType)
         {
             isOnTypeUp = false;
             radialAnim.Play("Type_Down");
