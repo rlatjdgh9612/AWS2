@@ -88,7 +88,7 @@ public class OctaveChangeManager : MonoBehaviour
     private int OctaveMath(int index, int changeNum, int count)
     {
         int reIndex = index + changeNum;
-        
+
         if (reIndex < 0 || reIndex >= count)
         {
             Debug.Log("Octave is too lower or higher");
