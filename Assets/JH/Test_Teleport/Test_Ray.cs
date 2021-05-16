@@ -11,15 +11,24 @@ public class Test_Ray : MonoBehaviour
 
     private void Update()
     {
+        OnRadialMenu();
+    }
+
+    void OnRadialMenu()
+    {
         if (leftTrigger.GetStateDown(SteamVR_Input_Sources.LeftHand))
         {
             Ray ray;
             RaycastHit hit;
 
-            if (Physics.Raycast(RayPos.transform.position, RayPos.transform.forward, out hit, 10.0f))
+            if (Physics.Raycast(RayPos.transform.position, RayPos.transform.forward, out hit, 10.0f) && hit.transform.tag == "Pad")
             {
                 if (radial == null) radial = hit.transform.GetComponent<InstrumentPad>().radial;
-                if (radial != null) radial.OnEnabledMenu();
+                if (radial != null)
+                {
+                    radial = hit.transform.GetComponent<InstrumentPad>().radial;
+                    radial.OnEnabledMenu();
+                }
             }
         }
     }

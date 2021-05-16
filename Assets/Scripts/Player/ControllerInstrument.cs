@@ -73,7 +73,7 @@ public class ControllerInstrument : MonoBehaviour
         string replace = instrument.name.Replace("(Clone)", "");
         instrument.name = replace;
         instrument.transform.position = rightBall.transform.position + rightBall.transform.forward * 0.25f;
-        instrument.transform.localScale = new Vector3(0.7f,0.7f,0.7f);
+        instrument.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
         instrument.transform.forward = playerCam.forward;
         instrument.transform.localEulerAngles = new Vector3(0.0f, instrument.transform.localEulerAngles.y, instrument.transform.localEulerAngles.z);
         _isInstrumentDisplay = false;

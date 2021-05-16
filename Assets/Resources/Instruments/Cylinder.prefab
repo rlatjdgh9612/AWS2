@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7922743219041975805}
   - component: {fileID: 5419909351776871592}
   - component: {fileID: 3662002570136831179}
+  - component: {fileID: 3329090602556866443}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -10924,6 +10925,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9ab8d8c1117e347a09d6ce47fcfa9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3329090602556866443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740633257470787342}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2980644446670272123
 GameObject:
   m_ObjectHideFlags: 0
@@ -12091,6 +12110,7 @@ GameObject:
   - component: {fileID: 3482939498951838868}
   - component: {fileID: 2099936502969854437}
   - component: {fileID: 87394575511197561}
+  - component: {fileID: 1757271574565419947}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -12178,6 +12198,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1757271574565419947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052357355509685869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdfaeb324214d246862722462b6732e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5762068385613829238
 GameObject:
   m_ObjectHideFlags: 0

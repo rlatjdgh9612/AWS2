@@ -112,7 +112,7 @@ public class RadialMenu : MonoBehaviour
 
     public void OnDeleteButton()
     {
-        Destroy(gameObject);
+        Destroy(gameObject.GetComponentInParent<Instrument>().gameObject);
     }
 
     public void OnTypeUp()

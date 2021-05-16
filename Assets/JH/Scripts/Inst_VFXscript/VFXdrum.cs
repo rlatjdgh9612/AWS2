@@ -7,7 +7,7 @@ public class VFXdrum : MonoBehaviour
     BulgeDeformer bulge;
 
     // 강 = 1.5 // 중 = 1.0 // 약 = 0.5
-    public float velocity = -1f;
+    public float velocity = -2f;
     public float timeOffset;
     public BulgeState bulgeState = BulgeState.Off;
     public enum BulgeState
@@ -25,7 +25,7 @@ public class VFXdrum : MonoBehaviour
         switch (bulgeState)
         {
             case BulgeState.On:
-                bulge.Bottom = Mathf.Lerp(bulge.Bottom, velocity, Time.deltaTime * 5);
+                bulge.Bottom = Mathf.Lerp(bulge.Bottom, velocity, Time.deltaTime * 30);
                 VFXcycle();
                 break;
             case BulgeState.Off:
@@ -35,21 +35,23 @@ public class VFXdrum : MonoBehaviour
 
     public void SetState(BulgeState state)
     {
-        this.bulgeState = state;
-        switch (this.bulgeState)
+        bulgeState = state;
+        switch (bulgeState)
         {
             case BulgeState.On:
                 break;
 
             case BulgeState.Off:
-                bulge.Bottom = -0.5f;
+                bulge.Bottom = -1f;
                 break;
         }
     }
     void VFXcycle()
     {
-        if (Time.time >= timeOffset + 0.5f)
+        if (Time.time >= timeOffset + 0.2f)
+        {
             SetState(BulgeState.Off);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

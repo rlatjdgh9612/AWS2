@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Linq;
 public class Color_Picker : MonoBehaviour
 {
-    private FlexibleColorPicker fcp;
+    public FlexibleColorPicker fcp;
     public List<Material> materials = new List<Material>();
 
     public Color externalColor;
@@ -23,7 +23,6 @@ public class Color_Picker : MonoBehaviour
 
     private void Update()
     {
-        print(fcp);
         if (fcp?.GetComponent<FlexibleColorPicker>().enabled == true)
         {
             //apply color of this script to the FCP whenever it is changed by the user
