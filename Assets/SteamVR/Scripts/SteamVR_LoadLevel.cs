@@ -382,7 +382,7 @@ namespace Valve.VR
 
             yield return null;
 
-            Shader.WarmupAllShaders();
+            //Shader.WarmupAllShaders();
 
             // Optionally wait a short period of time after loading everything back in, but before we start rendering again
             // in order to give everything a change to settle down to avoid any hitching at the start of the new level.

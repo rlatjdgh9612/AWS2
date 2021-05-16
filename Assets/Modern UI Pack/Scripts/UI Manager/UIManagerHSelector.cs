@@ -19,6 +19,8 @@ namespace Michsky.UI.ModernUIPack
         HorizontalSelector hSelector;
         public OctaveChangeManager octaveChangeManager;
 
+        private int num;
+
         void Awake()
         {
             try
@@ -42,6 +44,8 @@ namespace Michsky.UI.ModernUIPack
             {
                 Debug.Log("<b>[Modern UI Pack]</b> No UI Manager found, assign it manually.", this);
             }
+            
+            num = GetComponent<HorizontalSelector>().index;
         }
 
         void LateUpdate()
@@ -84,11 +88,23 @@ namespace Michsky.UI.ModernUIPack
         
         public void PreviousEvent()
         {
+            num--;
+            if (num < 0)
+            {
+                num = 0;
+                return;
+            }
             octaveChangeManager.OnMinusOctave();
         }
         
         public void ForwardEvent()
         {
+            num++;
+            if (3 < num)
+            {
+                num = 3;
+                return;
+            }
             octaveChangeManager.OnPlusOctave();
         }
     }

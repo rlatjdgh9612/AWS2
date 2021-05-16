@@ -12,6 +12,8 @@ public class ControllerSound : MonoBehaviour
     [SerializeField] private GameObject soundMarker;
     public GameObject SoundMarker => soundMarker;
 
+    [SerializeField] private ParticleSystem soundParticle;
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +42,15 @@ public class ControllerSound : MonoBehaviour
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
         rightBall.GetComponent<AudioSource>().clip = null;
         soundMarker.transform.Find("SoundMarker").gameObject.SetActive(false);
+        soundParticle.transform.position = sound.transform.position;
+        soundParticle.gameObject.SetActive(true);
+        StartCoroutine(SoundParticleFalse());
+    }
+
+    IEnumerator SoundParticleFalse()
+    {
+        yield return new WaitForSeconds(1.0f);
+        soundParticle.gameObject.SetActive(false);
     }
 
     

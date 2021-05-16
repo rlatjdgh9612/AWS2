@@ -23,6 +23,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     public float buttonRotateSpeed;
+    public Transform camRig;
 
     #region MovePinch
 

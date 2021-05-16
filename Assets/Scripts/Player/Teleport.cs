@@ -64,7 +64,7 @@ public class Teleport : MonoBehaviour
         Vector3 headPosition = SteamVR_Render.Top().head.position;
 
         // Figure out translation
-        Vector3 groundPosition = new Vector3(headPosition.x, cameraRig.position.y - 2.0f, headPosition.z);
+        Vector3 groundPosition = new Vector3(headPosition.x, cameraRig.position.y - 4.0f, headPosition.z);
         Vector3 translateVector = pointer.transform.position - groundPosition;
 
         // Move
