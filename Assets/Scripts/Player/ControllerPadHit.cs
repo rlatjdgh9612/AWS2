@@ -14,7 +14,7 @@ public class ControllerPadHit : MonoBehaviour
      {
          if (other.gameObject.CompareTag("Pad"))
          {
-             other.GetComponent<VFXColor>().Hit(180, 5);
+             other.GetComponent<VFXColor>().Hit(180, 10);
              ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
          }
      }

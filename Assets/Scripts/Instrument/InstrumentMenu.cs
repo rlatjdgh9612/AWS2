@@ -22,6 +22,8 @@ public class InstrumentMenu : MonoBehaviour
     }
     
     private GameObject instrumentMarker;
+
+    private bool isTouch = false;
     
     // Start is called before the first frame update
     void Start()

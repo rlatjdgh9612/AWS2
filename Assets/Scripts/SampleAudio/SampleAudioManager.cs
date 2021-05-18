@@ -81,7 +81,6 @@ public class SampleAudioManager : MonoBehaviour
                     return false;
                 }
                 
-                Debug.Log(go.name);
                 go.transform.SetParent(sampleParent);
                 go.transform.localScale = Vector3.one;
                 go.transform.localPosition = new Vector3(transform.position.x, transform.position.y, 0);

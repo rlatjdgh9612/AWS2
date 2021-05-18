@@ -9,11 +9,17 @@ public class ControllerInstrument : MonoBehaviour
     [SerializeField] private GameObject rightBall;
     [SerializeField] private Transform instrumentParent;
     [SerializeField] private Transform playerCam;
+    [SerializeField] private GameObject[] instrumentMarkerCheckList;
     
     private GameObject instrumentMarker;
     public bool _isInstrumentDisplay = false;
     private string _resourcePath = String.Empty;
-    
+
+    private void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +37,18 @@ public class ControllerInstrument : MonoBehaviour
 
         if (instrumentMarker != null)
         {
-            instrumentMarker.SetActive(_isInstrumentDisplay);
+            for (int i = 0; i < instrumentMarkerCheckList.Length; i++)
+            {
+                if (instrumentMarkerCheckList[i] == instrumentMarker)
+                {
+                    instrumentMarkerCheckList[i].SetActive(true);
+                }
+                else
+                {
+                    instrumentMarkerCheckList[i].SetActive(false);
+                }
+            }
+            
         }
     }
 
@@ -39,8 +56,13 @@ public class ControllerInstrument : MonoBehaviour
     {
         _resourcePath = String.Empty;
         
-        _isInstrumentDisplay = false;
+        if (instrumentMarker == null)
+        {
+            return;
+        }
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
+        instrumentMarker.SetActive(false);
+        instrumentMarker = null;
     }
     
     public void InstrumentInput(GameObject go, string resourcePath, bool isInstrumentDisplay, bool isSelect)
@@ -72,11 +94,12 @@ public class ControllerInstrument : MonoBehaviour
         GameObject instrument = Instantiate<GameObject>(instancedGo, parent, true);
         string replace = instrument.name.Replace("(Clone)", "");
         instrument.name = replace;
-        instrument.transform.position = rightBall.transform.position + rightBall.transform.forward * 0.25f;
+        instrument.transform.position = rightBall.transform.position + rightBall.transform.forward * 0.1f;
         instrument.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
         instrument.transform.forward = playerCam.forward;
         instrument.transform.localEulerAngles = new Vector3(0.0f, instrument.transform.localEulerAngles.y, instrument.transform.localEulerAngles.z);
-        _isInstrumentDisplay = false;
+        instrumentMarker.SetActive(false);
+        instrumentMarker = null;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
 
         return true;

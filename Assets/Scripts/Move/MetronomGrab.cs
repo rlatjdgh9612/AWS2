@@ -19,20 +19,6 @@ public class MetronomGrab : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.name == Controller.WhichIsHand.rightHand)
-        {
-            Controller.Instance.IsRightMetronomGrab = true;
-            Controller.Instance.RightMetronomGrab = this.gameObject;
-        } 
-        else if (other.gameObject.name == Controller.WhichIsHand.leftHand)
-        {
-            Controller.Instance.IsLeftMetronomGrab = true;
-            Controller.Instance.LeftMetronomGrab = this.gameObject;
-        }
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == Controller.WhichIsHand.rightHand)

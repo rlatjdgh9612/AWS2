@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SamplePlayNode : MonoBehaviour
 {
@@ -68,12 +69,14 @@ public class SamplePlayNode : MonoBehaviour
         GetComponentInParent<AudioSource>().Stop();
         GetComponentInParent<AudioSource>().Play();
         GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 1, 1, 180.0f/255.0f));
+        GetComponentInChildren<Text>().text = "II";
     }
 
     void UpdateStop()
     {
         GetComponentInParent<AudioSource>().Stop();
         GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1,1,1, 40.0f/255.0f));
+        GetComponentInChildren<Text>().text = "▶";
     }
 
     IEnumerator PlayDelay()

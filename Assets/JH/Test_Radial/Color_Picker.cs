@@ -23,28 +23,37 @@ public class Color_Picker : MonoBehaviour
 
     private void Update()
     {
-        if (fcp?.GetComponent<FlexibleColorPicker>().enabled == true)
+        if (fcp != null)
         {
-            //apply color of this script to the FCP whenever it is changed by the user
-            if (internalColor != externalColor)
+            if (fcp.GetComponent<FlexibleColorPicker>()?.enabled == true)
             {
-                fcp.color = externalColor;
-                internalColor = externalColor;
+                //apply color of this script to the FCP whenever it is changed by the user
+                if (internalColor != externalColor)
+                {
+                    fcp.color = externalColor;
+                    internalColor = externalColor;
+                }
+                //extract color from the FCP and apply it to the object material
+                for (int i = 0; i < materials.Count; i++)
+                {
+                    // List    ߺ            ʰ   ߺ     
+                    materials = materials.Distinct().ToList();
+                    materials[i].SetColor("_EmissionColor", fcp.color * 2f);
+                }
             }
-            //extract color from the FCP and apply it to the object material
-            for (int i = 0; i < materials.Count; i++)
+            else if (fcp.GetComponent<FlexibleColorPicker>()?.enabled == false)
             {
-                // List�� �ߺ����� ���� �ʰ� �ߺ�����
-                materials = materials.Distinct().ToList();
-                materials[i].SetColor("_EmissionColor", fcp.color * 2f);
+                materials.RemoveAll(obj => true);
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (fcp == null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
-        if (fcp != null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
-
+        if (other.gameObject.tag == "Pad")
+        {
+            if (fcp == null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
+            if (fcp != null) fcp = other.transform.parent.GetComponentInChildren<FlexibleColorPicker>();
+        }
     }
 }
