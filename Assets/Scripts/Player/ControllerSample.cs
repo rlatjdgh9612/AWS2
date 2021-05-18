@@ -9,6 +9,7 @@ public class ControllerSample : MonoBehaviour
     [SerializeField] private GameObject rightBall;
     [SerializeField] private Transform sampleParent;
     [SerializeField] private Transform playerCam;
+    [SerializeField] private GameObject[] sampleMarkerCheckerList;
 
     private GameObject sampleMarker;
     private bool _isSampleDisplay = false;
@@ -38,16 +39,33 @@ public class ControllerSample : MonoBehaviour
         
         if (sampleMarker != null)
         {
-            sampleMarker.SetActive(_isSampleDisplay);
+            for (int i = 0; i < sampleMarkerCheckerList.Length; i++)
+            {
+                if (sampleMarkerCheckerList[i] == sampleMarker)
+                {
+                    sampleMarkerCheckerList[i].SetActive(true);
+                }
+                else
+                {
+                    sampleMarkerCheckerList[i].SetActive(false);
+                }
+            }
+            
         }
     }
 
     void SampleGenerateFail(bool isSelect)
     {
         _resourcePath = String.Empty;
+
+        if (sampleMarker == null)
+        {
+            return;
+        }
         
-        _isSampleDisplay = false;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
+        sampleMarker.SetActive(false);
+        sampleMarker = null;
     }
     
     public void SampleInput(GameObject go, string resourcePath, string sampleClipResourcePath, bool isSampleDisplay, bool isSelect)
@@ -101,7 +119,8 @@ public class ControllerSample : MonoBehaviour
         sample.transform.forward = playerCam.transform.forward;
         sample.transform.localEulerAngles = new Vector3(0.0f, sample.transform.localEulerAngles.y, sample.transform.localEulerAngles.z);
         sample.GetComponent<AudioSource>().clip = instancedClip;
-        _isSampleDisplay = false;
+        sampleMarker.SetActive(false);
+        sampleMarker = null;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
         
         return true;

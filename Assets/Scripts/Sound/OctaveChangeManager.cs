@@ -25,7 +25,6 @@ public class OctaveChangeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(GetComponentInParent<Instrument>().padList.Length);
         
         if (GetComponentInParent<Instrument>().padList == null)
         {

@@ -35,7 +35,6 @@ public class InstrumentPad : MonoBehaviour
         {
             note.Play();
             triggerEvent = new TriggerEnterEvent(sound, Record.Instance.recordStartTime, padIndex);
-            Debug.Log(other.gameObject.tag);
 
             SoundBandManager.Instance.HitColor(GetComponent<MeshRenderer>().material.GetColor("_EmissionColor"));
         }

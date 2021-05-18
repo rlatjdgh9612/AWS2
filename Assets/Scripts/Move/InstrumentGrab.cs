@@ -18,20 +18,6 @@ public class InstrumentGrab : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.name == Controller.WhichIsHand.rightHand)
-        {
-            Controller.Instance.IsRightPadGrab = true;
-            Controller.Instance.RightGrabPad = this.gameObject.transform.parent.gameObject;
-        } 
-        else if (other.gameObject.name == Controller.WhichIsHand.leftHand)
-        {
-            Controller.Instance.IsLeftPadGrab = true;
-            Controller.Instance.LeftGrabPad = this.gameObject.transform.parent.gameObject;
-        }
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == Controller.WhichIsHand.rightHand)

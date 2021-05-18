@@ -37,20 +37,6 @@ public class SampleAudioGrab : MonoBehaviour
         }
     }
     
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.name == Controller.WhichIsHand.rightHand)
-        {
-            Controller.Instance.IsRightSampleGrab = true;
-            Controller.Instance.RightSampleGrab = this.gameObject.transform.parent.gameObject;
-        } 
-        else if (other.gameObject.name == Controller.WhichIsHand.leftHand)
-        {
-            Controller.Instance.IsLeftSampleGrab = true;
-            Controller.Instance.LeftSampleGrab = this.gameObject.transform.parent.gameObject;
-        }
-    }
-    
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == Controller.WhichIsHand.rightHand)

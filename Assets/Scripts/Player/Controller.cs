@@ -228,4 +228,151 @@ public class Controller : MonoBehaviour
     }
 
     #endregion
+    
+    #region 램프바닥의 그랩을 위한 불 값과 게임 오브젝트 저장소
+
+    [SerializeField] private bool isRightRampBottomGrab = false;
+    public bool IsRightRampBottomGrab
+    {
+        get => isRightRampBottomGrab;
+        set => isRightRampBottomGrab = value;
+    }
+            
+    [SerializeField] private bool isLeftRampBottomGrab = false;
+    public bool IsLeftRampBottomGrab
+    {
+        get => isLeftRampBottomGrab;
+        set => isLeftRampBottomGrab = value;
+    }
+        
+    [SerializeField] private GameObject rightRampBottomGrab = null;
+    public GameObject RightRampBottomGrab
+    {
+        get => rightRampBottomGrab;
+        set => rightRampBottomGrab = value;
+    }
+            
+    [SerializeField] private GameObject leftRampBottomGrab = null;
+    public GameObject LeftRampBottomGrab
+    {
+        get => leftRampBottomGrab; 
+        set => leftRampBottomGrab = value;
+    }
+
+    #endregion
+    
+    #region 램프탑의 그랩을 위한 불 값과 게임 오브젝트 저장소
+              
+                  [SerializeField] private bool isRightRampTopGrab = false;
+                  public bool IsRightRampTopGrab
+                  {
+                      get => isRightRampTopGrab;
+                      set => isRightRampTopGrab = value;
+                  }
+                          
+                  [SerializeField] private bool isLeftRampTopGrab = false;
+                  public bool IsLeftRampTopGrab
+                  {
+                      get => isLeftRampTopGrab;
+                      set => isLeftRampTopGrab = value;
+                  }
+                      
+                  [SerializeField] private GameObject rightRampTopGrab = null;
+                  public GameObject RightRampTopGrab
+                  {
+                      get => rightRampTopGrab;
+                      set => rightRampTopGrab = value;
+                  }
+                          
+                  [SerializeField] private GameObject leftRampTopGrab = null;
+                  public GameObject LeftRampTopGrab
+                  {
+                      get => leftRampTopGrab; 
+                      set => leftRampTopGrab = value;
+                  }
+              
+                  #endregion
+                  
+    #region 루프그룹의 그랩을 위한 불 값과 게임 오브젝트 저장소
+
+    [SerializeField] private bool isRightLoopGrab = false;
+    public bool IsRightLoopGrab
+    {
+        get => isRightLoopGrab;
+        set => isRightLoopGrab = value;
+    }
+            
+    [SerializeField] private bool isLeftLoopGrab = false;
+
+    public bool IsLeftLoopGrab
+    {
+        get => isLeftLoopGrab;
+        set => isLeftLoopGrab = value;
+    }
+
+    [SerializeField] private GameObject rightLoopGrab = null;
+
+    public GameObject RightLoopGrab
+    {
+        get => rightLoopGrab;
+        set => rightLoopGrab = value;
+    }
+
+    [SerializeField] private GameObject leftLoopGrab = null;
+
+    public GameObject LeftLoopGrab
+    {
+        get => leftLoopGrab;
+        set => leftLoopGrab = value;
+    }
+
+    #endregion
+
+    #region 인스트루먼트 스케일을 위한 불 값과 게임 오브젝트 저장소
+
+    [SerializeField] private Vector3 rightScalePos;
+    public Vector3 RightScalePos
+    {
+        get => rightScalePos;
+        set => rightScalePos = value;
+    }
+
+    [SerializeField] private GameObject rightInst;
+    public GameObject RightInst
+    {
+        get => rightInst;
+        set => rightInst = value;
+    }
+
+    [SerializeField] private bool isRightScale;
+
+    public bool IsRightScale
+    {
+        get => isRightScale;
+        set => isRightScale = value;
+    }
+    
+    [SerializeField] private Vector3 leftScalePos;
+    public Vector3 LeftScalePos
+    {
+        get => leftScalePos;
+        set => leftScalePos = value;
+    }
+
+    [SerializeField] private GameObject leftInst;
+    public GameObject LeftInst
+    {
+        get => leftInst;
+        set => leftInst = value;
+    }
+
+    [SerializeField] private bool isLeftScale;
+
+    public bool IsLeftScale
+    {
+        get => isLeftScale;
+        set => isLeftScale = value;
+    }
+
+    #endregion
 }
