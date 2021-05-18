@@ -9,14 +9,15 @@ using Valve.VR;
 public class ControllerPadHit : MonoBehaviour
 {
     [SerializeField] private GameObject ball;
-    
-     private void OnTriggerEnter(Collider other)
-     {
-         if (other.gameObject.CompareTag("Pad"))
-         {
-             other.GetComponent<VFXColor>().Hit(180, 5);
-             ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
-         }
-     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pad"))
+        {
+            other.GetComponent<VFXColor>().Hit(180, 5);
+            ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
+        }
+        print(other.gameObject.name);
+    }
+
 }

@@ -18,6 +18,7 @@ public class RadialMenu : MonoBehaviour
     public Animator radialAnim;
     public GameObject radialMenu;
 
+    Color_Picker colorPicker;
     private void Awake()
     {
         if (TypeUp != null)
@@ -25,6 +26,8 @@ public class RadialMenu : MonoBehaviour
             TypeUp.isOn = isOnTypeUp;
             TypeUp.isOn = !TypeDown.isOn;
         }
+
+        colorPicker = GameObject.Find("ControllerGrp").GetComponentInChildren<Color_Picker>(true);
     }
     private void Update()
     {
@@ -79,6 +82,7 @@ public class RadialMenu : MonoBehaviour
             isOnColor = true;
             isOnSecondGroup = true;
             radialAnim.Play("Color_On");
+            colorPicker.fcp = gameObject.GetComponentInChildren<FlexibleColorPicker>(true);
         }
     }
 
@@ -89,6 +93,8 @@ public class RadialMenu : MonoBehaviour
             isOnColor = false;
             isOnSecondGroup = false;
             radialAnim.Play("Color_Off");
+            foreach (var outline in gameObject.transform.parent.parent.GetComponentsInChildren<Outline>()) outline.enabled = false;
+            colorPicker.materials.RemoveAll(material => true);
         }
     }
 

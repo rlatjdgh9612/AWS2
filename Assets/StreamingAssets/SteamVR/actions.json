@@ -74,6 +74,14 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/xButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/yButton",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -197,7 +205,9 @@
       "/actions/default/in/MainMenu": "Main Menu",
       "/actions/default/in/MainMenu2": "Main Menu_2",
       "/actions/default/in/GetMetro": "GetMetro",
-      "/actions/default/in/GetRecorder": "GetRecorder"
+      "/actions/default/in/GetRecorder": "GetRecorder",
+      "/actions/default/in/xButton": "xButton",
+      "/actions/default/in/yButton": "yButton"
     }
   ]
 }

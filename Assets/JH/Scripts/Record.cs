@@ -48,8 +48,6 @@ public struct Loop
 public class Record : MonoBehaviour
 {
     private List<TriggerEnterEvent> record;
-    
-    [SerializeField] private GameObject grab;
 
     [Tooltip("녹음버튼 누른시간")]
     public float recordStartTime;
@@ -75,6 +73,7 @@ public class Record : MonoBehaviour
 
     public GameObject nodeUIprefab;
     public GameObject loopGroup;
+    public GameObject deleteGroup;
 
     const float TRACKGROUP_HEIGHT = 1.2f;
     const float TRACKGROUP_WIDTH = 4f;
@@ -140,7 +139,6 @@ public class Record : MonoBehaviour
             loop.transform.rotation = transform.rotation;
             loop.GetComponent<RecordPlayer>().recordLoop = recordLoop;
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.165f, transform.position.z);
-            grab.transform.position = new Vector3(grab.transform.position.x, grab.transform.position.y - 0.165f, grab.transform.position.z);
 
             // Track을 Loop그룹으로 전달
             Image cloneTrack = Instantiate(trackGroup.gameObject, trackGroup.transform.parent).GetComponent<Image>();
@@ -148,6 +146,17 @@ public class Record : MonoBehaviour
             cloneTrack.rectTransform.localPosition = new Vector2(80, 0);
             cloneTrack.rectTransform.localRotation = Quaternion.identity;
             trackGroup.rectTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
+
+            // Loop그룹으로 전달된 Track 우측에 Delete Object 생성
+            GameObject deleteObj = Instantiate(deleteGroup);
+            deleteObj.transform.parent = cloneTrack.transform;
+            deleteObj.transform.localRotation = Quaternion.identity;
+            deleteObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(1.5f, 0);
+
+            // delete z포지션 리셋
+            Vector3 deletePosition = deleteObj.transform.localPosition;
+            deletePosition.z = 0;
+            deleteObj.transform.localPosition = deletePosition;
 
             // 레코드 Track node 초기화 부분
             Transform trackTile = trackGroup.transform.GetChild(0);
