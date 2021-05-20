@@ -55,7 +55,6 @@ public class Record : MonoBehaviour
     public bool isCounting;
 
     // Recorder count setting
-    public bool sdfsdf = true;
     public Image recorderPlayImg;
     public Text recorderCountText;
 
@@ -121,6 +120,8 @@ public class Record : MonoBehaviour
         if (!isRecording)
         {
             recorderPlayImg.enabled = true;
+            prevRowNote = -1;
+            prevTopNote = -1;
             recordBgTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
             recordingTime = 0;
             record = new List<TriggerEnterEvent>();
@@ -167,7 +168,10 @@ public class Record : MonoBehaviour
         }
     }
 
-    public void AddPressButtonEvent(TriggerEnterEvent padEvent)
+    int prevRowNote;
+    int prevTopNote;
+
+    public void AddPressButtonEvent(TriggerEnterEvent padEvent, Color padColor)
     {
         if (!isRecording)
         {
@@ -175,14 +179,45 @@ public class Record : MonoBehaviour
         }
         record.Add(padEvent);
 
+        int lowestNote = record.Min(note => note.padIndex);
+        int highestNote = record.Max(note => note.padIndex);
+        int rowCount = Mathf.Max(highestNote - lowestNote + 1, 5);
+
         // Track node 출력 부분
         GameObject temp = Instantiate(nodeUIprefab, recordBg.rectTransform);
-        temp.GetComponent<RectTransform>().sizeDelta = new Vector2((padEvent.length / SECONDS * TRACKGROUP_WIDTH), TRACKGROUP_HEIGHT / padCount);
-        temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((padEvent.timeOffset * TRACKGROUP_WIDTH / SECONDS), (-TRACKGROUP_HEIGHT / padCount) * padEvent.padIndex);
+        float noteHeight = TRACKGROUP_HEIGHT / rowCount;
+        temp.GetComponent<RectTransform>().sizeDelta = new Vector2((padEvent.length / SECONDS * TRACKGROUP_WIDTH) * 2, noteHeight);
+        temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((padEvent.timeOffset * TRACKGROUP_WIDTH / SECONDS), -(noteHeight * (highestNote - padEvent.padIndex)));
+        
+        //recordBg.uvRect = new Rect(0, 0, 50, noteHeight);
+        
+        temp.gameObject.name = padEvent.padIndex.ToString();
         temp.SetActive(true);
-
+        temp.GetComponent<Image>().color = padColor;
+        if (prevRowNote != lowestNote) SortingHeight(highestNote, noteHeight);
+        if (prevTopNote != highestNote) SortingHeight(highestNote, noteHeight);
+        prevTopNote = highestNote;
+        prevRowNote = lowestNote;
         // 민찬
         //DataManager.Instance.OnRecordSave(padEvent.sound.name, padEvent.timeoffset, padEvent.length, padEvent.startTime);
+    }
+
+    public void SortingHeight(int highestNote, float noteHeight)
+    {
+        Vector2 temp;
+        recordBg.GetComponentsInChildren<Image>()
+            .Where(x => x.tag == "Node")
+            .ToList()
+            .ForEach(note =>
+            {
+                temp = note.rectTransform.sizeDelta;
+                temp.y = noteHeight;
+                note.rectTransform.sizeDelta = temp;
+
+                temp = note.rectTransform.anchoredPosition;
+                temp.y = -(noteHeight * (highestNote - int.Parse(note.gameObject.name)));
+                note.rectTransform.anchoredPosition = temp;
+            });
     }
 
     [ContextMenu("PrintLoopInfo")]

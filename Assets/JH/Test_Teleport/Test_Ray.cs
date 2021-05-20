@@ -18,7 +18,6 @@ public class Test_Ray : MonoBehaviour
     {
         if (leftTrigger.GetStateDown(SteamVR_Input_Sources.LeftHand))
         {
-            Ray ray;
             RaycastHit hit;
 
             if (Physics.Raycast(RayPos.transform.position, RayPos.transform.forward, out hit, 10.0f) && hit.transform.tag == "Pad")

@@ -13,16 +13,14 @@ public class Teleport : MonoBehaviour
     //private SteamVR_Behaviour_Pose m_Pose = null;
     private bool hasPosition = false;
     private bool isTeleporting = false;
-    private bool isRotate = false;
     private float fadeTime = 0.5f;
     private float angle = 45;
 
     private int floor;
-    private float defaultDistance = 15.0f;
 
     private void Awake()
     {
-        
+
     }
 
     private void Start()
@@ -37,20 +35,9 @@ public class Teleport : MonoBehaviour
         pointer.SetActive(hasPosition);
 
         // Teleport
-        if (Controller.Instance.Trigger.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            TryTeleport();
-        }
-
-        if (Controller.Instance.TurnRight.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            StartCoroutine(RotateRig(angle));
-        }
-
-        if (Controller.Instance.TurnLeft.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            StartCoroutine(RotateRig(-angle));
-        }
+        if (Controller.Instance.Trigger.GetStateDown(SteamVR_Input_Sources.RightHand)) TryTeleport();
+        if (Controller.Instance.TurnRight.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(angle));
+        if (Controller.Instance.TurnLeft.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(-angle));
     }
 
     private void TryTeleport()

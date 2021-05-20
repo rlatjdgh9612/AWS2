@@ -9,14 +9,17 @@ using Valve.VR;
 public class ControllerPadHit : MonoBehaviour
 {
     [SerializeField] private GameObject ball;
-    
-     private void OnTriggerEnter(Collider other)
-     {
-         if (other.gameObject.CompareTag("Pad"))
-         {
-             other.GetComponent<VFXColor>().Hit(180, 10);
-             ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
-         }
-     }
-    
+
+    public Record recorder;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pad"))
+        {
+            other.GetComponent<VFXColor>().Hit(180, 10);
+            ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
+            //recorder.padCount = other.GetComponentInParent<Instrument>().padList.Length;
+        }
+    }
+
 }

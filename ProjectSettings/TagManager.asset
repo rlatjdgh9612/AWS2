@@ -13,6 +13,7 @@ TagManager:
   - Metronome
   - projectile
   - FxTemporaire
+  - Node
   layers:
   - Default
   - TransparentFX

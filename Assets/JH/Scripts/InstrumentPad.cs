@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class InstrumentPad : MonoBehaviour
 {
     TriggerEnterEvent triggerEvent;
+    Renderer padRend;
 
     [SerializeField]
     public AudioClip sound;
@@ -21,6 +22,7 @@ public class InstrumentPad : MonoBehaviour
     {
         if (note == null) note = gameObject.AddComponent<AudioSource>();
 
+        padRend = GetComponent<Renderer>();
         note.clip = sound;
     }
 
@@ -45,7 +47,7 @@ public class InstrumentPad : MonoBehaviour
         if (other.gameObject.tag == "Controller")
         {
             triggerEvent.OnTriggerExit();
-            Record.Instance.AddPressButtonEvent(triggerEvent);
+            Record.Instance.AddPressButtonEvent(triggerEvent, padRend.material.GetColor("_EmissionColor"));
 
         }
     }
