@@ -175,14 +175,40 @@ public class Record : MonoBehaviour
         }
         record.Add(padEvent);
 
+        int lowestNote = record.Min(note => note.padIndex);
+        int highestNote = record.Max(note => note.padIndex);
+        int rowCount = Mathf.Max(highestNote - lowestNote + 1, 5);
+
         // Track node 출력 부분
         GameObject temp = Instantiate(nodeUIprefab, recordBg.rectTransform);
-        temp.GetComponent<RectTransform>().sizeDelta = new Vector2((padEvent.length / SECONDS * TRACKGROUP_WIDTH), TRACKGROUP_HEIGHT / padCount);
-        temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((padEvent.timeOffset * TRACKGROUP_WIDTH / SECONDS), (-TRACKGROUP_HEIGHT / padCount) * padEvent.padIndex);
+        float noteHeight = TRACKGROUP_HEIGHT / rowCount;
+        temp.GetComponent<RectTransform>().sizeDelta = new Vector2((padEvent.length / SECONDS * TRACKGROUP_WIDTH), noteHeight);
+        temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((padEvent.timeOffset * TRACKGROUP_WIDTH / SECONDS), -(TRACKGROUP_HEIGHT - noteHeight * (padEvent.padIndex - lowestNote)));
+        temp.gameObject.name = padEvent.padIndex.ToString();
         temp.SetActive(true);
+        // rowCount가 바뀔때만 함수가 실행되게 만들어야함
+        //if (rowCount == rowCount ?.  : SortingHeight(lowestNote, noteHeight));
+        SortingHeight(lowestNote, noteHeight);
 
         // 민찬
         //DataManager.Instance.OnRecordSave(padEvent.sound.name, padEvent.timeoffset, padEvent.length, padEvent.startTime);
+    }
+
+    public void SortingHeight(int lowestNote, float noteHeight)
+    {
+        Vector2 temp;
+        recordBg.GetComponentsInChildren<Image>()
+            .Where(x => x.tag == "Node")
+            .ToList()
+            .ForEach(note => {
+                temp = note.rectTransform.sizeDelta;
+                temp.y = noteHeight;
+                note.rectTransform.sizeDelta = temp;
+
+                temp = note.rectTransform.anchoredPosition;
+                temp.y = -(TRACKGROUP_HEIGHT - noteHeight * (int.Parse(note.gameObject.name) - lowestNote));
+                note.rectTransform.anchoredPosition = temp;
+            });
     }
 
     [ContextMenu("PrintLoopInfo")]

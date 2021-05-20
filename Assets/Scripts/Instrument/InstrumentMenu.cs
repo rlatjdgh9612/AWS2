@@ -46,7 +46,7 @@ public class InstrumentMenu : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (Controller.Instance.Select.GetState(SteamVR_Input_Sources.RightHand))
+            if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand))
             {
                 other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
             }

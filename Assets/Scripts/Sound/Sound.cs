@@ -8,8 +8,6 @@ using Valve.VR;
 
 public class Sound : MonoBehaviour
 {
-    public SteamVR_Action_Boolean select;
-
     private bool isPlay = false;
 
     // Start is called before the first frame update
@@ -53,7 +51,7 @@ public class Sound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (select.GetState(SteamVR_Input_Sources.RightHand))
+            if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand))
             {
                 InputSound(this.gameObject, other.gameObject);
                 other.gameObject.GetComponent<ControllerSound>().RightBall.GetComponent<PlayerBall>().ColorChange(true);

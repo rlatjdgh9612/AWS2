@@ -17,7 +17,7 @@ public class ControllerSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
+        if (Controller.Instance.Menu2.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
             SoundInputFail(false);
         }
@@ -59,7 +59,7 @@ public class ControllerSound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsPadTouch)
+            if (Controller.Instance.Menu2.GetStateUp(SteamVR_Input_Sources.RightHand) && Controller.Instance.IsPadTouch)
             {
                 SoundOutput(other.gameObject, false);
             }

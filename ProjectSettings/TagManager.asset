@@ -13,6 +13,9 @@ TagManager:
   - Metronome
   - projectile
   - FxTemporaire
+  - Sample
+  - RampHead
+  - Menu
   layers:
   - Default
   - TransparentFX
@@ -26,7 +29,7 @@ TagManager:
   - Glow
   - Floor
   - InstrumentPoint
-  - 
+  - Pad
   - 
   - 
   - 

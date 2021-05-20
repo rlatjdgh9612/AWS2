@@ -1,141 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
 public class ControllerTransform : MonoBehaviour
 {
-    public enum HandState
-    {
-        None,
-        Left,
-        Right
-    }
-
-    public HandState handState = HandState.None;
-
     [SerializeField] private Transform leftBall;
     [SerializeField] private Transform rightBall;
     [SerializeField] private Transform instrumentParent;
     [SerializeField] private Transform menuParent;
-    [SerializeField] private Transform sampleAudio;
-    [SerializeField] private Transform ramp;
-
-    private bool isScale = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        RightOrLeft();
-    }
-    
-    private bool RightOrLeft()
-    {
-        if (gameObject.name == Controller.WhichIsHand.rightHand)
-        {
-            handState = HandState.Right;
-            return true;
-        }
-        else if(gameObject.name == Controller.WhichIsHand.leftHand)
-        {
-            handState = HandState.Left;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    [SerializeField] private Transform sampleParent;
+    [SerializeField] private Transform rampParent;
 
     // Update is called once per frame
     void Update()
     {
-        switch (handState)
+        switch (Controller.Instance.GrabStates)
         {
-            case HandState.Left:
-                UpdateLeft();
+            case Controller.GrabState.Grab:
+            case Controller.GrabState.RightGrab:
+            case Controller.GrabState.LeftGrab:
+                UpdateGrab();
                 break;
-            case HandState.Right:
-                UpdateRight();
+            case Controller.GrabState.Scale:
+                UpdateScale();
                 break;
         }
     }
 
-    void UpdateLeft()
+    void UpdateGrab()
     {
-        // 스케일
-        ScaleChange(SteamVR_Input_Sources.LeftHand, SteamVR_Input_Sources.RightHand, Controller.Instance.RightScalePos, Controller.Instance.LeftScalePos, Controller.Instance.IsRightScale, Controller.Instance.IsLeftScale, Controller.Instance.RightInst, Controller.Instance.LeftInst);
-
-        if (isScale)
+        if (this.gameObject.name == Controller.WhichIsHand.rightHand)
         {
-            return;
+            TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightGrab, Controller.Instance.GrabRightObj);
         }
         
-        // 악기
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftPadGrab, Controller.Instance.LeftGrabPad, instrumentParent);
-        
-        // 메트로놈
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftMetronomGrab, Controller.Instance.LeftMetronomGrab, null);
-        
-        // 레코더
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftRecorderGrab, Controller.Instance.LeftRecorderGrab, null);
-        
-        // 메뉴
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftMenuGrab, Controller.Instance.LeftMenuGrab, menuParent);
-        
-        // 샘플오디오
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftSampleGrab, Controller.Instance.LeftSampleGrab, sampleAudio);
-        
-        //램프바닥
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftRampBottomGrab, Controller.Instance.LeftRampBottomGrab, null);
-        
-        //램프탑
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftRampTopGrab, Controller.Instance.LeftRampTopGrab, ramp);
-        
-        //루프
-        TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftLoopGrab, Controller.Instance.LeftLoopGrab, null);
-    }
-
-    void UpdateRight()
-    {
-        // 스케일
-        ScaleChange(SteamVR_Input_Sources.LeftHand, SteamVR_Input_Sources.RightHand, Controller.Instance.RightScalePos, Controller.Instance.LeftScalePos, Controller.Instance.IsRightScale, Controller.Instance.IsLeftScale, Controller.Instance.RightInst, Controller.Instance.LeftInst);
-        
-        if (isScale)
+        if (this.gameObject.name == Controller.WhichIsHand.leftHand)
         {
-            return;
+            TransformChange(SteamVR_Input_Sources.LeftHand, Controller.Instance.IsLeftGrab, Controller.Instance.GrabLeftObj);
         }
-        
-        // 악기
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightPadGrab, Controller.Instance.RightGrabPad, instrumentParent);
-        
-        // 메트로놈
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightMetronomGrab, Controller.Instance.RightMetronomGrab, null);
-        
-        // 레코더
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightRecorderGrab, Controller.Instance.RightRecorderGrab, null);
-        
-        // 메뉴
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightMenuGrab, Controller.Instance.RightMenuGrab, menuParent);
-        
-        // 샘플오디오
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightSampleGrab, Controller.Instance.RightSampleGrab, sampleAudio);
-        
-        //램프바닥
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightRampBottomGrab, Controller.Instance.RightRampBottomGrab, null);
-        
-        //램프탑
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightRampTopGrab, Controller.Instance.RightRampTopGrab, ramp);
-        
-        //루프
-        TransformChange(SteamVR_Input_Sources.RightHand, Controller.Instance.IsRightLoopGrab, Controller.Instance.RightLoopGrab, null);
     }
 
-    void TransformChange(SteamVR_Input_Sources hand, bool isGrab, GameObject grabObject, Transform originParent)
+    void TransformChange(SteamVR_Input_Sources hand, bool isGrab, GameObject grabObj)
     {
         if (Controller.Instance.Grab.GetState(hand) && isGrab)
         {
-            if (grabObject == null)
+            if (grabObj == null)
             {
                 Debug.LogError("Grab Object is null");
                 return;
@@ -146,65 +57,96 @@ public class ControllerTransform : MonoBehaviour
                 return;
             }
 
-            grabObject.transform.parent = gameObject.transform;
+            grabObj.transform.parent = gameObject.transform;
         }
-
-        if (Controller.Instance.Grab.GetStateUp(hand) && isGrab)
+        else if (Controller.Instance.Grab.GetStateUp(hand) && isGrab)
         {
-            grabObject.transform.parent = originParent;
-            grabObject = null;
+            if (gameObject.transform.childCount != 0)
+            {
+                if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("Sample"))
+                {
+                    grabObj.transform.parent = sampleParent;
+                }
+                else if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("Instrument"))
+                {
+                    grabObj.transform.parent = instrumentParent;
+                }
+                else if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("Menu"))
+                {
+                    grabObj.transform.parent = menuParent;
+                }
+                else if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("RampHead"))
+                {
+                    grabObj.transform.parent = rampParent;
+                }
+                else
+                {
+                    grabObj.transform.parent = null;
+                }
+            }
+
+            if (this.gameObject.name == Controller.WhichIsHand.rightHand)
+            {
+                Controller.Instance.GrabStates = Controller.GrabState.Grab;
+                Controller.Instance.IsRightGrab = false;
+                Controller.Instance.GrabRightObj = null;
+            }
+            else if (this.gameObject.name == Controller.WhichIsHand.leftHand)
+            {
+                Controller.Instance.GrabStates = Controller.GrabState.Grab;
+                Controller.Instance.IsLeftGrab = false;
+                Controller.Instance.GrabLeftObj = null;
+            }
         }
     }
+    
+    void UpdateScale()
+    {
+        ScaleChange(SteamVR_Input_Sources.RightHand, SteamVR_Input_Sources.LeftHand, Controller.Instance.IsRightScale, Controller.Instance.IsLeftScale, Controller.Instance.ScaleObj);
+    }
 
-    void ScaleChange(SteamVR_Input_Sources hand1, SteamVR_Input_Sources hand2, Vector3 rightScalePos, Vector3 leftScalePos, bool isRightScale, bool isLeftScale, GameObject rightObj, GameObject leftObj)
+    void ScaleChange(SteamVR_Input_Sources hand1, SteamVR_Input_Sources hand2, bool isRightScale, bool isLeftScale, GameObject scaleObj)
     {
         if (Controller.Instance.Grab.GetState(hand1) && Controller.Instance.Grab.GetState(hand2) && isRightScale && isLeftScale)
         {
-            if (rightObj == null || leftObj == null)
+            if (scaleObj == null)
             {
                 Debug.LogError("Scale Obj is null");
                 return;
             }
             
-            if (rightObj == leftObj)
+            if (gameObject.transform.childCount > 0)
             {
-                GameObject inst = rightObj;
-                
-                float instDist = Vector3.Distance(rightScalePos, leftScalePos);
-                float clampinstDist = Mathf.Clamp01(instDist);
-                Debug.Log(clampinstDist);
+                return;
+            }
 
-                float ballDist = Vector3.Distance(rightBall.transform.position, leftBall.transform.position);
-                float clampBallDist = Mathf.Clamp01(ballDist);
-                Debug.Log(clampBallDist);
-                
-                isScale = true;
+            if (gameObject.transform.childCount != 0)
+            {
+                scaleObj.transform.parent = instrumentParent;
+            }
 
-                if (rightObj.transform.localScale.x >= 0.7f && rightObj.transform.localScale.x <= 1.0f)
-                {
-                    rightObj.transform.localScale = new Vector3(clampBallDist, clampBallDist, clampBallDist);
-                }
-                else if (rightObj.transform.localScale.x < 0.7f)
-                {
-                    rightObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                }
-                else if (rightObj.transform.localScale.x > 1.0f)
-                {
-                    rightObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                }
+            float ballDist = Vector3.Distance(rightBall.transform.position, leftBall.transform.position);
+            float clampBallDist = Mathf.Clamp(ballDist, 0.5f, 1.0f);
+
+            if (scaleObj.transform.localScale.x >= 0.5f && scaleObj.transform.localScale.x <= 1.0f)
+            {
+                scaleObj.transform.localScale = new Vector3(clampBallDist, clampBallDist, clampBallDist);
+            }
+            else if (scaleObj.transform.localScale.x < 0.5f)
+            {
+                scaleObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else if (scaleObj.transform.localScale.x > 1.0f)
+            {
+                scaleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
-
-        if (Controller.Instance.Grab.GetStateUp(hand1) || Controller.Instance.Grab.GetStateUp(hand2) && isScale)
+        else if (Controller.Instance.Grab.GetStateUp(hand1) || Controller.Instance.Grab.GetStateUp(hand2))
         {
-            isScale = false;
-
-            Controller.Instance.RightScalePos = Vector3.zero;
-            Controller.Instance.LeftScalePos = Vector3.zero;
+            Controller.Instance.GrabStates = Controller.GrabState.Grab;
             Controller.Instance.IsRightScale = false;
             Controller.Instance.IsLeftScale = false;
-            Controller.Instance.RightInst = null;
-            Controller.Instance.LeftInst = null;
+            Controller.Instance.ScaleObj = null;
         }
     }
 }

@@ -38,12 +38,20 @@ public class VFXbase : MonoBehaviour
         switch (this.ripplestate)
         {
             case SineState.On:
+                if (sine == null)
+                {
+                    return;
+                }
                 sine.Frequency = 0.3f;
                 sine.Amplitude = 0.1f;
                 sine.Speed = 2 * velocity;
                 break;
 
             case SineState.Off:
+                if (sine == null)
+                {
+                    return;
+                }
                 sine.Frequency = 0;
                 sine.Amplitude = 0;
                 sine.Speed = 0;

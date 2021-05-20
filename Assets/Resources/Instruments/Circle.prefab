@@ -2303,8 +2303,8 @@ GameObject:
   - component: {fileID: 6720904712863328952}
   - component: {fileID: 4104627214400310119}
   - component: {fileID: 7637610092564148053}
-  - component: {fileID: 8972883909039920139}
   - component: {fileID: 8054169377541290001}
+  - component: {fileID: 3510379716542155131}
   m_Layer: 0
   m_Name: 01-1
   m_TagString: Pad
@@ -14026,18 +14026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5675bd50b0debbe4ca59000fe477199b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8972883909039920139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211382316828897739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9ab8d8c1117e347a09d6ce47fcfa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8054169377541290001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14056,6 +14044,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &3510379716542155131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211382316828897739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73177e56d7b3f2e48afe7b0c9f60146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3890106247295522911
 GameObject:
   m_ObjectHideFlags: 0

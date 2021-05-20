@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,6 @@ public class RampRay : MonoBehaviour
     private float dist;
     private float multDist;
     [SerializeField] private Camera playerCam;
-    [SerializeField] private GameObject pointMarker;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +37,7 @@ public class RampRay : MonoBehaviour
                 {
                     return;
                 }
-                
+
                 char divide = '_';
                 string[] split = hit.transform.gameObject.GetComponent<AudioSource>().clip.name.Split(divide);
                 string name1 = split[split.Length - 2];
@@ -54,10 +52,10 @@ public class RampRay : MonoBehaviour
 
                 dist = Vector3.Distance(transform.position, hit.point);
                 multDist = Mathf.Pow(dist * 2.0f, 5.0f);
-                
+
                 soundInfo.GetComponentInChildren<Text>().text = fullName;
-                soundInfo.GetComponentInChildren<Text>().color = new Color(1.0f, 1.0f, 1.0f, (255.0f/multDist)/255.0f);
-                soundInfo.GetComponentInChildren<Image>().color = new Color(0.0f,225.0f/255.0f,1.0f,(255.0f/multDist)/255.0f);
+                soundInfo.GetComponentInChildren<Text>().color = new Color(1.0f, 1.0f, 1.0f, ((255.0f/multDist)/255.0f)*2);
+                soundInfo.GetComponentInChildren<Image>().color = new Color(0.0f,225.0f/255.0f,1.0f,((255.0f/multDist)/255.0f)*2);
                 soundInfo.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.1f, hit.transform.position.z);
                 soundInfo.transform.rotation = Quaternion.Euler(soundInfo.transform.eulerAngles.x, playerCam.transform.eulerAngles.y, soundInfo.transform.eulerAngles.z);
             }
