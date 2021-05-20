@@ -10,23 +10,20 @@ public class TypeChangeManager : MonoBehaviour
     #region 변수들
 
     List<string> typeInst = new List<string>(3);
-    
+
     // 타입 바꾸려고 하는 오디오소스
     [SerializeField] private GameObject[] sounds;
-    //
-    
+
     private string instName;
     private string typeName;
     private string typeFolder;
 
-    private bool isActivate = false;
-    
     private const string path = "Sounds";
 
     private bool isClassic = false;
     private bool isElectric = false;
     private int instCount;
-    
+
     #endregion
 
     private void Start()
@@ -38,33 +35,22 @@ public class TypeChangeManager : MonoBehaviour
         typeInst.Add("Piano");
 
         #endregion
-        
-        if (GetComponentInParent<Instrument>().padList == null)
-        {
-            return;
-        }
+
+        if (GetComponentInParent<Instrument>().padList == null) return;
 
         instCount = GetComponentInParent<Instrument>().padList.Length;
         sounds = new GameObject[instCount];
-        
+
         for (int i = 0; i < instCount; i++)
         {
             sounds[i] = GetComponentInParent<Instrument>().padList[i].gameObject;
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void OnToClassicTypeChange()
     {
-        if (isClassic)
-        {
-            return;
-        }
-        
+        if (isClassic) return;
+
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
@@ -73,11 +59,8 @@ public class TypeChangeManager : MonoBehaviour
 
     public void OnToElectricTypeChange()
     {
-        if (isElectric)
-        {
-            return;
-        }
-        
+        if (isElectric) return;
+
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
@@ -94,7 +77,6 @@ public class TypeChangeManager : MonoBehaviour
 
         if (!soundClip)
         {
-            Debug.LogError("Resources Load Error! FilePath = " + resourcePath);
             return null;
         }
 
@@ -111,23 +93,23 @@ public class TypeChangeManager : MonoBehaviour
             if (typeInst[i] == splite.First())
             {
                 instName = typeInst[i];
-                
+
                 if (splite[1] == "Grand" || splite[1] == "Classic")
                 {
                     typeFolder = instName + "Electric";
                     typeName = "Electric";
-                    
+
                     isClassic = true;
                     isElectric = false;
-                } 
+                }
                 else if (splite[1] == "Electric")
                 {
                     typeFolder = instName + "Classic";
-                    
+
                     if (instName == "Piano")
                     {
                         typeName = "Grand";
-                    } 
+                    }
                     else if (instName == "Guitar" || instName == "Bass")
                     {
                         typeName = "Classic";
@@ -142,11 +124,8 @@ public class TypeChangeManager : MonoBehaviour
         string resourcePath = path + slash + typeFolder + slash + instName + divide + typeName + divide + splite[2] +
                        divide + splite[3];
 
-        Debug.Log(resourcePath);
         return resourcePath;
-        
     }
-
     #endregion
-    
+
 }

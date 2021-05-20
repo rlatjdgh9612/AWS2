@@ -20,36 +20,19 @@ public class InstrumentMenu : MonoBehaviour
         get => findName;
         set => findName = value;
     }
-    
+
     private GameObject instrumentMarker;
 
-    private bool isTouch = false;
-    
-    // Start is called before the first frame update
     void Start()
     {
         instrumentMarker = GameObject.Find("InstrumentMarker").transform.Find(findName).gameObject;
-
-        if (!instrumentMarker)
-        {
-            Debug.LogError("Instrument Load Error");
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Controller"))
         {
-            if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand))
-            {
-                other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
-            }
+            if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand)) other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
         }
     }
 }
