@@ -325,6 +325,15 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/y"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/mainmenu2"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
             }
          ]
       },
@@ -360,7 +369,7 @@
    "category" : "steamvr_input",
    "controller_type" : "oculus_touch",
    "description" : "",
-   "name" : "My AWS Project [Testing] configuration for Oculus Touch",
+   "name" : "My [Testing] AWS Project configuration for Oculus Touch",
    "options" : {},
    "simulated_actions" : []
 }

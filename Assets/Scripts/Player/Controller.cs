@@ -21,12 +21,17 @@ public class Controller : MonoBehaviour
         instance = this;
     }
 
+    #region 오른쪽 왼쪽 구분 게임 오브젝트 네임을 기준으로
+
     public struct WhichIsHand
     {
         public const string rightHand = "ControllerRight";
         public const string leftHand = "ControllerLeft";
     }
 
+    #endregion
+
+    [Header ("Controller Key")]
     #region 컨트롤러 키 선언
     
     [SerializeField] private SteamVR_Action_Boolean select;
@@ -58,6 +63,8 @@ public class Controller : MonoBehaviour
     
     #endregion
 
+    [Space(10f)]
+    [Header ("Sound")]
     #region 사운드 할당과 악기 생성시 셀렉트(텔레포트) 버튼 사용을 구분짓기 위한 불값 저장소
     
     [SerializeField] private bool isPadTouch = false;
@@ -69,305 +76,78 @@ public class Controller : MonoBehaviour
     
     #endregion
 
-    #region 악기의 그랩을 위한 불 값과 게임 오브젝트 저장소
-    
-    [SerializeField] private bool isRightPadGrab = false;
-    public bool IsRightPadGrab
+    [Space (10f)]
+    [Header ("Grab")]
+    #region 그립 정보 저장소
+
+    [SerializeField] private bool isRightGrab = false;
+    public bool IsRightGrab
     {
-        get => isRightPadGrab;
-        set => isRightPadGrab = value;
-    }
-        
-    [SerializeField] private bool isLeftPadGrab = false;
-    public bool IsLeftPadGrab
-    {
-        get => isLeftPadGrab;
-        set => isLeftPadGrab = value;
-    }
-        
-    [SerializeField] private GameObject rightGrabPad = null;
-    public GameObject RightGrabPad
-    {
-        get => rightGrabPad;
-        set => rightGrabPad = value;
-    }
-        
-    [SerializeField] private GameObject leftGrabPad = null;
-    public GameObject LeftGrabPad
-    {
-        get => leftGrabPad;
-        set => leftGrabPad = value;
+        get => isRightGrab;
+        set => isRightGrab = value;
     }
     
-    #endregion
-
-    #region 메트로놈의 그랩을 위한 불 값과 게임 오브젝트 저장소
-
-    [SerializeField] private bool isRightMetronomGrab = false;
-    public bool IsRightMetronomGrab
+    [SerializeField] private bool isLeftGrab = false;
+    public bool IsLeftGrab
     {
-        get => isRightMetronomGrab;
-        set => isRightMetronomGrab = value;
+        get => isLeftGrab;
+        set => isLeftGrab = value;
     }
-        
-    [SerializeField] private bool isLeftMetronomGrab = false;
-    public bool IsLeftMetronomGrab
+
+    [SerializeField] private GameObject grabRightObj = null;
+    public GameObject GrabRightObj
     {
-        get => isLeftMetronomGrab;
-        set => isLeftMetronomGrab = value;
+        get => grabRightObj;
+        set => grabRightObj = value;
     }
     
-    [SerializeField] private GameObject rightMetronomGrab = null;
-    public GameObject RightMetronomGrab
+    [SerializeField] private GameObject grabLeftObj = null;
+    public GameObject GrabLeftObj
     {
-        get => rightMetronomGrab;
-        set => rightMetronomGrab = value;
-    }
-        
-    [SerializeField] private GameObject leftMetronomGrab = null;
-    public GameObject LeftMetronomGrab
-    {
-        get => leftMetronomGrab; 
-        set => leftMetronomGrab = value;
-    }
-
-    #endregion
-
-    #region 레코더의 그랩을 위한 불 값과 게임 오브젝트 저장소
-
-    [SerializeField] private bool isRightRecorderGrab = false;
-    public bool IsRightRecorderGrab
-    {
-        get => isRightRecorderGrab;
-        set => isRightRecorderGrab = value;
-    }
-            
-    [SerializeField] private bool isLeftRecorderGrab = false;
-    public bool IsLeftRecorderGrab
-    {
-        get => isLeftRecorderGrab;
-        set => isLeftRecorderGrab = value;
-    }
-        
-    [SerializeField] private GameObject rightRecorderGrab = null;
-    public GameObject RightRecorderGrab
-    {
-        get => rightRecorderGrab;
-        set => rightRecorderGrab = value;
-    }
-            
-    [SerializeField] private GameObject leftRecorderGrab = null;
-    public GameObject LeftRecorderGrab
-    {
-        get => leftRecorderGrab; 
-        set => leftRecorderGrab = value;
+        get => grabLeftObj;
+        set => grabLeftObj = value;
     }
 
     #endregion
     
-    #region 메뉴의 그랩을 위한 불 값과 게임 오브젝트 저장소
+    #region 그립 상태머신 저장소
 
-    [SerializeField] private bool isRightMenuGrab = false;
-    public bool IsRightMenuGrab
+    public enum GrabState
     {
-        get => isRightMenuGrab;
-        set => isRightMenuGrab = value;
+        Grab,
+        RightGrab,
+        LeftGrab,
+        Scale
     }
-            
-    [SerializeField] private bool isLeftMenuGrab = false;
-    public bool IsLeftMenuGrab
+
+    [SerializeField] private GrabState grabState = GrabState.Grab;
+    public GrabState GrabStates
     {
-        get => isLeftMenuGrab;
-        set => isLeftMenuGrab = value;
-    }
-        
-    [SerializeField] private GameObject rightMenuGrab = null;
-    public GameObject RightMenuGrab
-    {
-        get => rightMenuGrab;
-        set => rightMenuGrab = value;
-    }
-            
-    [SerializeField] private GameObject leftMenuGrab = null;
-    public GameObject LeftMenuGrab
-    {
-        get => leftMenuGrab; 
-        set => leftMenuGrab = value;
+        get => grabState;
+        set => grabState = value;
     }
 
     #endregion
     
-    #region 샘플오디오의 그랩을 위한 불 값과 게임 오브젝트 저장소
-
-    [SerializeField] private bool isRightSampleGrab = false;
-    public bool IsRightSampleGrab
-    {
-        get => isRightSampleGrab;
-        set => isRightSampleGrab = value;
-    }
-            
-    [SerializeField] private bool isLeftSampleGrab = false;
-    public bool IsLeftSampleGrab
-    {
-        get => isLeftSampleGrab;
-        set => isLeftSampleGrab = value;
-    }
-        
-    [SerializeField] private GameObject rightSampleGrab = null;
-    public GameObject RightSampleGrab
-    {
-        get => rightSampleGrab;
-        set => rightSampleGrab = value;
-    }
-            
-    [SerializeField] private GameObject leftSampleGrab = null;
-    public GameObject LeftSampleGrab
-    {
-        get => leftSampleGrab; 
-        set => leftSampleGrab = value;
-    }
-
-    #endregion
-    
-    #region 램프바닥의 그랩을 위한 불 값과 게임 오브젝트 저장소
-
-    [SerializeField] private bool isRightRampBottomGrab = false;
-    public bool IsRightRampBottomGrab
-    {
-        get => isRightRampBottomGrab;
-        set => isRightRampBottomGrab = value;
-    }
-            
-    [SerializeField] private bool isLeftRampBottomGrab = false;
-    public bool IsLeftRampBottomGrab
-    {
-        get => isLeftRampBottomGrab;
-        set => isLeftRampBottomGrab = value;
-    }
-        
-    [SerializeField] private GameObject rightRampBottomGrab = null;
-    public GameObject RightRampBottomGrab
-    {
-        get => rightRampBottomGrab;
-        set => rightRampBottomGrab = value;
-    }
-            
-    [SerializeField] private GameObject leftRampBottomGrab = null;
-    public GameObject LeftRampBottomGrab
-    {
-        get => leftRampBottomGrab; 
-        set => leftRampBottomGrab = value;
-    }
-
-    #endregion
-    
-    #region 램프탑의 그랩을 위한 불 값과 게임 오브젝트 저장소
-              
-                  [SerializeField] private bool isRightRampTopGrab = false;
-                  public bool IsRightRampTopGrab
-                  {
-                      get => isRightRampTopGrab;
-                      set => isRightRampTopGrab = value;
-                  }
-                          
-                  [SerializeField] private bool isLeftRampTopGrab = false;
-                  public bool IsLeftRampTopGrab
-                  {
-                      get => isLeftRampTopGrab;
-                      set => isLeftRampTopGrab = value;
-                  }
-                      
-                  [SerializeField] private GameObject rightRampTopGrab = null;
-                  public GameObject RightRampTopGrab
-                  {
-                      get => rightRampTopGrab;
-                      set => rightRampTopGrab = value;
-                  }
-                          
-                  [SerializeField] private GameObject leftRampTopGrab = null;
-                  public GameObject LeftRampTopGrab
-                  {
-                      get => leftRampTopGrab; 
-                      set => leftRampTopGrab = value;
-                  }
-              
-                  #endregion
-                  
-    #region 루프그룹의 그랩을 위한 불 값과 게임 오브젝트 저장소
-
-    [SerializeField] private bool isRightLoopGrab = false;
-    public bool IsRightLoopGrab
-    {
-        get => isRightLoopGrab;
-        set => isRightLoopGrab = value;
-    }
-            
-    [SerializeField] private bool isLeftLoopGrab = false;
-
-    public bool IsLeftLoopGrab
-    {
-        get => isLeftLoopGrab;
-        set => isLeftLoopGrab = value;
-    }
-
-    [SerializeField] private GameObject rightLoopGrab = null;
-
-    public GameObject RightLoopGrab
-    {
-        get => rightLoopGrab;
-        set => rightLoopGrab = value;
-    }
-
-    [SerializeField] private GameObject leftLoopGrab = null;
-
-    public GameObject LeftLoopGrab
-    {
-        get => leftLoopGrab;
-        set => leftLoopGrab = value;
-    }
-
-    #endregion
-
+    [Space (10f)]
+    [Header ("Instrument Scale")]
     #region 인스트루먼트 스케일을 위한 불 값과 게임 오브젝트 저장소
 
-    [SerializeField] private Vector3 rightScalePos;
-    public Vector3 RightScalePos
+    [SerializeField] private GameObject scaleObj;
+    public GameObject ScaleObj
     {
-        get => rightScalePos;
-        set => rightScalePos = value;
-    }
-
-    [SerializeField] private GameObject rightInst;
-    public GameObject RightInst
-    {
-        get => rightInst;
-        set => rightInst = value;
+        get => scaleObj;
+        set => scaleObj = value;
     }
 
     [SerializeField] private bool isRightScale;
-
     public bool IsRightScale
     {
         get => isRightScale;
         set => isRightScale = value;
     }
     
-    [SerializeField] private Vector3 leftScalePos;
-    public Vector3 LeftScalePos
-    {
-        get => leftScalePos;
-        set => leftScalePos = value;
-    }
-
-    [SerializeField] private GameObject leftInst;
-    public GameObject LeftInst
-    {
-        get => leftInst;
-        set => leftInst = value;
-    }
-
     [SerializeField] private bool isLeftScale;
-
     public bool IsLeftScale
     {
         get => isLeftScale;

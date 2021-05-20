@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 7349822523279259420}
   m_Layer: 0
   m_Name: Roland-D-20-Disco-1-120-bpm
-  m_TagString: Untagged
+  m_TagString: Sample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2099,7 +2099,8 @@ GameObject:
   - component: {fileID: 7549424257172880723}
   - component: {fileID: 7549424257172880721}
   - component: {fileID: 7549424257172880722}
-  - component: {fileID: 7549424257172880726}
+  - component: {fileID: 7659654922132096723}
+  - component: {fileID: 1978681919113843643}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -2278,7 +2279,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7549424257172880726
+--- !u!114 &7659654922132096723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2287,7 +2288,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7549424257172880732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63356d5d4883b1f4b95ad8b5d9e3743d, type: 3}
+  m_Script: {fileID: 11500000, guid: 73177e56d7b3f2e48afe7b0c9f60146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRightScale: 0
+  isLeftScale: 0
+--- !u!114 &1978681919113843643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549424257172880732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9524080c85cae794bab51662fc155648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7729574166479450163

@@ -5,7 +5,6 @@ using Valve.VR;
 
 public class Test_Ray : MonoBehaviour
 {
-    public SteamVR_Action_Boolean leftTrigger;
     public GameObject RayPos;
     RadialMenu radial;
 
@@ -16,7 +15,7 @@ public class Test_Ray : MonoBehaviour
 
     void OnRadialMenu()
     {
-        if (leftTrigger.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        if (Controller.Instance.Trigger.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             RaycastHit hit;
 

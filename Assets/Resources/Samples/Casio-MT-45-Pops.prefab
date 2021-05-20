@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 7217627789002462132}
   m_Layer: 0
   m_Name: Casio-MT-45-Pops
-  m_TagString: Untagged
+  m_TagString: Sample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1874,7 +1874,8 @@ GameObject:
   - component: {fileID: 7217627789760510209}
   - component: {fileID: 7217627789760510211}
   - component: {fileID: 7217627789760510208}
-  - component: {fileID: 7217627789760510212}
+  - component: {fileID: 5769003583886957282}
+  - component: {fileID: 4313221166238808148}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -2053,7 +2054,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7217627789760510212
+--- !u!114 &5769003583886957282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2062,7 +2063,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7217627789760510222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63356d5d4883b1f4b95ad8b5d9e3743d, type: 3}
+  m_Script: {fileID: 11500000, guid: 73177e56d7b3f2e48afe7b0c9f60146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRightScale: 0
+  isLeftScale: 0
+--- !u!114 &4313221166238808148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217627789760510222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9524080c85cae794bab51662fc155648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7344167899903615749

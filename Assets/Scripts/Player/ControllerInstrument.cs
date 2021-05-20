@@ -23,7 +23,7 @@ public class ControllerInstrument : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Controller.Instance.Select.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
+        if (Controller.Instance.Menu2.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
             if (_resourcePath == String.Empty)
             {
