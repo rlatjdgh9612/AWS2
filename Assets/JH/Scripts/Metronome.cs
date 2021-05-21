@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Metronome : MonoBehaviour
 {
     public AudioSource audioSource;
+    public bool isOnMetroSound = false;
 
     public Image metronome_BeatsCount;
     public Image recorder_BeatCount;
@@ -68,14 +69,14 @@ public class Metronome : MonoBehaviour
 
             if (Record.Instance.isCounting && beats == 1) Record.Instance.Recording();
             if (recorderText) recorderText.enabled = Record.Instance.isCounting;
-            audioSource.Play();
+
+            if (isOnMetroSound) audioSource.Play();
             yield return new WaitForSeconds(60f / tempo);
         }
     }
+    public void OnMetroSound()
+    {
+        isOnMetroSound = !isOnMetroSound;
+    }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Controller")
-    //        PlayMetronome();
-    //}
 }
