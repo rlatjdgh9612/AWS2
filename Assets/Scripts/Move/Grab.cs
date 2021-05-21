@@ -42,7 +42,7 @@ public class Grab : MonoBehaviour
                 }
             }
 
-            if (Controller.Instance.Grab.GetState(SteamVR_Input_Sources.RightHand) == false &&
+            if (Controller.Instance.Grab.GetState(SteamVR_Input_Sources.RightHand) == false ||
                 Controller.Instance.Grab.GetState(SteamVR_Input_Sources.LeftHand) == false)
             {
                 if (Controller.Instance.IsRightScale == true && Controller.Instance.IsLeftScale == true)
