@@ -21,19 +21,19 @@ public class OctaveChangeManager : MonoBehaviour
     private int instCount;
 
     #endregion
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
         if (GetComponentInParent<Instrument>().padList == null)
         {
             return;
         }
-        
+
         instCount = GetComponentInParent<Instrument>().padList.Length;
         sounds = new GameObject[instCount];
-        
+
         for (int i = 0; i < instCount; i++)
         {
             sounds[i] = GetComponentInParent<Instrument>().padList[i].gameObject;
@@ -43,7 +43,7 @@ public class OctaveChangeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnPlusOctave()
@@ -51,6 +51,7 @@ public class OctaveChangeManager : MonoBehaviour
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = OctaveChange(PathFinder(sounds[i].GetComponent<AudioSource>().clip.name, plus));
+            sounds[i].GetComponent<InstrumentPad>().sound = sounds[i].GetComponent<AudioSource>().clip;
         }
     }
 
@@ -59,6 +60,7 @@ public class OctaveChangeManager : MonoBehaviour
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = OctaveChange(PathFinder(sounds[i].GetComponent<AudioSource>().clip.name, minus));
+            sounds[i].GetComponent<InstrumentPad>().sound = sounds[i].GetComponent<AudioSource>().clip;
         }
     }
 
@@ -67,8 +69,8 @@ public class OctaveChangeManager : MonoBehaviour
     private string PathFinder(string soundName, int changeNum)
     {
         char slash = '/';
-        
-        foreach(SoundMenuData soundMenuData in SoundSystem.Instance.SoundMenu.SoundMenuData)
+
+        foreach (SoundMenuData soundMenuData in SoundSystem.Instance.SoundMenu.SoundMenuData)
         {
             for (int i = 0; i < soundMenuData.instrumentSoundPath.Count; i++)
             {
@@ -112,5 +114,5 @@ public class OctaveChangeManager : MonoBehaviour
     }
 
     #endregion
-    
+
 }

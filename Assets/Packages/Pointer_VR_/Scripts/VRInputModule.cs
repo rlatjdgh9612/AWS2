@@ -3,14 +3,15 @@ using UnityEngine.EventSystems;
 
 public class VRInputModule : BaseInputModule
 {
-    [SerializeField] private Pointer pointer = null;
+    //[SerializeField] 
+    //private Pointer pointer = null;
 
     public PointerEventData Data { get; private set; } = null;
 
     protected override void Start()
     {
         Data = new PointerEventData(eventSystem);
-        Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
+        //Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
     }
 
     public override void Process()

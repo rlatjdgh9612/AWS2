@@ -10,15 +10,24 @@ public class ControllerPadHit : MonoBehaviour
 {
     [SerializeField] private GameObject ball;
 
-    public Record recorder;
+    Rigidbody rig;
+
+    private void Start()
+    {
+        rig = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        rig.WakeUp();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pad"))
         {
-            other.GetComponent<VFXColor>().Hit(180, 10);
+            other.GetComponent<VFXColor>().Hit(150, 12.5f);
             ball.GetComponent<TrailRenderer>().material = other.GetComponent<MeshRenderer>().material;
-            //recorder.padCount = other.GetComponentInParent<Instrument>().padList.Length;
         }
     }
 

@@ -54,6 +54,7 @@ public class TypeChangeManager : MonoBehaviour
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
+            sounds[i].GetComponent<InstrumentPad>().sound = sounds[i].GetComponent<AudioSource>().clip;
         }
     }
 
@@ -64,6 +65,7 @@ public class TypeChangeManager : MonoBehaviour
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].GetComponent<AudioSource>().clip = TypeChange(TypeChangeParsing(sounds[i].GetComponent<AudioSource>().clip.name));
+            sounds[i].GetComponent<InstrumentPad>().sound = sounds[i].GetComponent<AudioSource>().clip;
         }
     }
 

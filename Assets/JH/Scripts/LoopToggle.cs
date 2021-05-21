@@ -16,16 +16,19 @@ public class LoopToggle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        toggle.isOn = !toggle.isOn;
-        toggleCheck = !toggleCheck;
-        isLoop.isLoop = toggleCheck;
-        if (rp.isPlaying)
+        if (other.tag == "Controller")
         {
-            rp.isPlaying = false;
-            rp.playImg.enabled = true;
-            rp.stopImg.enabled = false;
-            rp.playText.enabled = true;
-            rp.stopText.enabled = false;
+            toggle.isOn = !toggle.isOn;
+            toggleCheck = !toggleCheck;
+            isLoop.isLoop = toggleCheck;
+            if (rp.isPlaying)
+            {
+                rp.isPlaying = false;
+                rp.playImg.enabled = true;
+                rp.stopImg.enabled = false;
+                rp.playText.enabled = true;
+                rp.stopText.enabled = false;
+            }
         }
     }
 }
