@@ -93,7 +93,7 @@ public class Record : MonoBehaviour
 
             // Track Canvas 생성
             recordBgTransform.sizeDelta = new Vector2((recordingTime * TRACKGROUP_WIDTH / SECONDS), TRACKGROUP_HEIGHT);
-            recordBg.uvRect = new Rect(0, 0, metronome.tempo, padCount);
+            recordBg.uvRect = new Rect(0, 0, metronome.tempo / 3, rowCount);
         }
     }
 
@@ -132,6 +132,8 @@ public class Record : MonoBehaviour
         {
             isRecording = false;
             recordLoop = new Loop(record, Time.time - recordStartTime);
+            recordLoop.recordLength = recordLoop.recordLength - recordLoop.recordLength % (60f / (float)metronome.tempo * (float)metronome.maxBeats);
+            print($"{recordLoop.recordLength} {60f / (float)metronome.tempo} {(60f / (float)metronome.tempo * (float)metronome.maxBeats)} {recordLoop.recordLength % (60f / (float)metronome.tempo * (float)metronome.maxBeats)}");
             metronome.recorder_BeatCount.fillAmount = 0;
 
             // 레코드 종료되면 Loop 그룹 생성
@@ -170,7 +172,7 @@ public class Record : MonoBehaviour
 
     int prevRowNote;
     int prevTopNote;
-
+    int rowCount;
     public void AddPressButtonEvent(TriggerEnterEvent padEvent, Color padColor)
     {
         if (!isRecording)
@@ -181,16 +183,16 @@ public class Record : MonoBehaviour
 
         int lowestNote = record.Min(note => note.padIndex);
         int highestNote = record.Max(note => note.padIndex);
-        int rowCount = Mathf.Max(highestNote - lowestNote + 1, 5);
+        rowCount = Mathf.Max(highestNote - lowestNote + 1, 5);
 
         // Track node 출력 부분
         GameObject temp = Instantiate(nodeUIprefab, recordBg.rectTransform);
         float noteHeight = TRACKGROUP_HEIGHT / rowCount;
         temp.GetComponent<RectTransform>().sizeDelta = new Vector2((padEvent.length / SECONDS * TRACKGROUP_WIDTH) * 2, noteHeight);
         temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((padEvent.timeOffset * TRACKGROUP_WIDTH / SECONDS), -(noteHeight * (highestNote - padEvent.padIndex)));
-        
+
         //recordBg.uvRect = new Rect(0, 0, 50, noteHeight);
-        
+
         temp.gameObject.name = padEvent.padIndex.ToString();
         temp.SetActive(true);
         temp.GetComponent<Image>().color = padColor;
