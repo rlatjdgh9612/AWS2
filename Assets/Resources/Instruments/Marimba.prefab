@@ -4967,19 +4967,19 @@ MonoBehaviour:
   defaultIndex: 1
   index: 0
   itemList:
-  - itemTitle: C2 & C3
+  - itemTitle: C1 . C2
     onValueChanged:
       m_PersistentCalls:
         m_Calls: []
-  - itemTitle: C3 & C4
+  - itemTitle: C2 . C3
     onValueChanged:
       m_PersistentCalls:
         m_Calls: []
-  - itemTitle: C4 & C5
+  - itemTitle: C3 . C4
     onValueChanged:
       m_PersistentCalls:
         m_Calls: []
-  - itemTitle: C5 & C6
+  - itemTitle: C4 . C5
     onValueChanged:
       m_PersistentCalls:
         m_Calls: []
