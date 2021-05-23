@@ -73,26 +73,115 @@ public class RampRay : MonoBehaviour
 
     string Parsing(string soundName, string soundCode)
     {
-        if (soundCode == "C2" || soundCode == "C3" || soundCode == "C4" || soundCode == "C5" || soundCode == "C6")
+        if (soundCode == "C1" || soundCode == "C2" || soundCode == "C3" || soundCode == "C4" || soundCode == "C5")
         {
-            if (soundName == "1" || soundName == "7")
+            if (soundName == "01")
             {
                 return "도";
-            }else if (soundName == "2" || soundName == "8")
+            }else if (soundName == "02")
+            {
+                return "도#";
+            }else if (soundName == "03")
             {
                 return "레";
-            }else if (soundName == "3" || soundName == "9")
+            }else if (soundName == "04")
+            {
+                return "레#";
+            }else if (soundName == "05")
             {
                 return "미";
-            }else if (soundName == "4" || soundName == "10")
+            }else if (soundName == "06")
             {
                 return "파";
-            }else if (soundName == "5" || soundName == "11")
+            }else if (soundName == "07")
+            {
+                return "파#";
+            }else if (soundName == "08")
             {
                 return "솔";
-            }else if (soundName == "6" || soundName == "12")
+            }else if (soundName == "09")
+            {
+                return "솔#";
+            }else if (soundName == "10")
             {
                 return "라";
+            }else if (soundName == "11")
+            {
+                return "라#";
+            }else if (soundName == "12")
+            {
+                return "시";
+            }
+            else
+            {
+                return soundName;
+            }
+        }else if (soundCode == "Drum")
+        {
+            if (soundName == "Crash")
+            {
+                return "크래쉬";
+            }else if (soundName == "HandClap")
+            {
+                return "핸드클랩";
+            }else if (soundName == "HiHat(Close)")
+            {
+                return "하이헷(닫힘)";
+            }else if (soundName == "HiTom")
+            {
+                return "하이탐";
+            }else if (soundName == "Kick")
+            {
+                return "킥";
+            }else if (soundName == "MidTom")
+            {
+                return "미드탐";
+            }else if (soundName == "RideEdge")
+            {
+                return "라이드엣지";
+            }else if (soundName == "Shaker")
+            {
+                return "쉐이커";
+            }else if (soundName == "Snare")
+            {
+                return "스네어";
+            }else if (soundName == "Tambourine")
+            {
+                return "탬버린";
+            }
+            else
+            {
+                return soundName;
+            }
+        }else if (soundCode == "Conga")
+        {
+            if (soundName == "BassTone")
+            {
+                return "베이스톤";
+            }else if (soundName == "CloseSlap")
+            {
+                return "클로즈슬랩";
+            }else if (soundName == "FloatingFinger")
+            {
+                return "플로팅핑거";
+            }else if (soundName == "FloatingHeel")
+            {
+                return "플로팅힐";
+            }else if (soundName == "MuffledSlap")
+            {
+                return "머플슬랩";
+            }else if (soundName == "OffCenter")
+            {
+                return "오프센터";
+            }else if (soundName == "OpenSlap")
+            {
+                return "오픈슬랩";
+            }else if (soundName == "OpenTone")
+            {
+                return "오픈톤";
+            }else if (soundName == "Rim")
+            {
+                return "림";
             }
             else
             {
@@ -103,7 +192,6 @@ public class RampRay : MonoBehaviour
         {
             return soundName;
         }
-        
     }
 
     GameObject Load(string resourcePath)
