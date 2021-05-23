@@ -58,3 +58,5 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+Assets/Oculus/Spatializer/Plugins/x86_64/AudioPluginOculusSpatializer.dll
+Assets/Oculus/VR/Plugins/1.57.0/Win64/OVRPlugin.dll

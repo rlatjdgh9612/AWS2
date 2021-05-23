@@ -146,15 +146,15 @@ public class Record : MonoBehaviour
             // Track을 Loop그룹으로 전달
             Image cloneTrack = Instantiate(trackGroup.gameObject, trackGroup.transform.parent).GetComponent<Image>();
             cloneTrack.transform.parent = loop.transform.GetChild(0).transform;
-            cloneTrack.rectTransform.localPosition = new Vector2(80, 0);
+            cloneTrack.rectTransform.localPosition = new Vector2(0.22f, 0);
             cloneTrack.rectTransform.localRotation = Quaternion.identity;
             trackGroup.rectTransform.sizeDelta = new Vector2(0, TRACKGROUP_HEIGHT);
 
             // Loop그룹으로 전달된 Track 우측에 Delete Object 생성
             GameObject deleteObj = Instantiate(deleteGroup);
-            deleteObj.transform.parent = cloneTrack.transform;
+            deleteObj.transform.parent = cloneTrack.transform.parent.transform;
             deleteObj.transform.localRotation = Quaternion.identity;
-            deleteObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(1.5f, 0);
+            deleteObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(cloneTrack.gameObject.GetComponent<RectTransform>().rect.width * 0.12f + 0.3f, 0);
 
             // delete z포지션 리셋
             Vector3 deletePosition = deleteObj.transform.localPosition;
