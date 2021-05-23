@@ -18,7 +18,7 @@ public class SceneChanger : MonoBehaviour
     
     private IEnumerator IEfadeStart()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(12.5f);
         
         SteamVR_LoadLevel.Begin("Test Scene", false, 1.5f, 0.0f, 0.0f, 0.0f, 1.0f);
     }

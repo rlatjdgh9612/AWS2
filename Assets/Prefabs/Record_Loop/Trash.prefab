@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2662056429303171668}
   - component: {fileID: 379384851843044342}
   - component: {fileID: 1669755841185540364}
+  - component: {fileID: 400591106150421424}
+  - component: {fileID: 2651820708188722368}
   m_Layer: 5
   m_Name: Trash
   m_TagString: Untagged
@@ -28,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 353853516986146025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 5452588697676962808}
   m_Father: {fileID: 0}
@@ -99,6 +101,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &400591106150421424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353853516986146025}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2651820708188722368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353853516986146025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b68675df3269b4ab37284b3da01352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2658013973275841961
 GameObject:
   m_ObjectHideFlags: 0

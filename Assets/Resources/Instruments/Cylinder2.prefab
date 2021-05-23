@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a51c942b85f7a840b2847c02d72097e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: -1
+  velocity: -2
   timeOffset: 0
   bulgeState: 1
 --- !u!114 &8617926297755903978
