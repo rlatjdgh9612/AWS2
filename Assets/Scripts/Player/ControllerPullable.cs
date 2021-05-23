@@ -10,8 +10,11 @@ public class ControllerPullable : MonoBehaviour
 
     private void Update()
     {
-        if (Controller.Instance.GetMetro.GetStateDown(SteamVR_Input_Sources.LeftHand)) GetMetro();
-        if (Controller.Instance.GetRecorder.GetStateDown(SteamVR_Input_Sources.LeftHand)) GetRecorder();
+        if (Controller.Instance.IsTitle == false)
+        {
+            if (Controller.Instance.GetMetro.GetStateDown(SteamVR_Input_Sources.LeftHand)) GetMetro();
+            if (Controller.Instance.GetRecorder.GetStateDown(SteamVR_Input_Sources.LeftHand)) GetRecorder();
+        }
     }
 
     void GetMetro()

@@ -32,8 +32,11 @@ public class Pointer : MonoBehaviour
 
     private void Update()
     {
-        if (Controller.Instance.Trigger.GetState(SteamVR_Input_Sources.RightHand)) UpdateLine();
-        if (Controller.Instance.Trigger.GetStateUp(SteamVR_Input_Sources.RightHand)) lineRenderer.enabled = false;
+        if (Controller.Instance.IsTitle == false)
+        {
+            if (Controller.Instance.Trigger.GetState(SteamVR_Input_Sources.RightHand)) UpdateLine();
+            if (Controller.Instance.Trigger.GetStateUp(SteamVR_Input_Sources.RightHand)) lineRenderer.enabled = false;
+        }
     }
 
     private void UpdateLine()

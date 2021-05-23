@@ -10,7 +10,10 @@ public class Test_Ray : MonoBehaviour
 
     private void Update()
     {
-        OnRadialMenu();
+        if (Controller.Instance.IsTitle == false)
+        {
+            OnRadialMenu();
+        }
     }
 
     void OnRadialMenu()

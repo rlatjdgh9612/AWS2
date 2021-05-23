@@ -10,18 +10,20 @@ public class ControllerMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Controller.Instance.Menu.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if (Controller.Instance.IsTitle == false)
         {
-            isMainMenu = !isMainMenu;
-            
-            if (!isMainMenu)
+            if (Controller.Instance.Menu.GetStateDown(SteamVR_Input_Sources.RightHand))
             {
-                return;
-            }
+                isMainMenu = !isMainMenu;
             
-            ButtonManager.Instance.OnButtonMovePinch();
-            ButtonManager.Instance.OnButtonFind("MainMenu");
+                if (!isMainMenu)
+                {
+                    return;
+                }
+            
+                ButtonManager.Instance.OnButtonMovePinch();
+                ButtonManager.Instance.OnButtonFind("MainMenu");
+            }
         }
-
     }
 }
