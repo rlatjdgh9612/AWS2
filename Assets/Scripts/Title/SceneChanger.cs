@@ -43,6 +43,7 @@ public class SceneChanger : MonoBehaviour
         Controller.Instance.ControllerModelLeft.SetActive(true);
         Controller.Instance.ControllerBallLeft.GetComponent<MeshRenderer>().enabled = true;
         Controller.Instance.ControllerBallLeft.GetComponent<TrailRenderer>().enabled = true;
+        transform.parent.gameObject.SetActive(false);
         
         SteamVR_Fade.Start(Color.clear, fadeTime, true);
     }
