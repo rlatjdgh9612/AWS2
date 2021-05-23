@@ -31,6 +31,30 @@ public class Controller : MonoBehaviour
 
     #endregion
 
+    [Space(10f)]
+    [Header("Title Bool")]
+
+    #region 타이틀 시 기능 막아놓는 불 값 및 컨트롤러 모델 비저블
+
+    [SerializeField]
+    private bool isTitle = true;
+    public bool IsTitle
+    {
+        get => isTitle;
+        set => isTitle = value;
+    }
+
+    [SerializeField] private GameObject controllerModelRight;
+    public GameObject ControllerModelRight => controllerModelRight;
+    [SerializeField] private GameObject controllerBallRight;
+    public GameObject ControllerBallRight => controllerBallRight;
+    [SerializeField] private GameObject controllerModelLeft;
+    public GameObject ControllerModelLeft => controllerModelLeft;
+    [SerializeField] private GameObject controllerBallLeft;
+    public GameObject ControllerBallLeft => controllerBallLeft;
+
+    #endregion
+    
     [Header ("Controller Key")]
     #region 컨트롤러 키 선언
     
@@ -155,4 +179,6 @@ public class Controller : MonoBehaviour
     }
 
     #endregion
+    
+    
 }

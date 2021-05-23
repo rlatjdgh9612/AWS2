@@ -31,13 +31,19 @@ public class Teleport : MonoBehaviour
     private void Update()
     {
         // Pointer
-        hasPosition = UpdatePointer();
-        pointer.SetActive(hasPosition);
-
+        if (Controller.Instance.IsTitle == false)
+        {
+            hasPosition = UpdatePointer();
+            pointer.SetActive(hasPosition);
+        }
+        
         // Teleport
-        if (Controller.Instance.Trigger.GetStateDown(SteamVR_Input_Sources.RightHand)) TryTeleport();
-        if (Controller.Instance.TurnRight.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(angle));
-        if (Controller.Instance.TurnLeft.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(-angle));
+        if (Controller.Instance.IsTitle == false)
+        {
+            if (Controller.Instance.Trigger.GetStateDown(SteamVR_Input_Sources.RightHand)) TryTeleport();
+            if (Controller.Instance.TurnRight.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(angle));
+            if (Controller.Instance.TurnLeft.GetStateDown(SteamVR_Input_Sources.RightHand)) StartCoroutine(RotateRig(-angle));
+        }
     }
 
     private void TryTeleport()
