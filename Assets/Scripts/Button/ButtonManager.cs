@@ -48,7 +48,7 @@ public class ButtonManager : MonoBehaviour
     
     // Main Menu
     private GameObject soundMenu;
-    private GameObject effectsMenu;
+    private GameObject tutorMenu;
     private GameObject instrumentMenu;
     private GameObject sampleMenu;
     
@@ -68,9 +68,9 @@ public class ButtonManager : MonoBehaviour
     private GameObject vibraphoneMenu;
     private GameObject synthMenu;
 
-    // Main Menu - Effects Menu
-    private GameObject lightMenu;
-    private GameObject colorMenu;
+    // Main Menu - Tutor Menu
+    private GameObject pianoTutorMenu;
+    private GameObject drumTutorMenu;
     
     // Main Menu - Instrument Menu
     private GameObject subInstrumentMenu;
@@ -151,12 +151,12 @@ public class ButtonManager : MonoBehaviour
         
         // Main Menu
         soundMenu = GameObject.Find("SubMainMenu").transform.Find("SoundMenu").gameObject;
-        effectsMenu = GameObject.Find("SubMainMenu").transform.Find("EffectsMenu").gameObject;
+        tutorMenu = GameObject.Find("SubMainMenu").transform.Find("TutorMenu").gameObject;
         instrumentMenu = GameObject.Find("SubMainMenu").transform.Find("InstrumentMenu").gameObject;
         sampleMenu = GameObject.Find("SubMainMenu").transform.Find("SampleMenu").gameObject;
         
         menuList2st.Add(soundMenu);
-        menuList2st.Add(effectsMenu);
+        menuList2st.Add(tutorMenu);
         menuList2st.Add(instrumentMenu);
         menuList2st.Add(sampleMenu);
         
@@ -188,11 +188,11 @@ public class ButtonManager : MonoBehaviour
         menuList3st.Add(synthMenu);
         
         // Main Menu - Effects Menu
-        lightMenu = GameObject.Find("SubEffectsMenu").transform.Find("LightMenu").gameObject;
-        colorMenu = GameObject.Find("SubEffectsMenu").transform.Find("ColorMenu").gameObject;
+        pianoTutorMenu = GameObject.Find("SubTutorMenu").transform.Find("PianoTutorMenu").gameObject;
+        drumTutorMenu = GameObject.Find("SubTutorMenu").transform.Find("DrumTutorMenu").gameObject;
         
-        menuList3st.Add(lightMenu);
-        menuList3st.Add(colorMenu);
+        menuList3st.Add(pianoTutorMenu);
+        menuList3st.Add(drumTutorMenu);
 
         // Main Menu - Sample Menu
         samplePianoMenu = GameObject.Find("SubSampleMenu").transform.Find("SamplePianoMenu").gameObject;

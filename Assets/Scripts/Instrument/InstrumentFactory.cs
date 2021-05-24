@@ -5,7 +5,6 @@ using UnityEngine;
 public class InstrumentFactory : MonoBehaviour
 {    
     private Dictionary<string, GameObject> instrumentFileCache = new Dictionary<string, GameObject>();
-
     public GameObject Load(string resourcePath)
     {
         GameObject go = null;
