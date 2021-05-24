@@ -12,6 +12,7 @@ public class ControllerTransform : MonoBehaviour
     [SerializeField] private Transform menuParent;
     [SerializeField] private Transform sampleParent;
     [SerializeField] private Transform rampParent;
+    [SerializeField] private Transform tutorParent;
 
     // Update is called once per frame
     void Update()
@@ -78,6 +79,10 @@ public class ControllerTransform : MonoBehaviour
                 else if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("RampHead"))
                 {
                     grabObj.transform.parent = rampParent;
+                }
+                else if (GetComponentInChildren<Grab>().transform.parent.gameObject.CompareTag("Tutor"))
+                {
+                    grabObj.transform.parent = tutorParent;
                 }
                 else
                 {
