@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3221393995455490718}
   - component: {fileID: 4887645373810631009}
   m_Layer: 0
-  m_Name: Pad2
+  m_Name: Conga
   m_TagString: Instrument
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3898,7 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: f7b969b2058b4b84bb0e6597446c1877, type: 3}
+  sound: {fileID: 8300000, guid: 3e308aed9d3dd564da6e69180db180a1, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &7584715229531603128
@@ -4066,7 +4066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 30a35309f60d1af4b92dd52e6a916aa4, type: 3}
+  sound: {fileID: 8300000, guid: 1f6254c47592db8469cb33b8d2f86b8f, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &3473099197463501130
@@ -4234,7 +4234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: e840a75bb42508941bbb5e2398cbccbe, type: 3}
+  sound: {fileID: 8300000, guid: 97c3d34a6e6b59840b4d73c4c643784c, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &7035326103029066261
@@ -16126,7 +16126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 6c3e5538305381b45bbf583d202576c7, type: 3}
+  sound: {fileID: 8300000, guid: f21049a2e4caccb42a70421a005434eb, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &3914872400156420935
@@ -16294,7 +16294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 17a5f6b0389cce243a89ff2f74f5675c, type: 3}
+  sound: {fileID: 8300000, guid: 74aa08745ce7b894ab1de42ff4218f6a, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &452071843163030887
@@ -16462,7 +16462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 6deb2af53ca3f9849863864abd87000f, type: 3}
+  sound: {fileID: 8300000, guid: 14624a4ed316deb44b54c1421ed79d1f, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &1444774304139662324
@@ -16630,7 +16630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: f38af358e62818f419243b9f7cf458c8, type: 3}
+  sound: {fileID: 8300000, guid: c53570f5ab080604ba68b05c16bb5321, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &3338812199718949766
@@ -16798,7 +16798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bde7a7af1594640aae2bfa22f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 0d730b09cdee2e0429e9ce0b44e75185, type: 3}
+  sound: {fileID: 8300000, guid: 8157c1f6cff1a544cb3f661be7ff6168, type: 3}
   radial: {fileID: 8842020894954678618}
   padIndex: 0
 --- !u!114 &3122991350452733454

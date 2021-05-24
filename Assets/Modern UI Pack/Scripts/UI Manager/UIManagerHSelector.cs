@@ -97,12 +97,12 @@ namespace Michsky.UI.ModernUIPack
             octaveChangeManager.OnMinusOctave();
         }
         
-        public void ForwardEvent()
+        public void ForwardEvent(int instNum)
         {
             num++;
-            if (3 < num)
+            if (instNum < num)
             {
-                num = 3;
+                num = instNum;
                 return;
             }
             octaveChangeManager.OnPlusOctave();
