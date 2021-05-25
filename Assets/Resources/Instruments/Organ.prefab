@@ -5000,8 +5000,8 @@ MonoBehaviour:
   enableIndicators: 1
   invokeAtStart: 0
   invertAnimation: 1
-  loopSelection: 1
-  defaultIndex: 1
+  loopSelection: 0
+  defaultIndex: 0
   index: 0
   itemList:
   - itemTitle: C1
