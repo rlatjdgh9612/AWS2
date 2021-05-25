@@ -17,9 +17,9 @@ namespace Michsky.UI.ModernUIPack
         public List<GameObject> imagesHighlighted = new List<GameObject>();
         public List<GameObject> texts = new List<GameObject>();
         HorizontalSelector hSelector;
-        public OctaveChangeManager octaveChangeManager;
+        //public OctaveChangeManager octaveChangeManager;
 
-        private int num;
+        //private int num;
 
         void Awake()
         {
@@ -45,7 +45,6 @@ namespace Michsky.UI.ModernUIPack
                 Debug.Log("<b>[Modern UI Pack]</b> No UI Manager found, assign it manually.", this);
             }
             
-            num = GetComponent<HorizontalSelector>().index;
         }
 
         void LateUpdate()
@@ -86,27 +85,27 @@ namespace Michsky.UI.ModernUIPack
             }
         }
         
-        public void PreviousEvent()
-        {
-            num--;
-            if (num < 0)
-            {
-                num = 0;
-                return;
-            }
-            octaveChangeManager.OnMinusOctave();
-        }
+        //public void PreviousEvent()
+        //{
+        //    num--;
+        //    if (num < 0)
+        //    {
+        //        num = 0;
+        //        return;
+        //    }
+        //    octaveChangeManager.OnMinusOctave();
+        //}
         
-        public void ForwardEvent(int instNum)
-        {
-            num++;
-            if (instNum < num)
-            {
-                num = instNum;
-                return;
-            }
-            octaveChangeManager.OnPlusOctave();
-        }
+        //public void ForwardEvent(int instNum)
+        //{
+        //    num++;
+        //    if (instNum < num)
+        //    {
+        //        num = instNum;
+        //        return;
+        //    }
+        //    octaveChangeManager.OnPlusOctave();
+        //}
     }
 }
 #endif

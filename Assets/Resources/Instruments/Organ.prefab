@@ -2609,6 +2609,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2567377145030006878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23028876562949261}
+  - component: {fileID: 984196947998737067}
+  m_Layer: 0
+  m_Name: OctaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &23028876562949261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567377145030006878}
+  m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0.211, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2228226400543792446}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984196947998737067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567377145030006878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d77e2d6da8bfb43ad7389b425efec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  octaveChangeManager: {fileID: 600788614718342088}
+  horizontalSelector: {fileID: 5177293524865159571}
 --- !u!1 &2655530515947799931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,8 +5000,8 @@ MonoBehaviour:
   enableIndicators: 1
   invokeAtStart: 0
   invertAnimation: 1
-  loopSelection: 1
-  defaultIndex: 1
+  loopSelection: 0
+  defaultIndex: 0
   index: 0
   itemList:
   - itemTitle: C1
@@ -5000,7 +5045,6 @@ MonoBehaviour:
   texts:
   - {fileID: 5177293525089568453}
   - {fileID: 5177293525725577318}
-  octaveChangeManager: {fileID: 600788614718342088}
 --- !u!95 &5177293524865159568
 Animator:
   serializedVersion: 3
@@ -5524,13 +5568,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5177293524865159569}
+      - m_Target: {fileID: 984196947998737067}
         m_MethodName: PreviousEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6204,7 +6248,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5177293524865159569}
+      - m_Target: {fileID: 984196947998737067}
         m_MethodName: ForwardEvent
         m_Mode: 3
         m_Arguments:
@@ -35871,6 +35915,7 @@ RectTransform:
   m_Children:
   - {fileID: 3247884564056941248}
   - {fileID: 600788614718342089}
+  - {fileID: 23028876562949261}
   m_Father: {fileID: 1691549596201984732}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
