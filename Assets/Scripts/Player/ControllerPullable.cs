@@ -34,6 +34,6 @@ public class ControllerPullable : MonoBehaviour
 
     void GetRamp()
     {
-        ramp.transform.position = transform.position + new Vector3(0, 0, 0.5f);
+        ramp.transform.position = transform.position + new Vector3(0, 0.5f, 0.5f);
     }
 }
