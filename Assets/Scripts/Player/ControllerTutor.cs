@@ -27,7 +27,7 @@ public class ControllerTutor : MonoBehaviour
     {
         if (Controller.Instance.Menu2.GetStateUp(SteamVR_Input_Sources.RightHand) && !Controller.Instance.IsPadTouch)
         {
-            if (_tutorPath == String.Empty)
+            if (_tutorPath == String.Empty || _tutorVideoPath == String.Empty)
             {
                 return;
             }
@@ -68,7 +68,7 @@ public class ControllerTutor : MonoBehaviour
 
         if (!go)
         {
-            Debug.LogError("Resources Load Error! FilePath = " + resourcePath);
+            Debug.Log("Resources Load Error! FilePath = " + resourcePath);
             return null;
         }
 
@@ -84,7 +84,7 @@ public class ControllerTutor : MonoBehaviour
 
         if (!video)
         {
-            Debug.LogError("Resources Load Error! FilePath = " + resourcePath);
+            Debug.Log("Resources Load Error! FilePath = " + resourcePath);
             return null;
         }
 
@@ -94,6 +94,11 @@ public class ControllerTutor : MonoBehaviour
     
     public bool TutorGenerate(GameObject instancedGo, VideoClip instancedVideo, Transform parent, bool isSelect)
     {
+        if (instancedGo == null || instancedVideo == null)
+        {
+            return false;
+        }
+        
         GameObject tutor = Instantiate<GameObject>(instancedGo, parent, true);
         string replaceName = tutor.name.Replace("(Clone)", "");
         tutor.name = replaceName;
