@@ -10,9 +10,11 @@ public class ControllerTutor : MonoBehaviour
     [SerializeField] private GameObject rightBall;
     [SerializeField] private Transform tutorParent;
     [SerializeField] private Transform playerCam;
+    [SerializeField] private GameObject tutorMarker;
 
     private string _tutorPath;
     private string _tutorVideoPath;
+    private bool _isMarker = false;
     
     // Start is called before the first frame update
     void Start()
@@ -31,18 +33,29 @@ public class ControllerTutor : MonoBehaviour
             }
             
             TutorGenerate(Load(_tutorPath), TutorVideoLoad(_tutorVideoPath), tutorParent, false);
+
+            TutorGenerateFail(false);
+        }
+
+        if (tutorMarker != null)
+        {
+            tutorMarker.SetActive(_isMarker);
         }
     }
 
-    void TutorGenerateFail()
+    void TutorGenerateFail(bool isSelect)
     {
-        
+        _tutorPath = String.Empty;
+
+        _isMarker = false;
+        rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
     }
     
-    public void TutorInput(string tutorPath, string tutorVideoPath, bool isSelect)
+    public void TutorInput(string tutorPath, string tutorVideoPath, bool isMarker, bool isSelect)
     {
         _tutorPath = tutorPath;
         _tutorVideoPath = tutorVideoPath;
+        _isMarker = isMarker;
         
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
     }
@@ -85,11 +98,12 @@ public class ControllerTutor : MonoBehaviour
         string replaceName = tutor.name.Replace("(Clone)", "");
         tutor.name = replaceName;
         tutor.transform.position = rightBall.transform.position + rightBall.transform.forward * 0.25f;
-        tutor.transform.localScale = Vector3.one;
+        tutor.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         tutor.transform.forward = playerCam.transform.forward;
         tutor.transform.localEulerAngles = new Vector3(0.0f, tutor.transform.localEulerAngles.y, tutor.transform.localEulerAngles.z);
         tutor.GetComponent<VideoPlayer>().clip = instancedVideo;
         rightBall.GetComponent<PlayerBall>().ColorChange(isSelect);
+        _isMarker = false;
         
         return true;
     }

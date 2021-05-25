@@ -7,6 +7,7 @@ using Valve.VR;
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private GameObject controllerGrp;
+    [SerializeField] private GameObject pointer;
 
     private float fadeTime = 1.5f;
     
@@ -24,6 +25,7 @@ public class SceneChanger : MonoBehaviour
         Controller.Instance.ControllerBallLeft.GetComponent<MeshRenderer>().enabled = false;
         Controller.Instance.ControllerBallLeft.GetComponent<TrailRenderer>().enabled = false;
         Controller.Instance.IsTitle = true;
+        pointer.SetActive(false);
         StartCoroutine(IEfadeStart());
     }
     
@@ -44,6 +46,7 @@ public class SceneChanger : MonoBehaviour
         Controller.Instance.ControllerBallLeft.GetComponent<MeshRenderer>().enabled = true;
         Controller.Instance.ControllerBallLeft.GetComponent<TrailRenderer>().enabled = true;
         transform.parent.gameObject.SetActive(false);
+        pointer.SetActive(true);
         
         SteamVR_Fade.Start(Color.clear, fadeTime, true);
     }

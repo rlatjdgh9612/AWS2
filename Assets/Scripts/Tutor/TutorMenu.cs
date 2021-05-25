@@ -38,7 +38,7 @@ public class TutorMenu : MonoBehaviour
         {
             if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand))
             {
-                other.gameObject.GetComponent<ControllerTutor>().TutorInput(tutorPath, tutorVideoPath, true);
+                other.gameObject.GetComponent<ControllerTutor>().TutorInput(tutorPath, tutorVideoPath, true, true);
             }
         }
     }

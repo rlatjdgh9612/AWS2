@@ -16,6 +16,8 @@ TagManager:
   - Sample
   - RampHead
   - Menu
+  - Node
+  - Tutor
   layers:
   - Default
   - TransparentFX
