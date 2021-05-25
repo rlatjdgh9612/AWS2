@@ -15,15 +15,19 @@ public class TutorPlayer : MonoBehaviour
             if (this.gameObject.name == "Play")
             {
                 StartCoroutine(TouchAnim());
-                GetComponentInParent<VideoPlayer>().Stop();
-                GetComponentInParent<VideoPlayer>().Play();
+                if (GetComponentInParent<VideoPlayer>().isPaused)
+                {
+                    GetComponentInParent<VideoPlayer>().Play();
+                }
             }
             
             if (this.gameObject.name == "Pause")
             {
                 StartCoroutine(TouchAnim());
-                GetComponentInParent<VideoPlayer>().Play();
-                GetComponentInParent<VideoPlayer>().Pause();
+                if (GetComponentInParent<VideoPlayer>().isPlaying)
+                {
+                    GetComponentInParent<VideoPlayer>().Pause();
+                }
             }
             
             if (this.gameObject.name == "Cancel")
@@ -35,7 +39,7 @@ public class TutorPlayer : MonoBehaviour
 
     IEnumerator TouchAnim()
     {
-        GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 1f, 0f, 80.0f/255.0f));
+        GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 1f, 0f, 1));
         
         yield return new WaitForSeconds(1.0f);
         
