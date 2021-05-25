@@ -3126,7 +3126,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2361384184949022301}
+      - m_Target: {fileID: 248864401876185382}
         m_MethodName: ForwardEvent
         m_Mode: 3
         m_Arguments:
@@ -4963,7 +4963,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2361384184949022301}
+      - m_Target: {fileID: 248864401876185382}
         m_MethodName: PreviousEvent
         m_Mode: 1
         m_Arguments:
@@ -5191,7 +5191,6 @@ MonoBehaviour:
   texts:
   - {fileID: 2361384184670112009}
   - {fileID: 2361384184365551530}
-  octaveChangeManager: {fileID: 1323501190786447387}
 --- !u!95 &2361384184949022300
 Animator:
   serializedVersion: 3
@@ -56891,6 +56890,51 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &6633653345277877502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027351940171039539}
+  - component: {fileID: 248864401876185382}
+  m_Layer: 0
+  m_Name: OctaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027351940171039539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633653345277877502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 352454254621648621}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &248864401876185382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633653345277877502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d77e2d6da8bfb43ad7389b425efec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  octaveChangeManager: {fileID: 1323501190786447387}
+  horizontalSelector: {fileID: 2361384184949022303}
 --- !u!1 &6780359372275972971
 GameObject:
   m_ObjectHideFlags: 0
@@ -56979,6 +57023,7 @@ RectTransform:
   - {fileID: 5336465039128702220}
   - {fileID: 1323501190786447386}
   - {fileID: 6525882748324825631}
+  - {fileID: 2027351940171039539}
   m_Father: {fileID: 968832715469101327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -10, y: 15, z: 0}

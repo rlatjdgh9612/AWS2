@@ -1797,7 +1797,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 192237257290153145}
+      - m_Target: {fileID: 594456667926773523}
         m_MethodName: PreviousEvent
         m_Mode: 1
         m_Arguments:
@@ -2463,7 +2463,6 @@ MonoBehaviour:
   texts:
   - {fileID: 192237257036377069}
   - {fileID: 192237257469914446}
-  octaveChangeManager: {fileID: 6175628890986865487}
 --- !u!95 &192237257290153144
 Animator:
   serializedVersion: 3
@@ -3236,7 +3235,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 192237257290153145}
+      - m_Target: {fileID: 594456667926773523}
         m_MethodName: ForwardEvent
         m_Mode: 3
         m_Arguments:
@@ -5945,6 +5944,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73177e56d7b3f2e48afe7b0c9f60146c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4565769363731624943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3194315942041671300}
+  - component: {fileID: 594456667926773523}
+  m_Layer: 0
+  m_Name: OctaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3194315942041671300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565769363731624943}
+  m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0.111, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1661910707933113259}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594456667926773523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565769363731624943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d77e2d6da8bfb43ad7389b425efec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  octaveChangeManager: {fileID: 6175628890986865487}
+  horizontalSelector: {fileID: 192237257290153147}
 --- !u!1 &4733978445697011331
 GameObject:
   m_ObjectHideFlags: 0
@@ -9608,6 +9652,7 @@ RectTransform:
   m_Children:
   - {fileID: 7521374276923805672}
   - {fileID: 6175628890986865486}
+  - {fileID: 3194315942041671300}
   m_Father: {fileID: 1291399037275588927}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
