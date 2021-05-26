@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -23,7 +24,6 @@ public class ButtonManager : MonoBehaviour
     }
 
     public float buttonRotateSpeed;
-    public Transform camRig;
 
     #region MovePinch
 
@@ -36,28 +36,28 @@ public class ButtonManager : MonoBehaviour
     private GameObject startMenu;
 
     #endregion
-    
+
     #region 1st
 
     private GameObject mainMenu;
     private GameObject applicationMenu;
 
     #endregion
-    
+
     #region 2st
-    
+
     // Main Menu
     private GameObject soundMenu;
     private GameObject tutorMenu;
     private GameObject instrumentMenu;
     private GameObject sampleMenu;
-    
+
     // Application Menu
     private GameObject settingMenu;
     private GameObject layoutMenu;
-    
+
     #endregion 2st
-    
+
     #region 3st
     // Main Menu - Sound Menu
     private GameObject pianoMenu;
@@ -71,19 +71,19 @@ public class ButtonManager : MonoBehaviour
     // Main Menu - Tutor Menu
     private GameObject pianoTutorMenu;
     private GameObject drumTutorMenu;
-    
+
     // Main Menu - Instrument Menu
     private GameObject subInstrumentMenu;
-    
+
     // Main Menu - Sample Menu
     private GameObject samplePianoMenu;
     private GameObject sampleDrumMenu;
     private GameObject sampleBassMenu;
-    
+
     // Application - layout
     private GameObject loadMenu;
     private GameObject saveMenu;
-    
+
     #endregion 3st
 
     #region 4st
@@ -109,13 +109,13 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField] List<GameObject> menuList1st = new List<GameObject>();
     public List<GameObject> MenuList1st => menuList1st;
-    
+
     [SerializeField] List<GameObject> menuList2st = new List<GameObject>();
     public List<GameObject> MenuList2st => menuList2st;
-    
+
     [SerializeField] List<GameObject> menuList3st = new List<GameObject>();
     public List<GameObject> MenuList3st => menuList3st;
-    
+
     [SerializeField] List<GameObject> menuList4st = new List<GameObject>();
     private static readonly int Zero = Animator.StringToHash("Zero");
     public List<GameObject> MenuList4st => menuList4st;
@@ -128,48 +128,48 @@ public class ButtonManager : MonoBehaviour
         #region MovePinch
 
         movePinch = GameObject.Find("Menu").transform.Find("MovePinch").gameObject;
-        
+
         #endregion
 
         #region 0st
 
         //startMenu = GameObject.Find("0st_Menu_Group").transform.Find("StartMenu").gameObject;
-        
+
         #endregion
-        
+
         #region 1st
 
         mainMenu = GameObject.Find("1st_Menu_Group").transform.Find("MainMenu").gameObject;
         applicationMenu = GameObject.Find("1st_Menu_Group").transform.Find("ApplicationMenu").gameObject;
-        
+
         menuList1st.Add(mainMenu);
         menuList1st.Add(applicationMenu);
 
         #endregion 1st
-        
+
         #region 2st
-        
+
         // Main Menu
         soundMenu = GameObject.Find("SubMainMenu").transform.Find("SoundMenu").gameObject;
         tutorMenu = GameObject.Find("SubMainMenu").transform.Find("TutorMenu").gameObject;
         instrumentMenu = GameObject.Find("SubMainMenu").transform.Find("InstrumentMenu").gameObject;
         sampleMenu = GameObject.Find("SubMainMenu").transform.Find("SampleMenu").gameObject;
-        
+
         menuList2st.Add(soundMenu);
         menuList2st.Add(tutorMenu);
         menuList2st.Add(instrumentMenu);
         menuList2st.Add(sampleMenu);
-        
+
         // Application Menu
         //settingMenu = GameObject.Find("SubApplicationMenu").transform.Find("SoundMenu").gameObject;
         layoutMenu = GameObject.Find("SubApplicationMenu").transform.Find("LayOutMenu").gameObject;
-        
+
         menuList2st.Add(layoutMenu);
-        
+
         #endregion 2st
-        
+
         #region 3st
-        
+
         // Main Menu - Sound Menu
         pianoMenu = GameObject.Find("SubSoundMenu").transform.Find("PianoMenu").gameObject;
         guitarMenu = GameObject.Find("SubSoundMenu").transform.Find("GuitarMenu").gameObject;
@@ -178,7 +178,7 @@ public class ButtonManager : MonoBehaviour
         marimbarMenu = GameObject.Find("SubSoundMenu").transform.Find("MarimbarMenu").gameObject;
         vibraphoneMenu = GameObject.Find("SubSoundMenu").transform.Find("VibraphoneMenu").gameObject;
         synthMenu = GameObject.Find("SubSoundMenu").transform.Find("SynthMenu").gameObject;
-        
+
         menuList3st.Add(pianoMenu);
         menuList3st.Add(guitarMenu);
         menuList3st.Add(bassMenu);
@@ -186,11 +186,11 @@ public class ButtonManager : MonoBehaviour
         menuList3st.Add(marimbarMenu);
         menuList3st.Add(vibraphoneMenu);
         menuList3st.Add(synthMenu);
-        
+
         // Main Menu - Effects Menu
         pianoTutorMenu = GameObject.Find("SubTutorMenu").transform.Find("PianoTutorMenu").gameObject;
         drumTutorMenu = GameObject.Find("SubTutorMenu").transform.Find("DrumTutorMenu").gameObject;
-        
+
         menuList3st.Add(pianoTutorMenu);
         menuList3st.Add(drumTutorMenu);
 
@@ -198,18 +198,18 @@ public class ButtonManager : MonoBehaviour
         samplePianoMenu = GameObject.Find("SubSampleMenu").transform.Find("SamplePianoMenu").gameObject;
         sampleDrumMenu = GameObject.Find("SubSampleMenu").transform.Find("SampleDrumMenu").gameObject;
         sampleBassMenu = GameObject.Find("SubSampleMenu").transform.Find("SampleBassMenu").gameObject;
-        
+
         menuList3st.Add(samplePianoMenu);
         menuList3st.Add(sampleDrumMenu);
         menuList3st.Add(sampleBassMenu);
-        
+
         // Application - layout Menu
         loadMenu = GameObject.Find("SubSubApplicationMenu").transform.Find("LoadMenu").gameObject;
         saveMenu = GameObject.Find("SubSubApplicationMenu").transform.Find("SaveMenu").gameObject;
-        
+
         menuList3st.Add(loadMenu);
         menuList3st.Add(saveMenu);
-        
+
         #endregion 3st
 
         #region 4st
@@ -226,7 +226,7 @@ public class ButtonManager : MonoBehaviour
         synthCMenu = GameObject.Find("SubSubSoundMenu").transform.Find("SynthCMenu").gameObject;
         synthDMenu = GameObject.Find("SubSubSoundMenu").transform.Find("SynthDMenu").gameObject;
         synthEMenu = GameObject.Find("SubSubSoundMenu").transform.Find("SynthEMenu").gameObject;
-        
+
         menuList4st.Add(pianoClassicMenu);
         menuList4st.Add(pianoElectricMenu);
         menuList4st.Add(guitarClassicMenu);
@@ -245,32 +245,34 @@ public class ButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnButtonMovePinch()
     {
         movePinch.SetActive(true);
     }
-    
+
     public void OnButtonFind(string path)
     {
         for (int i = 0; i < menuList1st.Count; i++)
         {
             if (menuList1st[i].name == path)
             {
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList1st.Count; j++)
                 {
                     if (menuList1st[j].activeSelf == true)
                     {
                         menuList1st[j].SetActive(false);
-                        
+
                         for (int k = 0; k < menuList2st.Count; k++)
                         {
                             if (menuList2st[k].activeSelf == true)
                             {
                                 menuList2st[k].SetActive(false);
-                                
+
                                 for (int m = 0; m < menuList3st.Count; m++)
                                 {
                                     if (menuList3st[m].activeSelf == true)
@@ -291,9 +293,17 @@ public class ButtonManager : MonoBehaviour
                     }
                 }
 
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
                 menuList1st[i].SetActive(true);
-                
+
+                ButtonPivot.Instance.EnablePosRot();
+
+                #region 모든 Collider 활성화
+
                 for (int q = 0; q < menuList1st.Count; q++)
                 {
                     BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
@@ -308,7 +318,7 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-                
+
                 for (int w = 0; w < menuList2st.Count; w++)
                 {
                     BoxCollider[] allCollider = menuList2st[w].GetComponentsInChildren<BoxCollider>();
@@ -323,7 +333,7 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-                
+
                 for (int e = 0; e < menuList3st.Count; e++)
                 {
                     BoxCollider[] allCollider = menuList3st[e].GetComponentsInChildren<BoxCollider>();
@@ -338,7 +348,7 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-                
+
                 for (int r = 0; r < menuList4st.Count; r++)
                 {
                     BoxCollider[] allCollider = menuList4st[r].GetComponentsInChildren<BoxCollider>();
@@ -353,15 +363,38 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-                
-                ButtonPivot.Instance.EnablePosRot();
+
+                #endregion
+
+                #endregion
             }
         }
-        
+
         for (int i = 0; i < menuList2st.Count; i++)
         {
             if (menuList2st[i].name == path)
             {
+                #region Collider 비활성화
+
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = false;
+                    }
+                }
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList2st.Count; j++)
                 {
                     if (menuList2st[j].activeSelf == true)
@@ -385,13 +418,34 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+
                 menuList2st[i].SetActive(true);
-                
-                for (int q = 0; q < menuList1st.Count; q++)
+
+                #region Collider 활성화
+
+                StartCoroutine(Delay(menuList2st, i));
+
+                #endregion
+
+                #endregion
+            }
+        }
+
+        for (int i = 0; i < menuList3st.Count; i++)
+        {
+            if (menuList3st[i].name == path)
+            {
+                #region Collider 비활성화
+
+                for (int q = 0; q < menuList2st.Count; q++)
                 {
-                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
 
                     foreach (BoxCollider collider in allCollider)
                     {
@@ -403,13 +457,11 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = false;
                     }
                 }
-            }
-        }
-        
-        for (int i = 0; i < menuList3st.Count; i++)
-        {
-            if (menuList3st[i].name == path)
-            {
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList3st.Count; j++)
                 {
                     if (menuList3st[j].activeSelf == true)
@@ -425,24 +477,22 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
+
                 menuList3st[i].SetActive(true);
-                
-                for (int q = 0; q < menuList2st.Count; q++)
-                {
-                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
 
-                    foreach (BoxCollider collider in allCollider)
-                    {
-                        if (collider.name == transform.name)
-                        {
-                            return;
-                        }
+                #region Collider 활성화
 
-                        collider.enabled = false;
-                    }
-                }
+                StartCoroutine(Delay(menuList3st, i));
+
+                #endregion
+
+                #endregion
             }
         }
 
@@ -450,18 +500,8 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList4st[i].name == path)
             {
+                #region Collider 비활성화
 
-                for (int j = 0; j < menuList4st.Count; j++)
-                {
-                    if (menuList4st[j].activeSelf == true)
-                    {
-                        menuList4st[j].SetActive(false);
-                    }
-                }
-                
-                ButtonPivot.Instance.ForwardRotate(new Vector3(0, 270, 0), buttonRotateSpeed);
-                menuList4st[i].SetActive(true);
-                
                 for (int q = 0; q < menuList3st.Count; q++)
                 {
                     BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
@@ -476,6 +516,34 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = false;
                     }
                 }
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
+                for (int j = 0; j < menuList4st.Count; j++)
+                {
+                    if (menuList4st[j].activeSelf == true)
+                    {
+                        menuList4st[j].SetActive(false);
+                    }
+                }
+
+                #endregion
+
+                #region forward 로테이션
+
+                ButtonPivot.Instance.ForwardRotate(new Vector3(0, 270, 0), buttonRotateSpeed);
+
+                menuList4st[i].SetActive(true);
+
+                #region Collider 활성화
+
+                StartCoroutine(Delay(menuList4st, i));
+
+                #endregion
+
+                #endregion
             }
         }
     }
@@ -486,12 +554,14 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList1st[i].name == backPath)
             {
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList2st.Count; j++)
                 {
                     if (menuList2st[j].activeSelf == true)
                     {
                         menuList2st[j].SetActive(false);
-                        
+
                         for (int k = 0; k < menuList3st.Count; k++)
                         {
                             if (menuList3st[k].activeSelf == true)
@@ -510,16 +580,58 @@ public class ButtonManager : MonoBehaviour
                     }
                 }
 
+                #endregion
+
+                #region back 로테이션
+
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+
+                #region 자기 자신 collider 비활성화
+
+                BoxCollider[] selfAllCollider = menuList1st[i].GetComponentsInChildren<BoxCollider>();
+
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+
+                #endregion
+
                 StartCoroutine(BackMovePinchDelay());
                 StartCoroutine(BackDelay(menuList1st, i));
+
+                #endregion
             }
         }
-        
+
         for (int i = 0; i < menuList2st.Count; i++)
         {
             if (menuList2st[i].name == backPath)
             {
+                #region Collider 다시 생성
+
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList3st.Count; j++)
                 {
                     if (menuList3st[j].activeSelf == true)
@@ -535,10 +647,39 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region back 로테이션
+
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+
+                #region 자기 자신 collider 비활성화
+
+                BoxCollider[] selfAllCollider = menuList2st[i].GetComponentsInChildren<BoxCollider>();
+
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+
+                #endregion
+
                 StartCoroutine(BackDelay(menuList2st, i));
-                
+
+                #endregion
+            }
+        }
+
+        for (int i = 0; i < menuList3st.Count; i++)
+        {
+            if (menuList3st[i].name == backPath)
+            {
+                #region collider 다시 생성
+
                 for (int q = 0; q < menuList1st.Count; q++)
                 {
                     BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
@@ -553,13 +694,26 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-            }
-        }
-        
-        for (int i = 0; i < menuList3st.Count; i++)
-        {
-            if (menuList3st[i].name == backPath)
-            {
+
+                for (int r = 0; r < menuList2st.Count; r++)
+                {
+                    BoxCollider[] allCollider = menuList2st[r].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList4st.Count; j++)
                 {
                     if (menuList4st[j].activeSelf == true)
@@ -567,24 +721,37 @@ public class ButtonManager : MonoBehaviour
                         menuList4st[j].SetActive(false);
                     }
                 }
-                
-                ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
-                StartCoroutine(BackDelay(menuList3st, i));
-                
-                for (int q = 0; q < menuList2st.Count; q++)
+
+                #endregion
+
+                #region back 로테이션
+
+                if (menuList2st.All(menu => menu.activeSelf == false))
                 {
-                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+                }
+                else
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+                }
 
-                    foreach (BoxCollider collider in allCollider)
+                #region 자기 자신 collider 비활성화
+
+                BoxCollider[] selfAllCollider = menuList3st[i].GetComponentsInChildren<BoxCollider>();
+
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
                     {
-                        if (collider.name == transform.name)
-                        {
-                            return;
-                        }
-
-                        collider.enabled = true;
+                        selfCollider.enabled = false;
                     }
                 }
+
+                #endregion
+
+                StartCoroutine(BackDelay(menuList3st, i));
+
+                #endregion
             }
         }
 
@@ -592,12 +759,11 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList4st[i].name == backPath)
             {
-                ButtonPivot.Instance.BackwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
-                StartCoroutine(BackDelay(menuList4st, i));
-                
-                for (int q = 0; q < menuList3st.Count; q++)
+                #region Collider 다시 생성
+
+                for (int q = 0; q < menuList1st.Count; q++)
                 {
-                    BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
 
                     foreach (BoxCollider collider in allCollider)
                     {
@@ -609,6 +775,67 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
+
+                for (int r = 0; r < menuList2st.Count; r++)
+                {
+                    BoxCollider[] allCollider = menuList2st[r].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                for (int s = 0; s < menuList3st.Count; s++)
+                {
+                    BoxCollider[] allCollider = menuList3st[s].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region back 로테이션
+
+                if (menuList3st.All(menu => menu.activeSelf == false))
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+                }
+                else
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
+                }
+
+                #region 자기 자신 collider 비활성화
+
+                BoxCollider[] selfAllCollider = menuList4st[i].GetComponentsInChildren<BoxCollider>();
+
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+
+                #endregion
+
+                StartCoroutine(BackDelay(menuList4st, i));
+
+                #endregion
             }
         }
     }
@@ -620,13 +847,27 @@ public class ButtonManager : MonoBehaviour
         movePinch.GetComponent<Animator>().SetBool(Zero, false);
         movePinch.SetActive(false);
     }
-    
+
     IEnumerator BackDelay(List<GameObject> menuList, int index)
     {
         menuList[index].GetComponent<Animator>().SetBool(Zero, true);
         yield return new WaitForSeconds(0.5f);
         menuList[index].GetComponent<Animator>().SetBool(Zero, false);
         menuList[index].SetActive(false);
+    }
+
+    IEnumerator Delay(List<GameObject> menuList, int index)
+    {
+        yield return new WaitForSeconds(0.5f);
+        BoxCollider[] nextAllCollider = menuList[index].GetComponentsInChildren<BoxCollider>();
+
+        foreach (BoxCollider nextCollider in nextAllCollider)
+        {
+            if (nextCollider.gameObject.name != "Back Button")
+            {
+                nextCollider.enabled = true;
+            }
+        }
     }
 
     public void InstrumentNext()
@@ -637,7 +878,7 @@ public class ButtonManager : MonoBehaviour
         item1.SetActive(false);
         item2.SetActive(true);
     }
-    
+
     public void InstrumentBack()
     {
         GameObject item1 = GameObject.Find("Instrument Item Factory").transform.Find("Instrument Item1").gameObject;
