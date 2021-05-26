@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -23,7 +24,6 @@ public class ButtonManager : MonoBehaviour
     }
 
     public float buttonRotateSpeed;
-    public Transform camRig;
 
     #region MovePinch
 
@@ -259,6 +259,8 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList1st[i].name == path)
             {
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList1st.Count; j++)
                 {
                     if (menuList1st[j].activeSelf == true)
@@ -291,9 +293,17 @@ public class ButtonManager : MonoBehaviour
                     }
                 }
 
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
                 menuList1st[i].SetActive(true);
+
+                ButtonPivot.Instance.EnablePosRot();
                 
+                #region 모든 Collider 활성화
+
                 for (int q = 0; q < menuList1st.Count; q++)
                 {
                     BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
@@ -353,8 +363,10 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-                
-                ButtonPivot.Instance.EnablePosRot();
+
+                #endregion
+
+                #endregion
             }
         }
         
@@ -362,6 +374,27 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList2st[i].name == path)
             {
+                #region Collider 비활성화
+
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = false;
+                    }
+                }
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList2st.Count; j++)
                 {
                     if (menuList2st[j].activeSelf == true)
@@ -385,13 +418,34 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+
                 menuList2st[i].SetActive(true);
                 
-                for (int q = 0; q < menuList1st.Count; q++)
+                #region Collider 활성화
+
+                StartCoroutine(Delay(menuList2st, i));
+
+                #endregion
+
+                #endregion
+            }
+        }
+        
+        for (int i = 0; i < menuList3st.Count; i++)
+        {
+            if (menuList3st[i].name == path)
+            {
+                #region Collider 비활성화
+
+                for (int q = 0; q < menuList2st.Count; q++)
                 {
-                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
 
                     foreach (BoxCollider collider in allCollider)
                     {
@@ -403,13 +457,11 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = false;
                     }
                 }
-            }
-        }
-        
-        for (int i = 0; i < menuList3st.Count; i++)
-        {
-            if (menuList3st[i].name == path)
-            {
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
                 for (int j = 0; j < menuList3st.Count; j++)
                 {
                     if (menuList3st[j].activeSelf == true)
@@ -425,24 +477,22 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region forward 로테이션
+
                 ButtonPivot.Instance.ForwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
-                menuList3st[i].SetActive(true);
                 
-                for (int q = 0; q < menuList2st.Count; q++)
-                {
-                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
+                menuList3st[i].SetActive(true);
 
-                    foreach (BoxCollider collider in allCollider)
-                    {
-                        if (collider.name == transform.name)
-                        {
-                            return;
-                        }
+                #region Collider 활성화
 
-                        collider.enabled = false;
-                    }
-                }
+                StartCoroutine(Delay(menuList3st, i));
+                
+                #endregion
+                
+                #endregion
             }
         }
 
@@ -450,18 +500,8 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList4st[i].name == path)
             {
+                #region Collider 비활성화
 
-                for (int j = 0; j < menuList4st.Count; j++)
-                {
-                    if (menuList4st[j].activeSelf == true)
-                    {
-                        menuList4st[j].SetActive(false);
-                    }
-                }
-                
-                ButtonPivot.Instance.ForwardRotate(new Vector3(0, 270, 0), buttonRotateSpeed);
-                menuList4st[i].SetActive(true);
-                
                 for (int q = 0; q < menuList3st.Count; q++)
                 {
                     BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
@@ -476,6 +516,34 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = false;
                     }
                 }
+
+                #endregion
+
+                #region 기존에 있던거 사라짐
+
+                for (int j = 0; j < menuList4st.Count; j++)
+                {
+                    if (menuList4st[j].activeSelf == true)
+                    {
+                        menuList4st[j].SetActive(false);
+                    }
+                }
+
+                #endregion
+
+                #region forward 로테이션
+
+                ButtonPivot.Instance.ForwardRotate(new Vector3(0, 270, 0), buttonRotateSpeed);
+                
+                menuList4st[i].SetActive(true);
+
+                #region Collider 활성화
+
+                StartCoroutine(Delay(menuList4st, i));
+                
+                #endregion
+                
+                #endregion
             }
         }
     }
@@ -486,6 +554,8 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList1st[i].name == backPath)
             {
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList2st.Count; j++)
                 {
                     if (menuList2st[j].activeSelf == true)
@@ -510,9 +580,30 @@ public class ButtonManager : MonoBehaviour
                     }
                 }
 
+                #endregion
+
+                #region back 로테이션
+
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+                
+                #region 자기 자신 collider 비활성화
+                
+                BoxCollider[] selfAllCollider = menuList1st[i].GetComponentsInChildren<BoxCollider>();
+                
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+                
+                #endregion
+                
                 StartCoroutine(BackMovePinchDelay());
                 StartCoroutine(BackDelay(menuList1st, i));
+
+                #endregion
             }
         }
         
@@ -520,6 +611,27 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList2st[i].name == backPath)
             {
+                #region Collider 다시 생성
+
+                for (int q = 0; q < menuList1st.Count; q++)
+                {
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList3st.Count; j++)
                 {
                     if (menuList3st[j].activeSelf == true)
@@ -535,9 +647,38 @@ public class ButtonManager : MonoBehaviour
                         }
                     }
                 }
-                
+
+                #endregion
+
+                #region back 로테이션
+
                 ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+                
+                #region 자기 자신 collider 비활성화
+                
+                BoxCollider[] selfAllCollider = menuList2st[i].GetComponentsInChildren<BoxCollider>();
+                
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+                
+                #endregion
+                
                 StartCoroutine(BackDelay(menuList2st, i));
+
+                #endregion
+            }
+        }
+        
+        for (int i = 0; i < menuList3st.Count; i++)
+        {
+            if (menuList3st[i].name == backPath)
+            {
+                #region collider 다시 생성
                 
                 for (int q = 0; q < menuList1st.Count; q++)
                 {
@@ -553,13 +694,26 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
-            }
-        }
-        
-        for (int i = 0; i < menuList3st.Count; i++)
-        {
-            if (menuList3st[i].name == backPath)
-            {
+                
+                for (int r = 0; r < menuList2st.Count; r++)
+                {
+                    BoxCollider[] allCollider = menuList2st[r].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region 앞에 꺼 삭제
+
                 for (int j = 0; j < menuList4st.Count; j++)
                 {
                     if (menuList4st[j].activeSelf == true)
@@ -567,24 +721,37 @@ public class ButtonManager : MonoBehaviour
                         menuList4st[j].SetActive(false);
                     }
                 }
+
+                #endregion
+
+                #region back 로테이션
                 
-                ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
-                StartCoroutine(BackDelay(menuList3st, i));
-                
-                for (int q = 0; q < menuList2st.Count; q++)
+                if (menuList2st.All(menu => menu.activeSelf == false))
                 {
-                    BoxCollider[] allCollider = menuList2st[q].GetComponentsInChildren<BoxCollider>();
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 0, 0), buttonRotateSpeed);
+                }
+                else
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+                }
 
-                    foreach (BoxCollider collider in allCollider)
+                #region 자기 자신 collider 비활성화
+                
+                BoxCollider[] selfAllCollider = menuList3st[i].GetComponentsInChildren<BoxCollider>();
+                
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
                     {
-                        if (collider.name == transform.name)
-                        {
-                            return;
-                        }
-
-                        collider.enabled = true;
+                        selfCollider.enabled = false;
                     }
                 }
+                
+                #endregion
+                
+                StartCoroutine(BackDelay(menuList3st, i));
+
+                #endregion
             }
         }
 
@@ -592,12 +759,11 @@ public class ButtonManager : MonoBehaviour
         {
             if (menuList4st[i].name == backPath)
             {
-                ButtonPivot.Instance.BackwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
-                StartCoroutine(BackDelay(menuList4st, i));
+                #region Collider 다시 생성
                 
-                for (int q = 0; q < menuList3st.Count; q++)
+                for (int q = 0; q < menuList1st.Count; q++)
                 {
-                    BoxCollider[] allCollider = menuList3st[q].GetComponentsInChildren<BoxCollider>();
+                    BoxCollider[] allCollider = menuList1st[q].GetComponentsInChildren<BoxCollider>();
 
                     foreach (BoxCollider collider in allCollider)
                     {
@@ -609,6 +775,67 @@ public class ButtonManager : MonoBehaviour
                         collider.enabled = true;
                     }
                 }
+                
+                for (int r = 0; r < menuList2st.Count; r++)
+                {
+                    BoxCollider[] allCollider = menuList2st[r].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+                
+                for (int s = 0; s < menuList3st.Count; s++)
+                {
+                    BoxCollider[] allCollider = menuList3st[s].GetComponentsInChildren<BoxCollider>();
+
+                    foreach (BoxCollider collider in allCollider)
+                    {
+                        if (collider.name == transform.name)
+                        {
+                            return;
+                        }
+
+                        collider.enabled = true;
+                    }
+                }
+
+                #endregion
+
+                #region back 로테이션
+
+                if (menuList3st.All(menu => menu.activeSelf == false))
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 90, 0), buttonRotateSpeed);
+                }
+                else
+                {
+                    ButtonPivot.Instance.BackwardRotate(new Vector3(0, 180, 0), buttonRotateSpeed);
+                }
+                
+                #region 자기 자신 collider 비활성화
+                
+                BoxCollider[] selfAllCollider = menuList4st[i].GetComponentsInChildren<BoxCollider>();
+                
+                foreach (BoxCollider selfCollider in selfAllCollider)
+                {
+                    if (selfCollider.gameObject.name != "Back Button")
+                    {
+                        selfCollider.enabled = false;
+                    }
+                }
+                
+                #endregion
+                
+                StartCoroutine(BackDelay(menuList4st, i));
+
+                #endregion
             }
         }
     }
@@ -627,6 +854,20 @@ public class ButtonManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         menuList[index].GetComponent<Animator>().SetBool(Zero, false);
         menuList[index].SetActive(false);
+    }
+
+    IEnumerator Delay(List<GameObject> menuList, int index)
+    {
+        yield return new WaitForSeconds(0.5f);
+        BoxCollider[] nextAllCollider = menuList[index].GetComponentsInChildren<BoxCollider>();
+                
+        foreach (BoxCollider nextCollider in nextAllCollider)
+        {
+            if (nextCollider.gameObject.name != "Back Button")
+            {
+                nextCollider.enabled = true;
+            }
+        }
     }
 
     public void InstrumentNext()

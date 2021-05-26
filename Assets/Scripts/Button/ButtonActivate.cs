@@ -10,7 +10,7 @@ public class ButtonActivate : MonoBehaviour
     private Animator anim;
     private static readonly int AnimOn = Animator.StringToHash("AnimOn");
     private int button;
-    private bool isButton;
+    private bool isButton = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class ButtonActivate : MonoBehaviour
         GetComponent<Button>().onClick.Invoke();
         GameObject menu = GameObject.Find("Menu");
         isButton = true;
-        
+
         Collider[] cols = Physics.OverlapSphere(transform.position, menu.transform.localScale.x*10, button);
         if (cols != null && cols.Length > 0)
         {

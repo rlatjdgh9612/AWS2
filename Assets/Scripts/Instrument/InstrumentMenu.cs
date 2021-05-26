@@ -28,6 +28,17 @@ public class InstrumentMenu : MonoBehaviour
         instrumentMarker = GameObject.Find("InstrumentMarker").transform.Find(findName).gameObject;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Controller"))
+        {
+            if (other.gameObject.name == Controller.WhichIsHand.rightHand)
+            {
+                other.GetComponent<ControllerToolTip>().ToolTipMenu.SetActive(true);
+            }
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Controller"))
@@ -35,4 +46,5 @@ public class InstrumentMenu : MonoBehaviour
             if (Controller.Instance.Menu2.GetState(SteamVR_Input_Sources.RightHand)) other.GetComponent<ControllerInstrument>().InstrumentInput(instrumentMarker, resourcePath, true, true);
         }
     }
+
 }
