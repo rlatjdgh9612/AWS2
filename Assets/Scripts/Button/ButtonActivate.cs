@@ -23,7 +23,7 @@ public class ButtonActivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +39,7 @@ public class ButtonActivate : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -58,20 +58,16 @@ public class ButtonActivate : MonoBehaviour
         GameObject menu = GameObject.Find("Menu");
         isButton = true;
 
-<<<<<<< HEAD
         Collider[] cols = Physics.OverlapSphere(transform.position, menu.transform.localScale.x*10, button);
-=======
-        Collider[] cols = Physics.OverlapSphere(transform.position, menu.transform.localScale.x * 10, button);
->>>>>>> 1ff2da666d4dd98383d9d42ce1f96b41b6f1ff9e
         if (cols != null && cols.Length > 0)
         {
             for (int i = 0; i < cols.Length; i++)
             {
                 cols[i].enabled = false;
             }
-
+            
             yield return new WaitForSeconds(0.1f);
-
+    
             for (int i = 0; i < cols.Length; i++)
             {
                 cols[i].enabled = true;
@@ -79,5 +75,5 @@ public class ButtonActivate : MonoBehaviour
             }
         }
     }
-
+    
 }

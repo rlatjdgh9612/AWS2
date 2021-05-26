@@ -22,8 +22,6 @@ public class Controller : MonoBehaviour
         instance = this;
     }
 
-    private float currentTime = 0.0f;
-
     #region 오른쪽 왼쪽 구분 게임 오브젝트 네임을 기준으로
 
     public struct WhichIsHand
