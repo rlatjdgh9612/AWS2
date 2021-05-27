@@ -36,6 +36,11 @@ public class Sound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Controller"))
         {
+            if (other.gameObject.name == Controller.WhichIsHand.rightHand)
+            {
+                other.GetComponent<ControllerToolTip>().ToolTipMenu.SetActive(true);
+            }
+            
             if (!isPlay)
             {
                 isPlay = true;
@@ -70,4 +75,5 @@ public class Sound : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isPlay = false;
     }
+
 }

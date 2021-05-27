@@ -32,6 +32,17 @@ public class TutorMenu : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Controller"))
+        {
+            if (other.gameObject.name == Controller.WhichIsHand.rightHand)
+            {
+                other.GetComponent<ControllerToolTip>().ToolTipMenu.SetActive(true);
+            }
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Controller"))
@@ -42,4 +53,5 @@ public class TutorMenu : MonoBehaviour
             }
         }
     }
+
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Deform;
 using UnityEngine;
 using Valve.VR;
 
@@ -52,6 +53,21 @@ public class Controller : MonoBehaviour
     public GameObject ControllerModelLeft => controllerModelLeft;
     [SerializeField] private GameObject controllerBallLeft;
     public GameObject ControllerBallLeft => controllerBallLeft;
+
+    #endregion
+
+    [Space(10f)]
+    [Header("ToolTip")]
+
+    #region 툴팁 조건
+    
+    [SerializeField]
+    private bool isToolTip = false;
+    public bool IsToolTip
+    {
+        get => isToolTip;
+        set => isToolTip = value;
+    }
 
     #endregion
     
@@ -179,6 +195,5 @@ public class Controller : MonoBehaviour
     }
 
     #endregion
-    
-    
+
 }
