@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class Metronome : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource audioSound;
+    public AudioClip tockSound;
+    public AudioClip tickSound;
+
     public bool isOnMetroSound = false;
 
     public Image metronome_BeatsCount;
@@ -18,6 +22,8 @@ public class Metronome : MonoBehaviour
     public int tempo = 100;
     public int maxBeats = 4;
 
+    public List<RecordPlayer> playList = new List<RecordPlayer>();
+
     Coroutine countCoroutine;
 
     private void Start()
@@ -25,7 +31,7 @@ public class Metronome : MonoBehaviour
         StartCoroutine(ieCountDown());
     }
 
-    private void Update()
+    protected virtual void Update()
     {
 
     }
@@ -71,7 +77,15 @@ public class Metronome : MonoBehaviour
             if (Record.Instance.isCounting && beats == 1) Record.Instance.Recording();
             if (recorderText) recorderText.enabled = Record.Instance.isCounting;
 
-            if (isOnMetroSound) audioSource.Play();
+            if (beats == 1)
+            {
+                playList.ForEach(p => p.Play());
+                playList = new List<RecordPlayer>();
+            }
+
+            if (isOnMetroSound && beats != 1) audioSound.PlayOneShot(tockSound);
+            if (isOnMetroSound && beats == 1) audioSound.PlayOneShot(tickSound);
+
             yield return new WaitForSeconds(60f / tempo);
         }
     }
